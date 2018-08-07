@@ -35,6 +35,6 @@ public class MainSingleApi {
         return BaseRetrofitManager.getInstance()
                 .baseService()
                 .login(encrypt)
-                .compose(BaseTransformer.<UserModel>defaultSchedulers());
+                .compose(BaseTransformer.defaultSchedulers());
     }
 }

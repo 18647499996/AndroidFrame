@@ -97,6 +97,11 @@ public class BaseRetrofitManager {
 
         }
 
+        /**
+         * 字符串输出
+         * @param request 请求数据
+         * @return
+         */
         private static String bodyToString(final Request request) {
 
             try {

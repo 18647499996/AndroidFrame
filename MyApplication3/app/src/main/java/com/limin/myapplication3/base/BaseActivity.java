@@ -36,8 +36,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         addListener();
         // Activity管理器
         ActivityTaskManager.getActivityManager().addActivity(this);
-
-
     }
 
     /**
@@ -66,7 +64,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
-        onClickListener(v);
+        if (fastClick()) {
+            onClickListener(v);
+        }
     }
 
     /**
@@ -87,5 +87,18 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected void onDestroy() {
         super.onDestroy();
         ActivityTaskManager.getActivityManager().finishActivity(this);
+    }
+
+    /**
+     * 防止快速点击（1秒响应一次）
+     * @return
+     */
+    private boolean fastClick() {
+        long lastClick = 0;
+        if (System.currentTimeMillis() - lastClick <= 1000) {
+            return false;
+        }
+        lastClick = System.currentTimeMillis();
+        return true;
     }
 }

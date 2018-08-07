@@ -22,6 +22,8 @@ public abstract class BaseRequestResult<T> extends Subscriber<T>  {
     }
 
 
+
+
     @Override
     public void onStart() {
         super.onStart();
@@ -49,10 +51,21 @@ public abstract class BaseRequestResult<T> extends Subscriber<T>  {
         onNextListener(t);
     }
 
+    /**
+     * 请求完成回调
+     */
     protected abstract void onCompletedListener();
 
+    /**
+     * 请求异常回调
+     * @param e 异常信息
+     */
     protected abstract void onErrorListener(BaseException.ApiException e);
 
+    /**
+     * 请求成功回调
+     * @param t 返回泛型Model
+     */
     protected abstract void onNextListener(T t);
 
 }

@@ -7,11 +7,16 @@ import android.widget.TextView;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.activity.demo.DemoActivity;
 import com.limin.myapplication3.base.BaseActivity;
+import com.limin.myapplication3.base.BaseException;
+import com.limin.myapplication3.base.BaseRequestResult;
+import com.limin.myapplication3.base.BaseRetrofitManager;
+import com.limin.myapplication3.base.BaseTransformer;
 import com.limin.myapplication3.model.UserModel;
 import com.limin.myapplication3.utils.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.Subscriber;
 
 /**
  * Description

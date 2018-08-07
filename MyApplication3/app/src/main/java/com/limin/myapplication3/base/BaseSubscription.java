@@ -12,19 +12,19 @@ import rx.subscriptions.CompositeSubscription;
  */
 public abstract class BaseSubscription<T> implements BasePresenter {
 
-    protected CompositeSubscription subscriptions=new CompositeSubscription();
+    protected CompositeSubscription subscriptions = new CompositeSubscription();
 
     private Context context;
 
     @Override
-    public void onDestroy(){
-        if(subscriptions !=null){
+    public void onDestroy() {
+        if (subscriptions != null) {
             subscriptions.clear();
         }
         subscriptions = null;
     }
 
-    public BaseSubscription<T> Bulider(Context context){
+    public BaseSubscription<T> Bulider(Context context) {
         this.context = context;
         return this;
     }

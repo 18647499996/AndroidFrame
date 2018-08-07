@@ -13,8 +13,6 @@ import rx.schedulers.Schedulers;
  */
 public class BaseTransformer {
 
-    private static final int HTTP_CODE = 200;
-
     /**
      * RxJava线程调度器（线程切换）
      * @param <T>
@@ -24,7 +22,8 @@ public class BaseTransformer {
         return new Observable.Transformer<BaseResult<T>,T>(){
             @Override
             public Observable<T> call(Observable<BaseResult<T>> baseResultObservable) {
-                return baseResultObservable.map(new ServerResultFunc<T>())
+                return baseResultObservable
+                        .map(new ServerResultFunc<T>())
                         .onErrorResumeNext(new BaseFunction<T>())
                         .unsubscribeOn(Schedulers.io())
                         .subscribeOn(Schedulers.io())
@@ -41,7 +40,7 @@ public class BaseTransformer {
 
         @Override
         public Observable<T> call(Throwable throwable) {
-            return Observable.error(BaseException.throwableUtils(throwable));
+            return Observable.error(BaseException.getInstance().throwableUtils(throwable));
         }
     }
 
@@ -53,7 +52,8 @@ public class BaseTransformer {
 
         @Override
         public T call(BaseResult<T> baseResult) {
-            if (baseResult.getCode() != 0 && baseResult.getCode() != HTTP_CODE) {
+            // 判断服务器code编码负数统一处理
+            if (baseResult.getCode() < 0){
                 throw new ServerException(baseResult.getCode(),baseResult.getMsg());
             }
             return baseResult.getData();
@@ -71,7 +71,8 @@ public class BaseTransformer {
         private String msg;
 
         ServerException(int code, String msg) {
-
+            this.code = code;
+            this.msg = msg;
         }
 
         public int getCode() {
