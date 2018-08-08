@@ -4,12 +4,8 @@ import android.util.Log;
 
 import com.google.gson.JsonParseException;
 
-import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.json.JSONException;
 
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.net.ConnectException;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
@@ -43,6 +39,11 @@ public class BaseException {
      return instance;
     }
 
+    /**
+     * 异常信息处理
+     * @param throwable 处理的异常信息
+     * @return
+     */
     public ApiException throwableUtils(Throwable throwable) {
         ApiException apiException;
         if (throwable instanceof HttpException || throwable instanceof ConnectException) {
