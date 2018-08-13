@@ -5,6 +5,7 @@ import com.limin.myapplication3.base.BaseException;
 import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.base.BaseRequestResult;
 import com.limin.myapplication3.base.BaseSubscription;
+import com.limin.myapplication3.base.BaseView;
 import com.limin.myapplication3.model.UserModel;
 import com.limin.myapplication3.utils.EncryptMap;
 
@@ -16,14 +17,13 @@ import rx.Subscription;
  * @author Created by: Li_Min
  * Time:2018/8/4
  */
-class MainPresenter extends BaseSubscription<BasePresenter> implements MainConstract.Presenter {
+public class MainPresenter extends BaseSubscription<BasePresenter> implements MainConstract.Presenter {
 
     private MainConstract.View view;
 
-    MainPresenter(MainConstract.View view) {
+    public MainPresenter(MainConstract.View view) {
         this.view = view;
     }
-
 
     @Override
     public void start() {
@@ -34,6 +34,8 @@ class MainPresenter extends BaseSubscription<BasePresenter> implements MainConst
     public void onDestroy() {
         super.onDestroy();
     }
+
+
 
     @Override
     public void login() {

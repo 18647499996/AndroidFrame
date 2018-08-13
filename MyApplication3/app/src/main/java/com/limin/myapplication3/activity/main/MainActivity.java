@@ -7,16 +7,11 @@ import android.widget.TextView;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.activity.demo.DemoActivity;
 import com.limin.myapplication3.base.BaseActivity;
-import com.limin.myapplication3.base.BaseException;
-import com.limin.myapplication3.base.BaseRequestResult;
-import com.limin.myapplication3.base.BaseRetrofitManager;
-import com.limin.myapplication3.base.BaseTransformer;
+import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.model.UserModel;
 import com.limin.myapplication3.utils.ToastUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import rx.Subscriber;
 
 /**
  * Description
@@ -26,10 +21,11 @@ import rx.Subscriber;
  */
 public class MainActivity extends BaseActivity implements MainConstract.View {
 
+    private MainConstract.Presenter mPresenter;
 
     @BindView(R.id.activity_tv_content)
     TextView activityTvContent;
-    private MainConstract.Presenter mPresenter;
+
 
     @Override
     protected int getLayout() {
@@ -39,7 +35,6 @@ public class MainActivity extends BaseActivity implements MainConstract.View {
     @Override
     protected void initData(Bundle savedInstanceState) {
         mPresenter = (MainConstract.Presenter) new MainPresenter(this).Bulider(this);
-        mPresenter.start();
     }
 
     @Override
@@ -71,7 +66,6 @@ public class MainActivity extends BaseActivity implements MainConstract.View {
 
     @Override
     public void showErrorMessage(String msg) {
-        ToastUtils.showShort(this, msg);
+        ToastUtils.showShort(this,msg);
     }
-
 }

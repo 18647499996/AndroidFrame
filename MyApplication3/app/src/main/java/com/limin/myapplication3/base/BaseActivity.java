@@ -9,7 +9,11 @@ import android.view.Window;
 
 import com.limin.myapplication3.utils.ActivityTaskManager;
 
+import java.lang.reflect.ParameterizedType;
+
 import butterknife.ButterKnife;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 /**
  * Description
@@ -18,6 +22,7 @@ import butterknife.ButterKnife;
  * Time:2018/8/4
  */
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,14 +43,17 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         ActivityTaskManager.getActivityManager().addActivity(this);
     }
 
+
     /**
      * 初始化布局
+     *
      * @return 布局文件
      */
     protected abstract int getLayout();
 
     /**
      * 初始化数据
+     *
      * @param savedInstanceState bundle属性
      */
     protected abstract void initData(Bundle savedInstanceState);
@@ -57,6 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     /**
      * 设置点击事件
+     *
      * @param v view
      */
     protected abstract void onClickListener(View v);
@@ -71,8 +80,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     /**
      * presenter 空指针异常捕获
+     *
      * @param reference presenter
-     * @param <T> 泛型类
+     * @param <T>       泛型类
      * @return
      */
     public static <T> T checkNotNull(T reference) {
@@ -91,6 +101,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     /**
      * 防止快速点击（1秒响应一次）
+     *
      * @return
      */
     private boolean fastClick() {
@@ -100,5 +111,21 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         }
         lastClick = System.currentTimeMillis();
         return true;
+    }
+
+    public <P> P getInstance(Object o, int i) {
+        try {
+            return ((Class<P>) ((ParameterizedType) (o.getClass()
+                    .getGenericSuperclass())).getActualTypeArguments()[i])
+                    .newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 }

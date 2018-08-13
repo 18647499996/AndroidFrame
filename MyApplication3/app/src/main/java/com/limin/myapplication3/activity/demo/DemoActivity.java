@@ -1,6 +1,5 @@
 package com.limin.myapplication3.activity.demo;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import com.limin.myapplication3.model.UserModel;
 import com.limin.myapplication3.utils.ToastUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Description

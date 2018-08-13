@@ -1,6 +1,11 @@
 package com.limin.myapplication3.base;
 
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.util.Log;
+
+import com.blankj.utilcode.util.LogUtils;
+import com.limin.myapplication3.utils.GsonUtils;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -61,6 +66,7 @@ public class BaseRetrofitManager {
                 .readTimeout(20, TimeUnit.SECONDS)
                 .writeTimeout(20, TimeUnit.SECONDS)
                 .addInterceptor(new LogInterceptor())
+                .addInterceptor(new CodeInterceptor())
                 .build();
         // 初始化Retrofit配置
         Retrofit retrofit = new Retrofit.Builder()
@@ -99,6 +105,7 @@ public class BaseRetrofitManager {
 
         /**
          * 字符串输出
+         *
          * @param request 请求数据
          * @return
          */
@@ -117,4 +124,44 @@ public class BaseRetrofitManager {
             }
         }
     }
+
+    public static class CodeInterceptor implements Interceptor {
+        private static final int RESULT_REQUEST_SUCCESS1 = 200;
+
+        @Override
+        public Response intercept(@NonNull Chain chain) throws IOException {
+            Request request = chain.request();
+
+            Response response = chain.proceed(request);
+            ResponseBody body = response.peekBody(1024 * 1024);
+
+            String bodyStr = body.string();
+            int code = 0;
+            String msg = null;
+
+            if (!TextUtils.isEmpty(bodyStr)) {
+                BaseResult baseResult = GsonUtils.fromJson(bodyStr, BaseResult.class);
+                code = baseResult.getCode();
+                msg = baseResult.getMsg();
+                if (null == baseResult) {
+                    throw new BaseTransformer.ServerException(code, msg);
+                }
+
+            } else {
+                return response;
+            }
+
+            switch (code) {
+                case 0:
+                    return response;
+                case 200:
+                    return response;
+                default:
+                    throw new BaseTransformer.ServerException(code,msg);
+            }
+        }
+
+
+    }
+
 }

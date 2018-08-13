@@ -33,4 +33,5 @@ public abstract class BaseSubscription<T> implements BasePresenter {
     public Context getContext() {
         return context;
     }
+
 }
