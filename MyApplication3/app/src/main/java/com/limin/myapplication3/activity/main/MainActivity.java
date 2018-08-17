@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.SPUtils;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.activity.demo.DemoActivity;
 import com.limin.myapplication3.base.BaseActivity;
 import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.model.UserModel;
+import com.limin.myapplication3.utils.Constant;
 import com.limin.myapplication3.utils.ToastUtils;
 
 import butterknife.BindView;

@@ -58,7 +58,7 @@ public class MainPresenter extends BaseSubscription<BasePresenter> implements Ma
         Subscription subscribe = MainSingleApi
                 .getInstance()
                 .login(map.encrypt())
-                .subscribe(new BaseRequestResult<UserModel>() {
+                .subscribe(new BaseRequestResult<UserModel>(getContext()) {
                     @Override
                     protected void onCompletedListener() {
 

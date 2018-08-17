@@ -5,8 +5,10 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 
 import com.blankj.utilcode.util.CrashUtils;
+import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.Utils;
 import com.limin.myapplication3.model.UserModel;
+import com.limin.myapplication3.utils.Constant;
 
 import java.util.Optional;
 
@@ -30,6 +32,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        // 常用工具类Utils 详见Api https://blog.csdn.net/qq_33445600/article/details/78487857
         Utils.init(this);
         CrashUtils.init();
         UserModel userModel = new UserModel();

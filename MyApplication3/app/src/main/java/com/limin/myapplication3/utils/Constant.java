@@ -11,4 +11,9 @@ public class Constant {
      * token异常
      */
     public static final String TOKEN = "Token_Exception";
+    /**
+     * 用户信息
+     */
+    public static final String USER = "user";
+    public static final String LOGIN = "login";
 }
