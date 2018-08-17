@@ -7,7 +7,7 @@ import com.limin.myapplication3.utils.WeiboDialogUtils;
 import rx.Subscriber;
 
 /**
- * Description
+ * Description：网络请求返回结果回调
  *
  * @author Created by: Li_Min
  * Time:2018/8/2
@@ -17,17 +17,20 @@ public abstract class BaseRequestResult<T> extends Subscriber<T>  {
     private static final int ERROR = 10000;
     private Context context;
 
+    protected BaseRequestResult(){
+
+    }
+
     protected BaseRequestResult(Context context) {
         this.context = context;
     }
 
-
-
-
     @Override
     public void onStart() {
         super.onStart();
-        WeiboDialogUtils.getInstance().createLoadingDialog(context,"");
+        if (null != context) {
+            WeiboDialogUtils.getInstance().createLoadingDialog(context, "");
+        }
     }
 
     @Override
@@ -37,7 +40,9 @@ public abstract class BaseRequestResult<T> extends Subscriber<T>  {
 
     @Override
     public void onError(Throwable e) {
-        WeiboDialogUtils.getInstance().closeDialog();
+        if (null != context) {
+            WeiboDialogUtils.getInstance().closeDialog();
+        }
         if (e instanceof BaseException.ApiException) {
             onErrorListener((BaseException.ApiException) e);
         }else{
@@ -47,7 +52,9 @@ public abstract class BaseRequestResult<T> extends Subscriber<T>  {
 
     @Override
     public void onNext(T t) {
-        WeiboDialogUtils.getInstance().closeDialog();
+        if (null != context) {
+            WeiboDialogUtils.getInstance().closeDialog();
+        }
         onNextListener(t);
     }
 

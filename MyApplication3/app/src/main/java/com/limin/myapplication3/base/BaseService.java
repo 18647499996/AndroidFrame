@@ -11,7 +11,7 @@ import retrofit2.http.POST;
 import rx.Observable;
 
 /**
- * Description
+ * Description：服务器接口定义Api
  *
  * @author Created by: Li_Min
  * Time:2018/8/2

@@ -16,7 +16,7 @@
 
 package com.limin.myapplication3.base;
 /**
- * Description
+ * Description：presenter通用接口定义
  *
  * @author Created by: Li_Min
  * Time:2018/8/2

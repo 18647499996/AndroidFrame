@@ -14,7 +14,7 @@ import com.limin.myapplication3.utils.ToastUtils;
 import butterknife.BindView;
 
 /**
- * Description
+ * Description：主界面
  *
  * @author Created by: Li_Min
  * Time:2018/8/4
@@ -35,6 +35,7 @@ public class MainActivity extends BaseActivity implements MainConstract.View {
     @Override
     protected void initData(Bundle savedInstanceState) {
         mPresenter = (MainConstract.Presenter) new MainPresenter(this).Bulider(this);
+        mPresenter.start();
     }
 
     @Override
@@ -57,6 +58,11 @@ public class MainActivity extends BaseActivity implements MainConstract.View {
     @Override
     public void showUserModel(UserModel userModel) {
 
+    }
+
+    @Override
+    public void showOutLogin() {
+        // 用户登出以后需要处理的逻辑（数据库及缓存文件清空）
     }
 
     @Override

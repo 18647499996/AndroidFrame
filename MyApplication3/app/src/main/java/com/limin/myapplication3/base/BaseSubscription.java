@@ -5,7 +5,7 @@ import android.content.Context;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * Description
+ * Description：请求取消及Context获取
  *
  * @author Created by: Li_Min
  * Time:2018/8/4
@@ -24,6 +24,11 @@ public abstract class BaseSubscription<T> implements BasePresenter {
         subscriptions = null;
     }
 
+    /**
+     * 这里的Context根据自己项目需求调用，由于该项目将请求结果回调类（BaseRequestResult）当中统一添加了Loading加载
+     * @param context 上下文
+     * @return
+     */
     public BaseSubscription<T> Bulider(Context context) {
         this.context = context;
         return this;

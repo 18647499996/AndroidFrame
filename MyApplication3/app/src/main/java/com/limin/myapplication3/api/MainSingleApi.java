@@ -7,7 +7,7 @@ import com.limin.myapplication3.model.UserModel;
 import rx.Observable;
 
 /**
- * Description
+ * Description：网络请求定义类（单例模式）
  *
  * @author Created by: Li_Min
  * Time:2018/8/4

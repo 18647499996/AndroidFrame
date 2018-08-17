@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 /**
- * Description
+ * Description：Activity通用管理
  *
  * @author Created by: Li_Min
  * Time:2018/8/4

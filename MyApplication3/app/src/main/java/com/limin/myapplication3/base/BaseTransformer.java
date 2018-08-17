@@ -6,7 +6,7 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
- * Description
+ * Description：RxJava线程调度器
  *
  * @author Created by: Li_Min
  * Time:2018/8/2
@@ -19,17 +19,12 @@ public class BaseTransformer {
      * @return
      */
     public static <T> Observable.Transformer<BaseResult<T>, T> defaultSchedulers() {
-        return new Observable.Transformer<BaseResult<T>,T>(){
-            @Override
-            public Observable<T> call(Observable<BaseResult<T>> baseResultObservable) {
-                return baseResultObservable
-                        .map(new ServerResultFunc<T>())
-                        .onErrorResumeNext(new BaseFunction<T>())
-                        .unsubscribeOn(Schedulers.io())
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread());
-            }
-        };
+        return baseResultObservable -> baseResultObservable
+                .map(new ServerResultFunc<T>())
+                .onErrorResumeNext(new BaseFunction<T>())
+                .unsubscribeOn(Schedulers.io())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     /**
@@ -70,6 +65,10 @@ public class BaseTransformer {
         private int code;
         private String msg;
 
+        ServerException(){
+
+        }
+
         ServerException(int code, String msg) {
             this.code = code;
             this.msg = msg;
@@ -90,5 +89,33 @@ public class BaseTransformer {
         public void setMsg(String msg) {
             this.msg = msg;
         }
+    }
+
+    public static class TokenException extends RuntimeException {
+
+        private int code;
+        private String msg;
+
+        TokenException(int code, String msg) {
+            this.code = code;
+            this.msg = msg;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
+        public void setCode(int code) {
+            this.code = code;
+        }
+
+        public String getMsg() {
+            return msg;
+        }
+
+        public void setMsg(String msg) {
+            this.msg = msg;
+        }
+
     }
 }

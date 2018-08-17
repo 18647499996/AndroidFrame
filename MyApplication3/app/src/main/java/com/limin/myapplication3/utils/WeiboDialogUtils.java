@@ -80,6 +80,7 @@ public class WeiboDialogUtils {
 		if (loadingDialog != null && loadingDialog.isShowing()) {
 			loadingDialog.dismiss();
 		}
+		loadingDialog = null;
 	}
 
 }

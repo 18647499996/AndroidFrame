@@ -1,0 +1,14 @@
+package com.limin.myapplication3.utils;
+
+/**
+ * Description：常量统一配置类
+ *
+ * @author Created by: Li_Min
+ * Time:2018/8/17
+ */
+public class Constant {
+    /**
+     * token异常
+     */
+    public static final String TOKEN = "Token_Exception";
+}

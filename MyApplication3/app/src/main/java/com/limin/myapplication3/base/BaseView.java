@@ -16,7 +16,7 @@
 
 package com.limin.myapplication3.base;
 /**
- * Description
+ * Description：View层通用处理接口
  *
  * @author Created by: Li_Min
  * Time:2018/8/2

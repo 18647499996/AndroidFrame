@@ -5,7 +5,7 @@ import com.limin.myapplication3.base.BaseView;
 import com.limin.myapplication3.model.UserModel;
 
 /**
- * Description
+ * Description： Mvp控制器（Constract层）
  *
  * @author Created by: Li_Min
  * Time:2018/8/4
@@ -18,6 +18,11 @@ public interface MainConstract {
          * @param userModel 登录实体类
          */
         void showUserModel(UserModel userModel);
+
+        /**
+         * 用户登出操作
+         */
+        void showOutLogin();
     }
 
     interface Presenter extends BasePresenter {

@@ -1,18 +1,23 @@
 package com.limin.myapplication3.activity.main;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.limin.myapplication3.api.MainSingleApi;
 import com.limin.myapplication3.base.BaseException;
 import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.base.BaseRequestResult;
 import com.limin.myapplication3.base.BaseSubscription;
-import com.limin.myapplication3.base.BaseView;
 import com.limin.myapplication3.model.UserModel;
+import com.limin.myapplication3.utils.Constant;
 import com.limin.myapplication3.utils.EncryptMap;
+import com.limin.myapplication3.utils.rx.Event;
+import com.limin.myapplication3.utils.rx.EventSubscriber;
+import com.limin.myapplication3.utils.rx.RxBus;
 
+import rx.Observable;
 import rx.Subscription;
 
 /**
- * Description
+ * Description： 逻辑处理数据交互（Presenter层）
  *
  * @author Created by: Li_Min
  * Time:2018/8/4
@@ -20,22 +25,28 @@ import rx.Subscription;
 public class MainPresenter extends BaseSubscription<BasePresenter> implements MainConstract.Presenter {
 
     private MainConstract.View view;
+    private Observable<Event> register;
 
-    public MainPresenter(MainConstract.View view) {
+    MainPresenter(MainConstract.View view) {
         this.view = view;
     }
 
     @Override
     public void start() {
-
+        register = RxBus.get().register(Constant.TOKEN, new EventSubscriber<Event>() {
+            @Override
+            public void onEvent(Event event) {
+                LogUtils.d("所有服务器-7操作都执行登录页面跳转");
+                view.showOutLogin();
+            }
+        });
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        RxBus.get().unregister(Constant.TOKEN,register);
     }
-
-
 
     @Override
     public void login() {
@@ -47,7 +58,7 @@ public class MainPresenter extends BaseSubscription<BasePresenter> implements Ma
         Subscription subscribe = MainSingleApi
                 .getInstance()
                 .login(map.encrypt())
-                .subscribe(new BaseRequestResult<UserModel>(getContext()) {
+                .subscribe(new BaseRequestResult<UserModel>() {
                     @Override
                     protected void onCompletedListener() {
 

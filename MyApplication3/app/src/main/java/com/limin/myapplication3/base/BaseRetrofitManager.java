@@ -5,7 +5,9 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.limin.myapplication3.utils.Constant;
 import com.limin.myapplication3.utils.GsonUtils;
+import com.limin.myapplication3.utils.rx.RxBus;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -23,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
- * Description
+ * Description：Retrofit管理器（Retrofit + RxJava + Okhttp）
  *
  * @author Created by: Li_Min
  * Time:2018/8/2
@@ -88,15 +90,15 @@ public class BaseRetrofitManager {
             Request request = chain.request();
             long t1 = System.nanoTime();
             String bodyStr = bodyToString(request);
-            Log.i("TAG", String.format("请求参数 %s: body=   %s", request.url(), bodyStr));
+            Log.i(this.getClass().getName(), String.format("请求参数 %s: body=   %s", request.url(), bodyStr));
 
             Response response = chain.proceed(request);
             long t2 = System.nanoTime();
             if (response.body() != null) {
                 ResponseBody body = response.peekBody(1024 * 1024);
-                Log.i("TAG", String.format(Locale.getDefault(), "返回数据 %s in %.1fms%n   %s", response.request().url(), (t2 - t1) / 1e6d, body.string()));
+                LogUtils.i(this.getClass().getName(), String.format(Locale.getDefault(), "返回数据 %s in %.1fms%n   %s", response.request().url(), (t2 - t1) / 1e6d, body.string()));
             } else {
-                Log.i("TAG", "body null");
+                Log.i(this.getClass().getName(), "body null");
 
             }
             return response;
@@ -125,8 +127,12 @@ public class BaseRetrofitManager {
         }
     }
 
+    /**
+     * 服务器返回code编码拦截器
+     * 根据需求处理统一拦截
+     * 比如token异常处理 与服务器定义好统一code编码
+     */
     public static class CodeInterceptor implements Interceptor {
-        private static final int RESULT_REQUEST_SUCCESS1 = 200;
 
         @Override
         public Response intercept(@NonNull Chain chain) throws IOException {
@@ -136,26 +142,30 @@ public class BaseRetrofitManager {
             ResponseBody body = response.peekBody(1024 * 1024);
 
             String bodyStr = body.string();
-            int code = 0;
-            String msg = null;
+            int code;
+            String msg;
 
             if (!TextUtils.isEmpty(bodyStr)) {
                 BaseResult baseResult = GsonUtils.fromJson(bodyStr, BaseResult.class);
+                if (null == baseResult) {
+                    throw new BaseTransformer.ServerException();
+                }
                 code = baseResult.getCode();
                 msg = baseResult.getMsg();
-                if (null == baseResult) {
-                    throw new BaseTransformer.ServerException(code, msg);
-                }
-
             } else {
-                return response;
+                throw new BaseTransformer.ServerException();
             }
 
             switch (code) {
                 case 0:
+                    //code编码主要根据服务器返回识别
                     return response;
                 case 200:
                     return response;
+                case -7:
+                    // 可以通过发送RxBus通知进入登录页面
+                    RxBus.get().post(Constant.TOKEN);
+                    throw new BaseTransformer.TokenException(code,msg);
                 default:
                     throw new BaseTransformer.ServerException(code,msg);
             }

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 /**
- * Description
+ * Description：服务器返回结果定义协议
  *
  * @author Created by: Li_Min
  * Time:2018/8/2
