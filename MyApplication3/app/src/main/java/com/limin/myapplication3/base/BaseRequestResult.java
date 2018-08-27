@@ -1,8 +1,9 @@
 package com.limin.myapplication3.base;
 
+import android.app.Activity;
 import android.content.Context;
 
-import com.limin.myapplication3.utils.WeiboDialogUtils;
+import com.limin.myapplication3.utils.LoadingDialogUtils;
 
 import rx.Subscriber;
 
@@ -29,19 +30,22 @@ public abstract class BaseRequestResult<T> extends Subscriber<T>  {
     public void onStart() {
         super.onStart();
         if (null != context) {
-            WeiboDialogUtils.getInstance().createLoadingDialog(context, "");
+            LoadingDialogUtils.getInstance().init((Activity) context,"");
         }
     }
 
     @Override
     public void onCompleted() {
         onCompletedListener();
+        if (null != context) {
+            LoadingDialogUtils.getInstance().dismiss();
+        }
     }
 
     @Override
     public void onError(Throwable e) {
         if (null != context) {
-            WeiboDialogUtils.getInstance().closeDialog();
+            LoadingDialogUtils.getInstance().dismiss();
         }
         if (e instanceof BaseException.ApiException) {
             onErrorListener((BaseException.ApiException) e);
@@ -53,7 +57,7 @@ public abstract class BaseRequestResult<T> extends Subscriber<T>  {
     @Override
     public void onNext(T t) {
         if (null != context) {
-            WeiboDialogUtils.getInstance().closeDialog();
+            LoadingDialogUtils.getInstance().dismiss();
         }
         onNextListener(t);
     }

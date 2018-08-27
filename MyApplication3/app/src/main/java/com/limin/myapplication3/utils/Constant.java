@@ -15,5 +15,12 @@ public class Constant {
      * 用户信息
      */
     public static final String USER = "user";
+    /**
+     * 登录信息
+     */
     public static final String LOGIN = "login";
+    /**
+     * 防止快递响应
+     */
+    public static final long NO_CLICK = 1000;
 }

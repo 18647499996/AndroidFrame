@@ -22,7 +22,7 @@ import rx.Subscription;
  * @author Created by: Li_Min
  * Time:2018/8/4
  */
-public class MainPresenter extends BaseSubscription<BasePresenter> implements MainConstract.Presenter {
+public class MainPresenter extends BaseSubscription implements MainConstract.Presenter {
 
     private MainConstract.View view;
     private Observable<Event> register;

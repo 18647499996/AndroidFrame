@@ -2,9 +2,6 @@ package com.limin.myapplication3.base;
 
 import com.limin.myapplication3.model.UserModel;
 
-
-import java.util.List;
-
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
@@ -20,7 +17,7 @@ public interface BaseService {
     /**
      * 用户登录
      * @param data base编码
-     * @return
+     * @return obserable
      */
     @FormUrlEncoded
     @POST("user/login")

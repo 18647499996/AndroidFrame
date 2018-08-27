@@ -30,7 +30,11 @@ public class MainSingleApi {
      return instance;
     }
 
-
+    /**
+     *
+     * @param encrypt
+     * @return
+     */
     public Observable<UserModel> login(String encrypt) {
         return BaseRetrofitManager.getInstance()
                 .baseService()

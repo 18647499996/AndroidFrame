@@ -1,38 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/act_title_bor"
     android:layout_width="match_parent"
-    android:layout_height="45dp"
-    android:background="@android:color/white"
-    android:orientation="vertical">
+    android:layout_height="65dp"
+    android:background="@android:color/black">
 
     <RelativeLayout
         android:id="@+id/act_title_left_rel"
-        android:layout_width="45dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@android:color/white">
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
 
         <ImageView
             android:id="@+id/act_title_left_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/act_title_left_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
     </RelativeLayout>
 
     <TextView
         android:id="@+id/act_title_center_tv_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/app_dp_eighteen" />
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/app_dp_eighteen"
+        tools:text="标题"
+        android:gravity="center"
+        android:textColor="@color/with"/>
 
     <RelativeLayout
         android:id="@+id/act_title_right_rel"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
-        android:background="@android:color/white"
         android:paddingLeft="@dimen/app_dp_twelve"
         android:paddingRight="@dimen/app_dp_twelve">
 

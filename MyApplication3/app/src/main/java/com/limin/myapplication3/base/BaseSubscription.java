@@ -10,7 +10,7 @@ import rx.subscriptions.CompositeSubscription;
  * @author Created by: Li_Min
  * Time:2018/8/4
  */
-public abstract class BaseSubscription<T> implements BasePresenter {
+public abstract class BaseSubscription implements BasePresenter {
 
     protected CompositeSubscription subscriptions = new CompositeSubscription();
 
@@ -29,7 +29,7 @@ public abstract class BaseSubscription<T> implements BasePresenter {
      * @param context 上下文
      * @return
      */
-    public BaseSubscription<T> Bulider(Context context) {
+    public BaseSubscription Bulider(Context context) {
         this.context = context;
         return this;
     }

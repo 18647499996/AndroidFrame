@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.limin.myapplication3.R;
+import com.limin.myapplication3.activity.test.TestActivity;
 import com.limin.myapplication3.base.BaseActivity;
 import com.limin.myapplication3.model.UserModel;
-import com.limin.myapplication3.utils.ToastUtils;
+import com.limin.myapplication3.utils.TitleBuilder;
 
 import butterknife.BindView;
 
@@ -36,7 +38,16 @@ public class DemoActivity extends BaseActivity implements DemoContract.View {
     }
 
     @Override
+    protected TitleBuilder initBuilerTitle() {
+        return new TitleBuilder(this)
+                .setMiddleTitleBgRes("Demo", R.color.with,R.color.colorAccent)
+                .setLeftTextRes("返回",16,R.color.with)
+                .setLeftRelativeLayoutListener(this);
+    }
+
+    @Override
     protected void initData(Bundle savedInstanceState) {
+        immersionBar.transparentStatusBar().statusBarDarkFont(false).init();
         mPresenter = (DemoContract.Presenter) new DemoPresenter(this).Bulider(this);
         mPresenter.start();
     }
@@ -47,7 +58,7 @@ public class DemoActivity extends BaseActivity implements DemoContract.View {
     }
 
     @Override
-    protected void onClickListener(View v) {
+    protected void onClickDoubleListener(View v) {
         switch (v.getId()) {
             case R.id.activity_demo_btn:
                 mPresenter.demo();
@@ -57,6 +68,8 @@ public class DemoActivity extends BaseActivity implements DemoContract.View {
         }
     }
 
+
+
     @Override
     public void setPresenter(DemoContract.Presenter presenter) {
         mPresenter = checkNotNull(presenter);
@@ -64,11 +77,12 @@ public class DemoActivity extends BaseActivity implements DemoContract.View {
 
     @Override
     public void showErrorMessage(String msg) {
-        ToastUtils.showShort(this, msg);
+        ToastUtils.showShort(msg);
     }
 
     @Override
     public void showUserModel(UserModel userModel) {
         // 获取用户数据更新界面
+        TestActivity.startActivity(this);
     }
 }

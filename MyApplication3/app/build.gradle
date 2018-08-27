@@ -48,5 +48,9 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     api 'com.alibaba.p3c.idea:p3c-common:1.0.0'
     api 'com.blankj:utilcode:1.9.8'
+    api 'com.gyf.barlibrary:barlibrary:2.3.0'
+    api 'me.imid.swipebacklayout.lib:library:1.1.0'
+
+
 
 }

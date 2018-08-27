@@ -1,17 +1,26 @@
 package com.limin.myapplication3.base;
 
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 
+import com.gyf.barlibrary.ImmersionBar;
+import com.limin.myapplication3.R;
 import com.limin.myapplication3.utils.ActivityTaskManager;
+import com.limin.myapplication3.utils.Constant;
+import com.limin.myapplication3.utils.LoadingDialogUtils;
+import com.limin.myapplication3.utils.TitleBuilder;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.Calendar;
 
 import butterknife.ButterKnife;
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
@@ -21,22 +30,26 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
  * @author Created by: Li_Min
  * Time:2018/8/4
  */
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity extends SwipeBackActivity implements View.OnClickListener {
 
+    protected ImmersionBar immersionBar;
+    private long lastClickTime = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         // 去掉标题
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         // 锁定屏幕
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        super.onCreate(savedInstanceState);
         // 初始化布局
         setContentView(getLayout());
         // 初始化ButterKnife
         ButterKnife.bind(this);
+        // 初始化标题
+        initBuilerTitle();
         // 初始化数据
-        initData(savedInstanceState);
+        initDatas(savedInstanceState);
         // 设置监听事件
         addListener();
         // Activity管理器
@@ -50,6 +63,11 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
      * @return 布局文件
      */
     protected abstract int getLayout();
+
+    /**
+     * 初始化标题
+     */
+    protected abstract TitleBuilder initBuilerTitle();
 
     /**
      * 初始化数据
@@ -68,13 +86,19 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
      *
      * @param v view
      */
-    protected abstract void onClickListener(View v);
+    protected abstract void onClickDoubleListener(View v);
+
+
+
 
 
     @Override
     public void onClick(View v) {
-        if (fastClick()) {
-            onClickListener(v);
+        // 防止快速点击（1秒响应一次）
+        long currentTime = Calendar.getInstance().getTimeInMillis();
+        if (currentTime - lastClickTime > Constant.NO_CLICK) {
+            lastClickTime = currentTime;
+            onClickDoubleListener(v);
         }
     }
 
@@ -93,39 +117,41 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    /**
+     * 初始化数据逻辑
+     * @param savedInstanceState Bundle数据
+     */
+    public void initDatas(Bundle savedInstanceState){
+        // 初始化沉浸式
+        immersionBar = ImmersionBar.with(this);
+        immersionBar.statusBarColor(R.color.black).statusBarDarkFont(false).init();
+        View view = findViewById(R.id.act_title_bor);
+        if (null != view){
+            view.setPadding(0,getStatusBarHeight(this),0,0);
+        }
+        initData(savedInstanceState);
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        LoadingDialogUtils.getInstance().destory();
         ActivityTaskManager.getActivityManager().finishActivity(this);
+        if (null != immersionBar){
+            immersionBar.destroy();
+
+        }
     }
 
     /**
-     * 防止快速点击（1秒响应一次）
+     * 获取状态栏高度
      *
-     * @return
+     * @param context context
+     * @return 状态栏高度
      */
-    private boolean fastClick() {
-        long lastClick = 0;
-        if (System.currentTimeMillis() - lastClick <= 1000) {
-            return false;
-        }
-        lastClick = System.currentTimeMillis();
-        return true;
-    }
-
-    public <P> P getInstance(Object o, int i) {
-        try {
-            return ((Class<P>) ((ParameterizedType) (o.getClass()
-                    .getGenericSuperclass())).getActualTypeArguments()[i])
-                    .newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassCastException e) {
-            e.printStackTrace();
-        }
-        return null;
-
+    public static int getStatusBarHeight(Context context) {
+        // 获得状态栏高度
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        return context.getResources().getDimensionPixelSize(resourceId);
     }
 }

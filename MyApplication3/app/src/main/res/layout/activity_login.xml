@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/activity_login_img_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_machine_noon" />
+
+    <TextView
+        android:id="@+id/activity_login_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Welcome to"
+        android:textColor="@color/with"
+        android:textSize="30dp" />
+
+    <EditText
+        android:id="@+id/activity_login_edt_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_login_tv_title"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/img_portrait_edt_input"
+        android:hint="用户名/手机号码"
+        android:inputType="phone"
+        android:paddingBottom="10dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="10dp"
+        android:textColorHint="@color/with"
+        android:textSize="16dp"
+        android:textCursorDrawable="@null"
+        android:imeOptions="actionGo" />
+
+
+    <EditText
+        android:id="@+id/activity_login_edt_pws"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_login_edt_user"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/img_portrait_edt_input"
+        android:hint="密码/验证码"
+        android:paddingBottom="10dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="10dp"
+        android:textColorHint="@color/with"
+        android:textSize="16dp"
+        android:textCursorDrawable="@null"
+        android:imeOptions="actionSend"
+        android:singleLine="true"/>
+
+</RelativeLayout>

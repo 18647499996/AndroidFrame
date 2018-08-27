@@ -17,7 +17,7 @@ import rx.Subscription;
  * @author Created by: Li_Min
  * Time:2018/8/4
  */
-class DemoPresenter extends BaseSubscription<BasePresenter> implements DemoContract.Presenter {
+class DemoPresenter extends BaseSubscription implements DemoContract.Presenter {
 
     private DemoContract.View view;
 
