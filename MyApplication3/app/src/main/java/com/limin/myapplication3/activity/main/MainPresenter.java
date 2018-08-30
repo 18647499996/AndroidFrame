@@ -3,15 +3,14 @@ package com.limin.myapplication3.activity.main;
 import com.blankj.utilcode.util.LogUtils;
 import com.limin.myapplication3.api.MainSingleApi;
 import com.limin.myapplication3.base.BaseException;
-import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.base.BaseRequestResult;
 import com.limin.myapplication3.base.BaseSubscription;
 import com.limin.myapplication3.model.UserModel;
 import com.limin.myapplication3.utils.Constant;
 import com.limin.myapplication3.utils.EncryptMap;
-import com.limin.myapplication3.utils.rx.Event;
-import com.limin.myapplication3.utils.rx.EventSubscriber;
-import com.limin.myapplication3.utils.rx.RxBus;
+import com.limin.myapplication3.receive.Event;
+import com.limin.myapplication3.receive.EventSubscriber;
+import com.limin.myapplication3.receive.RxBus;
 
 import rx.Observable;
 import rx.Subscription;
@@ -76,4 +75,5 @@ public class MainPresenter extends BaseSubscription implements MainConstract.Pre
                 });
         subscriptions.add(subscribe);
     }
+
 }

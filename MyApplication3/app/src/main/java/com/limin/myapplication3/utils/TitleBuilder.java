@@ -96,6 +96,22 @@ public class TitleBuilder {
 
     }
 
+    public TitleBuilder(Activity activity,View view) {
+        this.context = activity;
+        titleView = view.findViewById(R.id.act_title_bor);
+
+        mTvContent = titleView.findViewById(R.id.act_title_center_tv_title);
+
+        mRelLeft = titleView.findViewById(R.id.act_title_left_rel);
+        mImgLeft = titleView.findViewById(R.id.act_title_left_img);
+        mTvLeft = titleView.findViewById(R.id.act_title_left_tv);
+
+
+        mRelRight = titleView.findViewById(R.id.act_title_right_rel);
+        mTvRight = titleView.findViewById(R.id.act_title_right_tv);
+        mImgRight =titleView.findViewById(R.id.act_title_right_img);
+    }
+
     /**
      * title 的设置
      * @param text 设置文本

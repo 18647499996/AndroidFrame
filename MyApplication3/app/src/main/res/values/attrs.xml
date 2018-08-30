@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="srlDrawableSize" format="dimension"/><!--图片尺寸-->
+    <attr name="srlDrawableArrowSize" format="dimension"/><!--箭头图片尺寸-->
+    <attr name="srlDrawableProgressSize" format="dimension"/><!--箭头图片尺寸-->
+    <attr name="srlDrawableMarginRight" format="dimension"/><!--图片和文字的间距-->
+    <attr name="srlTextSizeTitle" format="dimension"/><!--标题字体-->
+    <attr name="srlTextSizeTime" format="dimension"/><!--时间字体-->
+    <attr name="srlFinishDuration" format="integer"/><!--完成时停留时间-->
+    <attr name="srlPrimaryColor" format="color"/><!--主要颜色-->
+    <attr name="srlAccentColor" format="color"/><!--强调颜色-->
+    <attr name="srlDrawableArrow" format="reference"/><!--箭头图片-->
+    <attr name="srlDrawableProgress" format="reference"/><!--转动图片-->
+    <attr name="srlEnableHorizontalDrag" format="boolean"/><!--支持水平拖动-->
+
+    <attr name="srlClassicsSpinnerStyle" format="enum">
+        <enum name="Translate" value="0"/><!--平行移动-->
+        <enum name="Scale" value="1"/><!--拉伸形变-->
+        <enum name="FixedBehind" value="2"/><!--固定在背后-->
+    </attr>
+
+    <attr name="layout_srlSpinnerStyle" format="enum">
+        <enum name="Translate" value="0"/><!--平行移动-->
+        <enum name="Scale" value="1"/><!--拉伸形变-->
+        <enum name="FixedBehind" value="2"/><!--固定在背后-->
+        <enum name="FixedFront" value="3"/><!--固定在前面-->
+        <enum name="MatchLayout" value="4"/><!--填满布局-->
+    </attr>
+
+    <declare-styleable name="SmartRefreshLayout">
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlReboundDuration" format="integer"/>
+        <attr name="srlHeaderHeight" format="dimension"/>
+        <attr name="srlFooterHeight" format="dimension"/>
+        <attr name="srlHeaderInsetStart" format="dimension"/>
+        <attr name="srlFooterInsetStart" format="dimension"/>
+        <attr name="srlDragRate" format="float"/>
+        <attr name="srlHeaderMaxDragRate" format="float"/>
+        <attr name="srlFooterMaxDragRate" format="float"/>
+        <attr name="srlHeaderTriggerRate" format="float"/>
+        <attr name="srlFooterTriggerRate" format="float"/>
+        <attr name="srlEnableRefresh" format="boolean"/>
+        <attr name="srlEnableLoadMore" format="boolean"/>
+        <attr name="srlEnableHeaderTranslationContent" format="boolean"/>
+        <attr name="srlEnableFooterTranslationContent" format="boolean"/>
+        <attr name="srlHeaderTranslationViewId" format="reference"/>
+        <attr name="srlFooterTranslationViewId" format="reference"/>
+        <attr name="srlEnablePreviewInEditMode" format="boolean"/>
+        <attr name="srlEnableAutoLoadMore" format="boolean"/>
+        <attr name="srlEnableOverScrollBounce" format="boolean"/>
+        <attr name="srlEnablePureScrollMode" format="boolean"/>
+        <attr name="srlEnableNestedScrolling" format="boolean"/>
+        <attr name="srlEnableScrollContentWhenLoaded" format="boolean"/>
+        <attr name="srlEnableScrollContentWhenRefreshed" format="boolean"/>
+        <attr name="srlEnableLoadMoreWhenContentNotFull" format="boolean"/>
+        <attr name="srlEnableFooterFollowWhenLoadFinished" format="boolean"/>
+        <attr name="srlEnableClipHeaderWhenFixedBehind" format="boolean"/>
+        <attr name="srlEnableClipFooterWhenFixedBehind" format="boolean"/>
+        <attr name="srlEnableOverScrollDrag" format="boolean"/>
+        <attr name="srlDisableContentWhenRefresh" format="boolean"/>
+        <attr name="srlDisableContentWhenLoading" format="boolean"/>
+        <attr name="srlFixedHeaderViewId" format="reference"/>
+        <attr name="srlFixedFooterViewId" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="SmartRefreshLayout_Layout">
+        <attr name="layout_srlSpinnerStyle"/>
+        <attr name="layout_srlBackgroundColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="BezierRadarHeader">
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlEnableHorizontalDrag"/>
+    </declare-styleable>
+
+    <declare-styleable name="BallPulseFooter">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr name="srlAnimatingColor" format="color"/>
+        <attr name="srlNormalColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="ClassicsHeader">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlFinishDuration"/>
+        <attr name="srlDrawableArrow"/>
+        <attr name="srlDrawableProgress"/>
+        <attr name="srlDrawableMarginRight"/>
+        <attr name="srlDrawableSize"/>
+        <attr name="srlDrawableArrowSize"/>
+        <attr name="srlDrawableProgressSize"/>
+        <attr name="srlTextSizeTitle"/>
+        <attr name="srlTextSizeTime"/>
+        <attr name="srlTextTimeMarginTop" format="dimension"/>
+        <attr name="srlEnableLastTime" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="ClassicsFooter">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlFinishDuration"/>
+        <attr name="srlTextSizeTitle"/>
+        <attr name="srlDrawableArrow"/>
+        <attr name="srlDrawableProgress"/>
+        <attr name="srlDrawableMarginRight"/>
+        <attr name="srlDrawableSize"/>
+        <attr name="srlDrawableArrowSize"/>
+        <attr name="srlDrawableProgressSize"/>
+    </declare-styleable>
+
+    <declare-styleable name="TwoLevelHeader">
+        <attr name="srlMaxRage" format="float"/>
+        <attr name="srlFloorRage" format="float"/>
+        <attr name="srlRefreshRage" format="float"/>
+        <attr name="srlFloorDuration" format="integer"/>
+        <attr name="srlEnableTwoLevel" format="boolean"/>
+        <attr name="srlEnablePullToCloseTwoLevel" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="PhoenixHeader">
+        <attr name="phPrimaryColor" format="color" />
+        <attr name="phAccentColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="TaurusHeader">
+        <attr name="thPrimaryColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="WaveSwipeHeader">
+        <attr name="wshPrimaryColor" format="color" />
+        <attr name="wshAccentColor" format="color" />
+        <attr name="wshShadowColor" format="color" />
+        <attr name="wshShadowRadius" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="MaterialHeader">
+        <attr name="mhPrimaryColor" format="color" />
+        <attr name="mhShadowColor" format="color" />
+        <attr name="mhShadowRadius" format="dimension"/>
+        <attr name="mhShowBezierWave" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="MountainSceneView">
+        <attr name="msvPrimaryColor" format="color" />
+        <attr name="msvViewportHeight" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="FunGameView">
+
+        <attr name="fghMaskTextTop" format="string" />
+        <attr name="fghMaskTextTopPull" format="string" />
+        <attr name="fghMaskTextTopRelease" format="string" />
+        <attr name="fghMaskTextBottom" format="string" />
+        <attr name="fghMaskTextSizeTop" format="dimension" />
+        <attr name="fghMaskTextSizeBottom" format="dimension" />
+
+        <attr name="fghBackColor" format="color" />
+        <attr name="fghLeftColor" format="color" />
+        <attr name="fghMiddleColor" format="color" />
+        <attr name="fghRightColor" format="color" />
+        <attr name="fghTextLoading" format="string" />
+        <attr name="fghTextLoadingFinished" format="string" />
+        <attr name="fghTextLoadingFailed" format="string" />
+        <attr name="fghTextGameOver" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="FunGameHitBlockHeader">
+        <attr name="fghBlockHorizontalNum" format="integer" />
+        <attr name="fghBallSpeed" format="dimension">
+            <!--<enum name="low" value="1.5dp" />-->
+            <!--<enum name="medium" value="3dp" />-->
+            <!--<enum name="fast" value="4.5dp" />-->
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="StoreHouseHeader">
+        <attr name="shhText" format="string" />
+        <attr name="shhLineWidth" format="dimension" />
+        <attr name="shhDropHeight" format="dimension" />
+        <attr name="shhEnableFadeAnimation" format="boolean" />
+    </declare-styleable>
+
+
+    <declare-styleable name="DropBoxHeader">
+        <attr name="dhDrawable1" format="reference" />
+        <attr name="dhDrawable2" format="reference" />
+        <attr name="dhDrawable3" format="reference" />
+    </declare-styleable>
+
+</resources>

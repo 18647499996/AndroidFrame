@@ -1,5 +1,7 @@
 package com.limin.myapplication3.activity.main;
 
+import android.widget.ImageView;
+
 import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.base.BaseView;
 import com.limin.myapplication3.model.UserModel;
@@ -30,5 +32,6 @@ public interface MainConstract {
          * 登录
          */
         void login();
+
     }
 }

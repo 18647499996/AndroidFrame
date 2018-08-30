@@ -2,6 +2,7 @@ package com.limin.myapplication3.base;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -32,16 +33,14 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
  */
 public abstract class BaseActivity extends SwipeBackActivity implements View.OnClickListener {
 
-    protected ImmersionBar immersionBar;
+    public ImmersionBar immersionBar;
     private long lastClickTime = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        // 去掉标题
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        super.onCreate(savedInstanceState);
         // 锁定屏幕
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        super.onCreate(savedInstanceState);
         // 初始化布局
         setContentView(getLayout());
         // 初始化ButterKnife
@@ -66,6 +65,7 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
 
     /**
      * 初始化标题
+     * @return TitleBuilder 实例
      */
     protected abstract TitleBuilder initBuilerTitle();
 
@@ -127,7 +127,7 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
         immersionBar.statusBarColor(R.color.black).statusBarDarkFont(false).init();
         View view = findViewById(R.id.act_title_bor);
         if (null != view){
-            view.setPadding(0,getStatusBarHeight(this),0,0);
+            view.setPadding(0,getStatusBarHeight(),0,0);
         }
         initData(savedInstanceState);
     }
@@ -153,5 +153,15 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
         // 获得状态栏高度
         int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
         return context.getResources().getDimensionPixelSize(resourceId);
+    }
+
+    /**
+     * 获取状态栏高度
+     * @return 状态栏高度
+     */
+    public static int getStatusBarHeight() {
+        Resources resources = Resources.getSystem();
+        int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
+        return resources.getDimensionPixelSize(resourceId);
     }
 }

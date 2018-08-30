@@ -31,12 +31,6 @@ public class LoadingDialogUtils {
     private View contentView;
     private Activity activity;
 
-//    public LoadingDialogUtils(Activity context) {
-//        this.mContext = context;
-//        init();
-//    }
-
-
     private static volatile LoadingDialogUtils instance = null;
 
     private LoadingDialogUtils() {

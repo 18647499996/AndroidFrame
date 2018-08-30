@@ -7,7 +7,7 @@ import android.util.Log;
 import com.blankj.utilcode.util.LogUtils;
 import com.limin.myapplication3.utils.Constant;
 import com.limin.myapplication3.utils.GsonUtils;
-import com.limin.myapplication3.utils.rx.RxBus;
+import com.limin.myapplication3.receive.RxBus;
 
 import java.io.IOException;
 import java.util.Locale;
