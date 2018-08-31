@@ -56,11 +56,11 @@ public class HomeFragment extends BaseFragment implements OnRefreshLoadMoreListe
     @Override
     protected void initData(Bundle savedInstanceState) {
         homeFragmentAdapter = new HomeFragmentAdapter(R.layout.item_fragment_home);
-        homeFragmentAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        homeFragmentAdapter.openLoadAnimation();
         fragmentHomeRv.addItemDecoration(new DividerItemDecoration(getActivity(), VERTICAL));
         fragmentHomeRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         fragmentHomeRv.setAdapter(homeFragmentAdapter);
-        homeFragmentAdapter.setNewData(integerList);
+        homeFragmentAdapter.replaceData(integerList);
     }
 
     @Override

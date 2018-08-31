@@ -14,14 +14,25 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.4"/>
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="4.6"
+    android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#f4f4f4"/>
+
     <android.support.design.widget.TabLayout
         android:id="@+id/activity_main_tab"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4.6"
         app:tabBackground="@color/with"
         app:tabSelectedTextColor="@color/colorPrimary"
         app:tabIndicatorColor="@android:color/transparent"
         app:tabTextColor="@color/black"/>
+
+</LinearLayout>
 
 </LinearLayout>

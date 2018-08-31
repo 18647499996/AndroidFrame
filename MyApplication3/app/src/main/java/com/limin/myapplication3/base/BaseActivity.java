@@ -1,14 +1,10 @@
 package com.limin.myapplication3.base;
 
-import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.limin.myapplication3.R;
@@ -17,13 +13,10 @@ import com.limin.myapplication3.utils.Constant;
 import com.limin.myapplication3.utils.LoadingDialogUtils;
 import com.limin.myapplication3.utils.TitleBuilder;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.Calendar;
 
 import butterknife.ButterKnife;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 /**
  * Description：Activity通用管理
@@ -58,7 +51,6 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
 
     /**
      * 初始化布局
-     *
      * @return 布局文件
      */
     protected abstract int getLayout();
@@ -71,7 +63,6 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
 
     /**
      * 初始化数据
-     *
      * @param savedInstanceState bundle属性
      */
     protected abstract void initData(Bundle savedInstanceState);
@@ -83,7 +74,6 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
 
     /**
      * 设置点击事件
-     *
      * @param v view
      */
     protected abstract void onClickDoubleListener(View v);
@@ -107,7 +97,7 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
      *
      * @param reference presenter
      * @param <T>       泛型类
-     * @return
+     * @return presenter
      */
     public static <T> T checkNotNull(T reference) {
         if (reference == null) {
@@ -141,18 +131,6 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
             immersionBar.destroy();
 
         }
-    }
-
-    /**
-     * 获取状态栏高度
-     *
-     * @param context context
-     * @return 状态栏高度
-     */
-    public static int getStatusBarHeight(Context context) {
-        // 获得状态栏高度
-        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
-        return context.getResources().getDimensionPixelSize(resourceId);
     }
 
     /**
