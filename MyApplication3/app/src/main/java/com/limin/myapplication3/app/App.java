@@ -1,14 +1,10 @@
 package com.limin.myapplication3.app;
 
 import android.app.Application;
-import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.Utils;
 import com.limin.myapplication3.refresh.SmartRefreshLayout;
-import com.limin.myapplication3.refresh.api.DefaultRefreshInitializer;
-import com.limin.myapplication3.refresh.api.RefreshLayout;
 
 /**
  * Description

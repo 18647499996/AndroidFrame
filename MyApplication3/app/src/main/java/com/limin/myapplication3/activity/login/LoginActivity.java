@@ -1,7 +1,6 @@
 package com.limin.myapplication3.activity.login;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -17,7 +16,6 @@ import com.limin.myapplication3.model.UserModel;
 import com.limin.myapplication3.utils.TitleBuilder;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Description

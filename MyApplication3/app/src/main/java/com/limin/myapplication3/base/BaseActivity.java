@@ -137,7 +137,7 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
      * 获取状态栏高度
      * @return 状态栏高度
      */
-    public static int getStatusBarHeight() {
+    protected static int getStatusBarHeight() {
         Resources resources = Resources.getSystem();
         int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
         return resources.getDimensionPixelSize(resourceId);

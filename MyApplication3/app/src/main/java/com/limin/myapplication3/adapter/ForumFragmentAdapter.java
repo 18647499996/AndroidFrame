@@ -1,7 +1,5 @@
 package com.limin.myapplication3.adapter;
 
-import android.widget.TextView;
-
 import com.blankj.utilcode.util.LogUtils;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -23,6 +21,7 @@ public class ForumFragmentAdapter extends BaseMultiItemQuickAdapter<DataModel, B
     private static final int TWO = 1002;
     private static final int THREE = 1003;
     private static final int FOUR = 1004;
+    private static final int ERROR = -1000;
 
     /**
      * Same as QuickAdapter#QuickAdapter(Context,int) but with
@@ -36,6 +35,7 @@ public class ForumFragmentAdapter extends BaseMultiItemQuickAdapter<DataModel, B
         addItemType(TWO, R.layout.item_fragment_home_two);
         addItemType(THREE, R.layout.item_fragment_home);
         addItemType(FOUR,R.layout.item_fragment_home_two);
+        addItemType(ERROR,R.layout.item_fragment_error);
     }
 
 
@@ -63,6 +63,7 @@ public class ForumFragmentAdapter extends BaseMultiItemQuickAdapter<DataModel, B
                         .setText(R.id.item_fragment_home_tv_title,item.getName());
                 break;
             default:
+                LogUtils.e("布局异常");
                 break;
         }
     }
@@ -70,6 +71,7 @@ public class ForumFragmentAdapter extends BaseMultiItemQuickAdapter<DataModel, B
     @Override
     public int getItemViewType(int position) {
         DataModel dataModel = getItem(position);
+        assert dataModel != null;
         switch (dataModel.getType()) {
             case 0:
                 return ONE;
@@ -80,8 +82,7 @@ public class ForumFragmentAdapter extends BaseMultiItemQuickAdapter<DataModel, B
             case 3:
                 return FOUR;
             default:
-                break;
+                return ERROR;
         }
-        return super.getItemViewType(position);
     }
 }
