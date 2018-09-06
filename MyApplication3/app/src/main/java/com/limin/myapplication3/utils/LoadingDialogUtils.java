@@ -58,10 +58,10 @@ public class LoadingDialogUtils {
         // 获取自定义布局文件activity_popupwindow_left.xml的视图
         contentView = activity.getLayoutInflater().inflate(R.layout.dialog_loading, new LinearLayout(activity.getApplicationContext()), false);
         contentView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-        tipTV = contentView.findViewById(R.id.tipTextView);
+        tipTV = (TextView) contentView.findViewById(R.id.tipTextView);
         popupWindow = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, false);
         // main.xml加载ImageView
-        ImageView spaceshipImage = contentView.findViewById(R.id.img);
+        ImageView spaceshipImage = (ImageView) contentView.findViewById(R.id.img);
         spaceshipImage.setBackgroundResource(R.drawable.progress_round);
         AnimationDrawable animationDrawable = (AnimationDrawable) spaceshipImage.getBackground();
         animationDrawable.start();

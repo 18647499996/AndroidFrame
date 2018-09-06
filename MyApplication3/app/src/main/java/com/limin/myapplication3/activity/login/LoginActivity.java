@@ -1,5 +1,7 @@
 package com.limin.myapplication3.activity.login;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -8,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ScreenUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.activity.main.MainActivity;
@@ -36,6 +40,12 @@ public class LoginActivity extends BaseActivity implements LoginConstract.View, 
 
     private LoginConstract.Presenter presenter;
 
+
+    public static void startActivity(Context context) {
+        Intent intent = new Intent(context,LoginActivity.class);
+        context.startActivity(intent);
+    }
+
     @Override
     protected int getLayout() {
         return R.layout.activity_login;
@@ -48,6 +58,8 @@ public class LoginActivity extends BaseActivity implements LoginConstract.View, 
 
     @Override
     protected void initData(Bundle savedInstanceState) {
+        LogUtils.d("屏幕宽：" + ScreenUtils.getScreenWidth() + ScreenUtils.isTablet());
+        LogUtils.d("屏幕高：" + ScreenUtils.getScreenHeight());
         immersionBar.transparentStatusBar().statusBarDarkFont(false).init();
         presenter = (LoginConstract.Presenter) new LoginPresenter(this).Bulider(this);
         presenter.start();
@@ -93,4 +105,5 @@ public class LoginActivity extends BaseActivity implements LoginConstract.View, 
         MainActivity.startActivity(this);
         finish();
     }
+
 }

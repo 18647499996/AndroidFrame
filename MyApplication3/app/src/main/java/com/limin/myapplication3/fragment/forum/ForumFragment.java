@@ -18,6 +18,7 @@ import com.limin.myapplication3.refresh.api.RefreshLayout;
 import com.limin.myapplication3.refresh.listener.OnRefreshLoadMoreListener;
 import com.limin.myapplication3.utils.ListDataUtils;
 import com.limin.myapplication3.utils.TitleBuilder;
+import com.limin.myapplication3.view.ClassicsHeader;
 
 import java.util.List;
 import java.util.Objects;
@@ -67,6 +68,8 @@ public class ForumFragment extends BaseFragment implements OnRefreshLoadMoreList
         fragmentForumRv.setAdapter(forumFragmentAdapter);
         // 添加数据
         forumFragmentAdapter.setNewData(integerList);
+        // 添加自定义刷新头部
+        activityForumSmartrefresh.setRefreshHeader(new ClassicsHeader(getActivity()));
     }
 
     @Override

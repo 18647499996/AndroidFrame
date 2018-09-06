@@ -16,18 +16,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:srlAccentColor="#888"
-            app:srlClassicsSpinnerStyle="Scale"/>
+            app:srlClassicsSpinnerStyle="Scale"
+            app:srlTextSizeTitle="@dimen/app_dp_twelve"
+            app:srlTextSizeTime="@dimen/app_dp_twelve"
+            app:srlPrimaryColor="@color/with"
+            />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/fragment_forum_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@color/with"/>
 
         <com.limin.myapplication3.refresh.footer.ClassicsFooter
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:srlAccentColor="#888"
-            app:srlClassicsSpinnerStyle="Translate" />
+            app:srlClassicsSpinnerStyle="Translate"
+            app:srlTextSizeTitle="@dimen/app_dp_twelve"
+            app:srlPrimaryColor="@color/with" />
 
     </com.limin.myapplication3.refresh.SmartRefreshLayout>
 

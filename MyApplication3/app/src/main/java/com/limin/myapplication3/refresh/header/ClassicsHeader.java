@@ -131,7 +131,7 @@ public class ClassicsHeader extends InternalClassics<ClassicsHeader> implements 
 
         mFinishDuration = ta.getInt(R.styleable.ClassicsHeader_srlFinishDuration, mFinishDuration);
         mEnableLastTime = ta.getBoolean(R.styleable.ClassicsHeader_srlEnableLastTime, mEnableLastTime);
-        mSpinnerStyle = SpinnerStyle.values()[ta.getInt(R.styleable.ClassicsHeader_srlClassicsSpinnerStyle,mSpinnerStyle.ordinal())];
+        mSpinnerStyle = SpinnerStyle.values()[ta.getInt(R.styleable.ClassicsHeader_srlClassicsSpinnerStyle, mSpinnerStyle.ordinal())];
 
         if (ta.hasValue(R.styleable.ClassicsHeader_srlDrawableArrow)) {
             mArrowView.setImageDrawable(ta.getDrawable(R.styleable.ClassicsHeader_srlDrawableArrow));
@@ -249,6 +249,8 @@ public class ClassicsHeader extends InternalClassics<ClassicsHeader> implements 
                 updateView.setVisibility(mEnableLastTime ? INVISIBLE : GONE);
                 mTitleText.setText(REFRESH_HEADER_LOADING);
                 break;
+            default:
+                break;
         }
     }
     //</editor-fold>
@@ -280,7 +282,7 @@ public class ClassicsHeader extends InternalClassics<ClassicsHeader> implements 
     }
 
     public ClassicsHeader setAccentColor(@ColorInt int accentColor) {
-        mLastUpdateText.setTextColor(accentColor&0x00ffffff|0xcc000000);
+        mLastUpdateText.setTextColor(accentColor & 0x00ffffff | 0xcc000000);
         return super.setAccentColor(accentColor);
     }
 
@@ -314,7 +316,7 @@ public class ClassicsHeader extends InternalClassics<ClassicsHeader> implements 
 
     public ClassicsHeader setTextTimeMarginTop(float dp) {
         final View updateView = mLastUpdateText;
-        ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams)updateView.getLayoutParams();
+        ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) updateView.getLayoutParams();
         lp.topMargin = DensityUtil.dp2px(dp);
         updateView.setLayoutParams(lp);
         return this;
