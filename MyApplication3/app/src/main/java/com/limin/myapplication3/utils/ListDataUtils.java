@@ -8,6 +8,9 @@ import com.limin.myapplication3.fragment.home.HomeFragment;
 import com.limin.myapplication3.fragment.issue.IssueFragment;
 import com.limin.myapplication3.fragment.mine.MineFragment;
 import com.limin.myapplication3.model.DataModel;
+import com.limin.myapplication3.model.StaggeredModel;
+
+import net.sf.saxon.type.ListType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,18 @@ public class ListDataUtils {
     private static String[] stringArrayFour = new String[]{"星球大盘鸡","红枣咖啡","核桃咖啡","小巴扎情人茶","星球大盘鸡"};
 
     private static Integer[] integerTypeArray = new Integer[]{1,2,0,3,5};
+    private static Integer[] integersIcon = new Integer[]{
+            R.drawable.img1,
+            R.drawable.img2,
+            R.drawable.img3,
+            R.drawable.img4,
+            R.drawable.img5,
+            R.drawable.img1,
+            R.drawable.img2,
+            R.drawable.img3,
+            R.drawable.img4,
+            R.drawable.img5
+    };
 
     public static String[] titleArray() {
         String[] strings = new String[]{"首页","论坛","问题","我的"};
@@ -61,4 +76,20 @@ public class ListDataUtils {
         }
         return dataModelList;
     }
+
+    /**
+     * 设置瀑布流数据
+     * @return staggeredModelList
+     */
+    public static List<StaggeredModel> staggeredDataList(){
+        List<StaggeredModel> staggeredModelList = new ArrayList<>();
+        for (int i = 0; i < integersIcon.length; i++) {
+            StaggeredModel staggeredModel = new StaggeredModel();
+            staggeredModel.setIcon(integersIcon[i]);
+            staggeredModel.setName("图片" + i);
+            staggeredModelList.add(staggeredModel);
+        }
+        return staggeredModelList;
+    }
+
 }

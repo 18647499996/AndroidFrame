@@ -60,6 +60,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     api 'com.android.support:design:27.1.1'
+    api 'com.android.support:cardview-v7:26.0.0-alpha1'
     api 'com.squareup.retrofit2:retrofit:2.3.0'//导入retrofit
     api 'com.google.code.gson:gson:2.8.2'//Gson 库
     //下面两个是RxJava 和 RxAndroid

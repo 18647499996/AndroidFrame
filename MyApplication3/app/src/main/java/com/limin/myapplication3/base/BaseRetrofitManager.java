@@ -3,6 +3,7 @@ package com.limin.myapplication3.base;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.SparseArray;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.limin.myapplication3.utils.Constant;
@@ -11,6 +12,7 @@ import com.limin.myapplication3.receive.RxBus;
 
 import java.io.IOException;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -33,6 +35,8 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class BaseRetrofitManager {
 
     private BaseService baseService;
+    private static SparseArray<Retrofit> sRetrofitManager = new SparseArray<>();
+
 
     private static volatile BaseRetrofitManager instance = null;
 
@@ -54,31 +58,65 @@ public class BaseRetrofitManager {
 
 
     public BaseService baseService() {
-        initRetrofit();
+        initRetrofit(BaseHttpUrl.MAIN_SERVICE);
         return baseService;
     }
 
     /**
      * 初始化Retrofit管理器配置
+     *
+     * @param hostType 服务器连接类型
      */
-    private void initRetrofit() {
-        // 初始化OkHttp配置
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
-                .writeTimeout(20, TimeUnit.SECONDS)
-                .addInterceptor(new LogInterceptor())
-                .addInterceptor(new CodeInterceptor())
-                .build();
-        // 初始化Retrofit配置
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BaseHttpUrl.BASICS_SERVICE)
-                .client(okHttpClient)
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
-        baseService = retrofit.create(BaseService.class);
+    private void initRetrofit(int hostType) {
+        Retrofit retrofit = sRetrofitManager.get(hostType);
+        if (retrofit == null) {
+            // 初始化OkHttp配置
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    .connectTimeout(20, TimeUnit.SECONDS)
+                    .readTimeout(20, TimeUnit.SECONDS)
+                    .writeTimeout(20, TimeUnit.SECONDS)
+                    .addInterceptor(new LogInterceptor())
+                    .addInterceptor(new CodeInterceptor())
+                    .build();
+            // 初始化Retrofit配置
+            Retrofit mRetrofit = new Retrofit.Builder()
+                    .baseUrl(getHostType(hostType))
+                    .client(okHttpClient)
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .build();
+            sRetrofitManager.put(hostType, mRetrofit);
+            switch (hostType) {
+                // 主服务器地址接口信息配置
+                case BaseHttpUrl.MAIN_SERVICE:
+                    baseService = mRetrofit.create(BaseService.class);
+                    break;
+                default:
+                    baseService = mRetrofit.create(BaseService.class);
+                    break;
+            }
+        }
+
+    }
+
+    /**
+     * 获取连接服务器地址
+     *
+     * @param hostType 服务器地址类型
+     * @return hostUrl
+     */
+    private String getHostType(@BaseHttpUrl.isChekout int hostType) {
+        String hostUrl;
+        switch (hostType) {
+            case BaseHttpUrl.MAIN_SERVICE:
+                hostUrl = BaseHttpUrl.BASICS_SERVICE;
+                break;
+            default:
+                hostUrl = BaseHttpUrl.BASICS_SERVICE;
+                break;
+        }
+        return hostUrl;
     }
 
     /**
@@ -86,7 +124,7 @@ public class BaseRetrofitManager {
      */
     private static class LogInterceptor implements Interceptor {
         @Override
-        public Response intercept(Chain chain) throws IOException {
+        public Response intercept(@NonNull Chain chain) throws IOException {
             Request request = chain.request();
             long t1 = System.nanoTime();
             String bodyStr = bodyToString(request);
@@ -109,7 +147,7 @@ public class BaseRetrofitManager {
          * 字符串输出
          *
          * @param request 请求数据
-         * @return
+         * @return buffer
          */
         private static String bodyToString(final Request request) {
 
@@ -119,7 +157,7 @@ public class BaseRetrofitManager {
                 if (copy == null || copy.body() == null) {
                     return "";
                 }
-                copy.body().writeTo(buffer);
+                Objects.requireNonNull(copy.body()).writeTo(buffer);
                 return buffer.readUtf8();
             } catch (final IOException e) {
                 return "did not work";
@@ -165,9 +203,9 @@ public class BaseRetrofitManager {
                 case -7:
                     // 可以通过发送RxBus通知进入登录页面
                     RxBus.get().post(Constant.TOKEN);
-                    throw new BaseTransformer.TokenException(code,msg);
+                    throw new BaseTransformer.TokenException(code, msg);
                 default:
-                    throw new BaseTransformer.ServerException(code,msg);
+                    throw new BaseTransformer.ServerException(code, msg);
             }
         }
 

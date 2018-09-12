@@ -22,6 +22,7 @@ import butterknife.Unbinder;
 
 /**
  * Fragment基类
+ *
  * @author liudonghan 2015-11-29
  */
 public abstract class BaseFragment extends Fragment implements OnClickListener {
@@ -48,23 +49,30 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
      * 初始化布局
      */
     public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View pView = inflater.inflate(loadViewLayout(), container, false);
-        unbinder = ButterKnife.bind(this, pView);
-        initBuilerTitle(pView);
-        initDatas(savedInstanceState,pView);
-        setListener();
+        try {
+            View pView = inflater.inflate(loadViewLayout(), container, false);
+            unbinder = ButterKnife.bind(this, pView);
+            initBuilerTitle(pView);
+            initDatas(savedInstanceState, pView);
+            setListener();
+            return pView;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        return pView;
+        return null;
     }
 
     /**
      * 加载布局
+     *
      * @return 布局文件
      */
     protected abstract int loadViewLayout();
 
     /**
      * 初始化标题
+     *
      * @param view 布局View
      * @return TitleBuilder 实例
      */
@@ -72,6 +80,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
 
     /**
      * 初始化数据
+     *
      * @param savedInstanceState 初始化数据
      */
     protected abstract void initData(Bundle savedInstanceState);
@@ -109,7 +118,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (null != immersionBar){
+        if (null != immersionBar) {
             immersionBar.destroy();
         }
     }
@@ -124,15 +133,16 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
 
     /**
      * 初始化数据（沉浸式状态栏）
+     *
      * @param savedInstanceState intent数据
-     * @param pView view视图
+     * @param pView              view视图
      */
-    public void initDatas(Bundle savedInstanceState, View pView){
+    public void initDatas(Bundle savedInstanceState, View pView) {
         // 初始化沉浸式
         immersionBar = ImmersionBar.with(this);
         View view = pView.findViewById(R.id.act_title_bor);
-        if (null != view){
-            view.setPadding(0,getStatusBarHeight(),0,0);
+        if (null != view) {
+            view.setPadding(0, getStatusBarHeight(), 0, 0);
         }
         initData(savedInstanceState);
     }
@@ -151,6 +161,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
 
     /**
      * 获取状态栏高度
+     *
      * @return 状态栏高度
      */
     public static int getStatusBarHeight() {

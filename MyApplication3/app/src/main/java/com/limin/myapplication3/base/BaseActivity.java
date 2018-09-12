@@ -32,20 +32,24 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 锁定屏幕
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        // 初始化布局
-        setContentView(getLayout());
-        // 初始化ButterKnife
-        ButterKnife.bind(this);
-        // 初始化标题
-        initBuilerTitle();
-        // 初始化数据
-        initDatas(savedInstanceState);
-        // 设置监听事件
-        addListener();
-        // Activity管理器
-        ActivityTaskManager.getActivityManager().addActivity(this);
+        try {
+            // 锁定屏幕
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            // 初始化布局
+            setContentView(getLayout());
+            // 初始化ButterKnife
+            ButterKnife.bind(this);
+            // 初始化标题
+            initBuilerTitle();
+            // 初始化数据
+            initDatas(savedInstanceState);
+            // 设置监听事件
+            addListener();
+            // Activity管理器
+            ActivityTaskManager.getActivityManager().addActivity(this);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
