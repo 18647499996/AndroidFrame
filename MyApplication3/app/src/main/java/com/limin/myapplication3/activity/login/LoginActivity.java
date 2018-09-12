@@ -92,7 +92,8 @@ public class LoginActivity extends BaseActivity implements LoginConstract.View, 
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         switch (actionId) {
             case EditorInfo.IME_ACTION_SEND:
-                presenter.login(activityLoginEdtUser.getText().toString().trim(),activityLoginEdtPws.getText().toString().trim());
+//                presenter.login(activityLoginEdtUser.getText().toString().trim(),activityLoginEdtPws.getText().toString().trim());
+                MainActivity.startActivity(this);
                 break;
             default:
                 break;
