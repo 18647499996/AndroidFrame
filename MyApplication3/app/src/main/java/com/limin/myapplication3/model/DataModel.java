@@ -16,6 +16,7 @@ public class DataModel implements MultiItemEntity {
     private String namefour;
     private int icon;
     private int type;
+    private boolean isSeletor;
 
     public DataModel() {
 
@@ -88,6 +89,14 @@ public class DataModel implements MultiItemEntity {
 
     public void setNamefour(String namefour) {
         this.namefour = namefour;
+    }
+
+    public boolean isSeletor() {
+        return isSeletor;
+    }
+
+    public void setSeletor(boolean seletor) {
+        isSeletor = seletor;
     }
 
     @Override

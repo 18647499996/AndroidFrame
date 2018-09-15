@@ -34,7 +34,7 @@ import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
  * @author Created by: Li_Min
  * Time:2018/8/29
  */
-public class HomeFragment extends BaseFragment implements OnRefreshLoadMoreListener {
+public class HomeFragment extends BaseFragment implements OnRefreshLoadMoreListener, BaseQuickAdapter.OnItemChildClickListener {
     @BindView(R.id.fragment_home_rv)
     RecyclerView fragmentHomeRv;
     @BindView(R.id.activity_home_smartrefresh)
@@ -71,6 +71,7 @@ public class HomeFragment extends BaseFragment implements OnRefreshLoadMoreListe
     @Override
     protected void setListener() {
         activityHomeSmartrefresh.setOnRefreshLoadMoreListener(this);
+        homeFragmentAdapter.setOnItemChildClickListener(this);
     }
 
     @Override
@@ -83,7 +84,7 @@ public class HomeFragment extends BaseFragment implements OnRefreshLoadMoreListe
         refreshLayout.getLayout().postDelayed(() -> {
             homeFragmentAdapter.addData(integerList);
             refreshLayout.finishLoadMoreWithNoMoreData();
-        },3000);
+        }, 3000);
     }
 
     @Override
@@ -91,6 +92,23 @@ public class HomeFragment extends BaseFragment implements OnRefreshLoadMoreListe
         refreshLayout.getLayout().postDelayed(() -> {
             homeFragmentAdapter.replaceData(integerList);
             refreshLayout.finishRefresh();
-        },3000);
+        }, 3000);
+    }
+
+    @Override
+    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+        DataModel dataModel = (DataModel) adapter.getItem(position);
+        switch (view.getId()) {
+            case R.id.item_fragment_home_img_bg:
+                if (!dataModel.isSeletor()){
+                    dataModel.setSeletor(true);
+                }else{
+                    dataModel.setSeletor(false);
+                }
+                break;
+            default:
+                break;
+        }
+        adapter.notifyDataSetChanged();
     }
 }

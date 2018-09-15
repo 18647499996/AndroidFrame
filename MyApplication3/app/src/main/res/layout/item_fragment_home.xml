@@ -24,4 +24,12 @@
         android:src="@drawable/bg_machine"
         android:layout_marginTop="@dimen/app_dp_eight"/>
 
+
+    <TextView
+        android:id="@+id/item_fragment_home_tv"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorPrimary"
+        android:visibility="gone"/>
+
 </LinearLayout>

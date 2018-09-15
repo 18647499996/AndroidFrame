@@ -58,8 +58,6 @@ public class LoginActivity extends BaseActivity implements LoginConstract.View, 
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-        LogUtils.d("屏幕宽：" + ScreenUtils.getScreenWidth() + ScreenUtils.isTablet());
-        LogUtils.d("屏幕高：" + ScreenUtils.getScreenHeight());
         immersionBar.transparentStatusBar().statusBarDarkFont(false).init();
         presenter = (LoginConstract.Presenter) new LoginPresenter(this).Bulider(this);
         presenter.start();

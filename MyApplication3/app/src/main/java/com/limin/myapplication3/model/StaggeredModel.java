@@ -10,6 +10,7 @@ public class StaggeredModel {
 
     private String name;
     private int icon;
+    private boolean isSeletor = false;
 
     public String getName() {
         return name;
@@ -25,5 +26,13 @@ public class StaggeredModel {
 
     public void setIcon(int icon) {
         this.icon = icon;
+    }
+
+    public boolean isSeletor() {
+        return isSeletor;
+    }
+
+    public void setSeletor(boolean seletor) {
+        isSeletor = seletor;
     }
 }
