@@ -10,7 +10,7 @@ import com.limin.myapplication3.model.UserModel;
  * @author Created by: Li_Min
  * Time:2018/8/4
  */
-interface DemoContract {
+public interface DemoContract {
     interface View extends BaseView<Presenter> {
         /**
          * 登录返回数据

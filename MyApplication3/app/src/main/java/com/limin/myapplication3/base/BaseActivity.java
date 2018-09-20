@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.gyf.barlibrary.ImmersionBar;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.utils.ActivityTaskManager;
@@ -48,8 +49,10 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
             // Activity管理器
             ActivityTaskManager.getActivityManager().addActivity(this);
         }catch (Exception e){
+            ToastUtils.showShort("Abort,Retry, Ignore,fail?");
             e.printStackTrace();
         }
+
     }
 
 
@@ -57,30 +60,30 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
      * 初始化布局
      * @return 布局文件
      */
-    protected abstract int getLayout();
+    protected abstract int getLayout() throws RuntimeException;
 
     /**
      * 初始化标题
      * @return TitleBuilder 实例
      */
-    protected abstract TitleBuilder initBuilerTitle();
+    protected abstract TitleBuilder initBuilerTitle() throws RuntimeException;
 
     /**
      * 初始化数据
      * @param savedInstanceState bundle属性
      */
-    protected abstract void initData(Bundle savedInstanceState);
+    protected abstract void initData(Bundle savedInstanceState) throws RuntimeException;
 
     /**
      * 添加监听事件
      */
-    protected abstract void addListener();
+    protected abstract void addListener() throws RuntimeException;
 
     /**
      * 设置点击事件
      * @param v view
      */
-    protected abstract void onClickDoubleListener(View v);
+    protected abstract void onClickDoubleListener(View v) throws RuntimeException;
 
 
 

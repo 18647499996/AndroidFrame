@@ -2,10 +2,8 @@ package com.limin.myapplication3.activity.demo;
 
 import com.limin.myapplication3.api.MainSingleApi;
 import com.limin.myapplication3.base.BaseException;
-import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.base.BaseRequestResult;
 import com.limin.myapplication3.base.BaseSubscription;
-import com.limin.myapplication3.base.BaseView;
 import com.limin.myapplication3.model.UserModel;
 import com.limin.myapplication3.utils.EncryptMap;
 

@@ -128,15 +128,16 @@ public class BaseRetrofitManager {
             Request request = chain.request();
             long t1 = System.nanoTime();
             String bodyStr = bodyToString(request);
-            Log.i(this.getClass().getName(), String.format("请求参数 %s: body=   %s", request.url(), bodyStr));
+            LogUtils.json(this.getClass().getName(), String.format("请求参数 %s: body=   %s", request.url(), bodyStr));
 
             Response response = chain.proceed(request);
             long t2 = System.nanoTime();
             if (response.body() != null) {
                 ResponseBody body = response.peekBody(1024 * 1024);
-                LogUtils.i(this.getClass().getName(), String.format(Locale.getDefault(), "返回数据 %s in %.1fms%n   %s", response.request().url(), (t2 - t1) / 1e6d, body.string()));
+                LogUtils.json(this.getClass().getName(), String.format(Locale.getDefault(), "返回数据 %s in %.1fms%n   %s", response.request().url(), (t2 - t1) / 1e6d, body.string()));
             } else {
                 Log.i(this.getClass().getName(), "body null");
+                LogUtils.e("服务器数据异常" + request.url());
 
             }
             return response;

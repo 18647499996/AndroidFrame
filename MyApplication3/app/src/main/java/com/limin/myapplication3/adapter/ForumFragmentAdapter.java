@@ -44,21 +44,21 @@ public class ForumFragmentAdapter extends BaseMultiItemQuickAdapter<DataModel, B
         // BaseViewHolder 模板设计思想 构建item当中所有的组件id，设置组件属性
         switch (helper.getItemViewType()) {
             case ONE:
-                LogUtils.e("第一套布局");
+                LogUtils.d("第一套布局");
                 helper.setImageResource(R.id.item_fragment_home_img_bg,R.drawable.bg_machine_night).setText(R.id.item_fragment_home_tv_title,item.getName()).addOnClickListener(R.id.item_fragment_home_tv_title);
                 break;
             case TWO:
-                LogUtils.e("第二套布局");
+                LogUtils.d("第二套布局");
                 helper.setImageResource(R.id.item_fragment_home_img_bg,R.drawable.bg_machine)
                         .setText(R.id.item_fragment_home_tv_title,item.getName());
                 break;
             case THREE:
-                LogUtils.e("第三套布局");
+                LogUtils.d("第三套布局");
                 helper.setImageResource(R.id.item_fragment_home_img_bg,R.drawable.bg_machine_type1)
                         .setText(R.id.item_fragment_home_tv_title,item.getName());
                 break;
             case FOUR:
-                LogUtils.e("第四套布局");
+                LogUtils.d("第四套布局");
                 helper.setImageResource(R.id.item_fragment_home_img_bg,R.drawable.bg_machine_type1)
                         .setText(R.id.item_fragment_home_tv_title,item.getName());
                 break;
