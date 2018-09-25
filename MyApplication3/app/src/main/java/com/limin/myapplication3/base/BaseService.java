@@ -16,10 +16,11 @@ import rx.Observable;
 public interface BaseService {
     /**
      * 用户登录
-     * @param data base编码
      * @return obserable
      */
     @FormUrlEncoded
-    @POST("user/login")
-    Observable<BaseResult<UserModel>> login(@Field("data") String data);
+    @POST("open/helios-crm/vip/app/order")
+    Observable<BaseResult<UserModel>> login(@Field("token") String token, @Field("mobile") String mobile, @Field("type") String type);
+
+
 }

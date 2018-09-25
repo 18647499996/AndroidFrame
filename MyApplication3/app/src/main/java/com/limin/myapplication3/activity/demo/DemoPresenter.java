@@ -51,7 +51,7 @@ class DemoPresenter extends BaseSubscription implements DemoContract.Presenter {
 
                     @Override
                     protected void onErrorListener(BaseException.ApiException e) {
-                        view.showErrorMessage(e.getDisplayMessage());
+                        view.showErrorMessage(e.getErrorMessage());
                     }
 
                     @Override

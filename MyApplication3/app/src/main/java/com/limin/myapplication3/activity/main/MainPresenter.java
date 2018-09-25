@@ -65,7 +65,7 @@ public class MainPresenter extends BaseSubscription implements MainConstract.Pre
 
                     @Override
                     protected void onErrorListener(BaseException.ApiException e) {
-                        view.showErrorMessage(e.getDisplayMessage());
+                        view.showErrorMessage(e.getErrorMessage());
                     }
 
                     @Override

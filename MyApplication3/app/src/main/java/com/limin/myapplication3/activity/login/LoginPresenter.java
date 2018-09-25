@@ -5,6 +5,8 @@ import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 
+import com.baidu.aip.nlp.AipNlp;
+import com.blankj.utilcode.util.LogUtils;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.api.MainSingleApi;
 import com.limin.myapplication3.base.BaseException;
@@ -12,6 +14,8 @@ import com.limin.myapplication3.base.BaseRequestResult;
 import com.limin.myapplication3.base.BaseSubscription;
 import com.limin.myapplication3.model.UserModel;
 import com.limin.myapplication3.utils.EncryptMap;
+
+import org.json.JSONObject;
 
 import java.util.Random;
 
@@ -108,7 +112,7 @@ class LoginPresenter extends BaseSubscription implements LoginConstract.Presente
 
             @Override
             protected void onErrorListener(BaseException.ApiException e) {
-                view.showErrorMessage(e.getDisplayMessage());
+                view.showErrorMessage(e.getErrorMessage());
             }
 
             @Override
@@ -117,5 +121,12 @@ class LoginPresenter extends BaseSubscription implements LoginConstract.Presente
             }
         });
         subscriptions.add(subscribe);
+
+        AipNlp aipNlp = new AipNlp("14255414","kC78tcMDUjjILsuvD0umuT9V","InfubNEe5RiS3pMGF01lvXYt4zCbbTpc");
+        JSONObject jsonObject = aipNlp.lexer("百度是一家伟大的公司", null);
+        LogUtils.d("百度Api：" + jsonObject.toString());
+
+
+
     }
 }

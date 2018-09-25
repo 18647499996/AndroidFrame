@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.baidu.aip.nlp.AipNlp;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.adapter.HomeFragmentAdapter;
@@ -57,6 +58,7 @@ public class HomeFragment extends BaseFragment implements OnRefreshLoadMoreListe
         fragmentHomeRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         fragmentHomeRv.setAdapter(homeFragmentAdapter);
         homeFragmentAdapter.replaceData(integerList);
+//        AipNlp aipNlp = new AipNlp("14255414","kC78tcMDUjjILsuvD0umuT9V","InfubNEe5RiS3pMGF01lvXYt4zCbbTpc");
     }
 
     @Override

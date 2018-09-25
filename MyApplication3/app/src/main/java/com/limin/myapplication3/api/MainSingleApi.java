@@ -36,9 +36,13 @@ public class MainSingleApi {
      * @return
      */
     public Observable<UserModel> login(String encrypt) {
+        String token = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOnsidXNlcmlkIjo0Mn0sInN1YiI6IjE4NjQ3NDk5OTk2IiwiZXhwIjoxNTM3NzczMzk3fQ.TWF44idsjbRsDNS67nOOpXayxoje3z8BNipOfHGSnkw";
+        String mobile = "18647499996";
+        String type = "2";
         return BaseRetrofitManager.getInstance()
                 .baseService()
-                .login(encrypt)
+                .login(token,mobile,type)
                 .compose(BaseTransformer.defaultSchedulers());
     }
+
 }

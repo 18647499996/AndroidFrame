@@ -46,50 +46,50 @@ public class BaseException {
         ApiException apiException;
         if (throwable instanceof EOFException || throwable instanceof ConnectException) {
             apiException = new ApiException(throwable, Error.HTTP_ERROR);
-            apiException.setDisplayMessage(Error.STR_HTTP_ERROR);
-            LogUtils.e(this.getClass().getName(), "网络异常：" + apiException.getDisplayMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
+            apiException.setErrorMessage(Error.STR_HTTP_ERROR);
+            LogUtils.e(this.getClass().getName(), "网络异常：" + apiException.getErrorMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
             return apiException;
         } else if (throwable instanceof BaseTransformer.ServerException) {
             BaseTransformer.ServerException resultException = (BaseTransformer.ServerException) throwable;
             apiException = new ApiException(resultException, resultException.getCode());
-            apiException.setDisplayMessage(resultException.getMsg());
-            LogUtils.e(this.getClass().getName(), "服务器异常：" + apiException.getDisplayMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
+            apiException.setErrorMessage(resultException.getMsg());
+            LogUtils.e(this.getClass().getName(), "服务器异常：" + apiException.getErrorMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
             return apiException;
         } else if (throwable instanceof BaseTransformer.TokenException){
             BaseTransformer.TokenException tokenException = (BaseTransformer.TokenException) throwable;
             apiException = new ApiException(tokenException,tokenException.getCode());
-            apiException.setDisplayMessage(tokenException.getMsg());
-            LogUtils.e(this.getClass().getName(), "Token异常：" + apiException.getDisplayMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
+            apiException.setErrorMessage(tokenException.getMsg());
+            LogUtils.e(this.getClass().getName(), "Token异常：" + apiException.getErrorMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
             return apiException;
         }else if (throwable instanceof JsonParseException ||
                 throwable instanceof JSONException ||
                 throwable instanceof ParseException) {
             apiException = new ApiException(throwable, Error.PARSE_ERROR);
-            apiException.setDisplayMessage(Error.STR_PARSE_ERROR);
-            LogUtils.e(this.getClass().getName(), "解析异常：" + apiException.getDisplayMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
+            apiException.setErrorMessage(Error.STR_PARSE_ERROR);
+            LogUtils.e(this.getClass().getName(), "解析异常：" + apiException.getErrorMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
             return apiException;
             //环信无网络判断
         } else if (throwable instanceof SocketException ||
                 throwable instanceof UnknownHostException ||
                 throwable instanceof ApiException) {
             apiException = new ApiException(throwable, Error.NO_NET_ERROR);
-            apiException.setDisplayMessage(Error.STR_NO_NET_ERROR);
-            LogUtils.e(this.getClass().getName(), "连接异常：" + apiException.getDisplayMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
+            apiException.setErrorMessage(Error.STR_NO_NET_ERROR);
+            LogUtils.e(this.getClass().getName(), "连接异常：" + apiException.getErrorMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
             return apiException;
         } else if (throwable instanceof SocketTimeoutException) {
             apiException = new ApiException(throwable, Error.TIME_OUT_ERROR);
-            apiException.setDisplayMessage(Error.STR_TIME_OUT_ERROR);
-            LogUtils.e( this.getClass().getName(), "超时异常：" + apiException.getDisplayMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
+            apiException.setErrorMessage(Error.STR_TIME_OUT_ERROR);
+            LogUtils.e( this.getClass().getName(), "超时异常：" + apiException.getErrorMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
             return apiException;
         } else if (throwable instanceof InterruptedException) {
             apiException = new ApiException(throwable, Error.REQUEST_INTERRUPTED_ERROR);
-            apiException.setDisplayMessage(Error.STR_REQUEST_INTERRUPTED_ERROR);
-            LogUtils.e(this.getClass().getName(), "中断异常：" + apiException.getDisplayMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
+            apiException.setErrorMessage(Error.STR_REQUEST_INTERRUPTED_ERROR);
+            LogUtils.e(this.getClass().getName(), "中断异常：" + apiException.getErrorMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
             return apiException;
         } else {
             apiException = new ApiException(throwable, Error.UNKNOWN);
-            apiException.setDisplayMessage(Error.STR_UNKNOWN);
-            LogUtils.e(this.getClass().getName(), "其他异常：" + apiException.getDisplayMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
+            apiException.setErrorMessage(Error.STR_UNKNOWN);
+            LogUtils.e(this.getClass().getName(), "其他异常：" + apiException.getErrorMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
             return apiException;
         }
 
@@ -102,12 +102,12 @@ public class BaseException {
 
         private final Throwable throwable;
         private int code;
-        private String displayMessage;
+        private String errorMessage;
 
-        ApiException(Throwable throwable, int code, String displayMessage) {
+        ApiException(Throwable throwable, int code, String errorMessage) {
             this.throwable = throwable;
             this.code = code;
-            this.displayMessage = displayMessage;
+            this.errorMessage = errorMessage;
         }
 
         ApiException(Throwable throwable, int errorCode) {
@@ -128,12 +128,12 @@ public class BaseException {
             this.code = code;
         }
 
-        public String getDisplayMessage() {
-            return displayMessage;
+        public String getErrorMessage() {
+            return errorMessage;
         }
 
-        private void setDisplayMessage(String displayMessage) {
-            this.displayMessage = displayMessage;
+        private void setErrorMessage(String errorMessage) {
+            this.errorMessage = errorMessage;
         }
     }
 

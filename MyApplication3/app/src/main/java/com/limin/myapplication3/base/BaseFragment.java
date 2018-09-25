@@ -76,26 +76,26 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
      * @param view 布局View
      * @return TitleBuilder 实例
      */
-    protected abstract TitleBuilder initBuilerTitle(View view);
+    protected abstract TitleBuilder initBuilerTitle(View view) throws RuntimeException;
 
     /**
      * 初始化数据
      *
      * @param savedInstanceState 初始化数据
      */
-    protected abstract void initData(Bundle savedInstanceState);
+    protected abstract void initData(Bundle savedInstanceState) throws RuntimeException;
 
     /**
      * 处理点击事件
      *
      * @param paramView 发生点击事件的组件
      */
-    protected abstract void onClickDoubleListener(View paramView);
+    protected abstract void onClickDoubleListener(View paramView) throws RuntimeException;
 
     /**
      * 设置监听器
      */
-    protected abstract void setListener();
+    protected abstract void setListener() throws RuntimeException;
 
 
     @Override

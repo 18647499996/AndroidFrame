@@ -81,9 +81,9 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
 
     /**
      * 设置点击事件
-     * @param v view
+     * @param view view
      */
-    protected abstract void onClickDoubleListener(View v) throws RuntimeException;
+    protected abstract void onClickDoubleListener(View view) throws RuntimeException;
 
 
 
@@ -136,7 +136,6 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
         ActivityTaskManager.getActivityManager().finishActivity(this);
         if (null != immersionBar){
             immersionBar.destroy();
-
         }
     }
 
