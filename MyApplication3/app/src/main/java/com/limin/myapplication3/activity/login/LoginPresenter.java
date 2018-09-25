@@ -121,12 +121,5 @@ class LoginPresenter extends BaseSubscription implements LoginConstract.Presente
             }
         });
         subscriptions.add(subscribe);
-
-        AipNlp aipNlp = new AipNlp("14255414","kC78tcMDUjjILsuvD0umuT9V","InfubNEe5RiS3pMGF01lvXYt4zCbbTpc");
-        JSONObject jsonObject = aipNlp.lexer("百度是一家伟大的公司", null);
-        LogUtils.d("百度Api：" + jsonObject.toString());
-
-
-
     }
 }

@@ -19,8 +19,8 @@ public interface BaseService {
      * @return obserable
      */
     @FormUrlEncoded
-    @POST("open/helios-crm/vip/app/order")
-    Observable<BaseResult<UserModel>> login(@Field("token") String token, @Field("mobile") String mobile, @Field("type") String type);
+    @POST("user/login")
+    Observable<BaseResult<UserModel>> login(@Field("data") String  data);
 
 
 }

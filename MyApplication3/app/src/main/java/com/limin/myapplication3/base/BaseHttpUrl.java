@@ -15,7 +15,7 @@ public class BaseHttpUrl {
 
     public static final int MAIN_SERVICE = 1;
 
-    public static final String BASICS_SERVICE = "http://dev.gds.27aichi.cn/";
+    public static final String BASICS_SERVICE = "http://dev.gds-crius-user.27aichi.cn/passport/";
 
 
 
