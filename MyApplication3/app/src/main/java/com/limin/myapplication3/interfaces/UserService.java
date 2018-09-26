@@ -1,5 +1,6 @@
-package com.limin.myapplication3.base;
+package com.limin.myapplication3.interfaces;
 
+import com.limin.myapplication3.base.BaseResult;
 import com.limin.myapplication3.model.UserModel;
 
 import retrofit2.http.Field;
@@ -13,7 +14,7 @@ import rx.Observable;
  * @author Created by: Li_Min
  * Time:2018/8/2
  */
-public interface BaseService {
+public interface UserService {
     /**
      * 用户登录
      * @return obserable

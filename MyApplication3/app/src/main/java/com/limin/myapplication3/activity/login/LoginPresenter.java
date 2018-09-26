@@ -5,21 +5,22 @@ import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 
-import com.baidu.aip.nlp.AipNlp;
-import com.blankj.utilcode.util.LogUtils;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.api.MainSingleApi;
 import com.limin.myapplication3.base.BaseException;
 import com.limin.myapplication3.base.BaseRequestResult;
 import com.limin.myapplication3.base.BaseSubscription;
+import com.limin.myapplication3.model.UserInfoModel;
 import com.limin.myapplication3.model.UserModel;
 import com.limin.myapplication3.utils.EncryptMap;
 
-import org.json.JSONObject;
-
 import java.util.Random;
 
+import rx.Observable;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * Description
@@ -104,22 +105,27 @@ class LoginPresenter extends BaseSubscription implements LoginConstract.Presente
         map.put("password", pws);
         map.put("client", 2);
         map.put("loginType", 1);
-        Subscription subscribe = mainSingleApi.login(map.encrypt()).subscribe(new BaseRequestResult<UserModel>(getContext()) {
-            @Override
-            protected void onCompletedListener() {
+        Subscription subscribe = mainSingleApi.login(map.encrypt())
+                .flatMap((Func1<UserModel, Observable<UserInfoModel>>) userModel -> mainSingleApi.user())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseRequestResult<UserInfoModel>(getContext()) {
+                    @Override
+                    protected void onCompletedListener() {
 
-            }
+                    }
 
-            @Override
-            protected void onErrorListener(BaseException.ApiException e) {
-                view.showErrorMessage(e.getErrorMessage());
-            }
+                    @Override
+                    protected void onErrorListener(BaseException.ApiException e) {
+                        view.showErrorMessage(e.getErrorMessage());
+                    }
 
-            @Override
-            protected void onNextListener(UserModel userModel) {
-                view.showUserModel(userModel);
-            }
-        });
+                    @Override
+                    protected void onNextListener(UserInfoModel userInfoModel) {
+                        view.showUserModel(userInfoModel);
+                    }
+                });
+
         subscriptions.add(subscribe);
     }
 }

@@ -22,7 +22,7 @@ public class ActivityTaskManager {
 	private static ActivityTaskManager instance;
 
 	private ActivityTaskManager() {
-		activityStack = new Stack<Activity>();
+		activityStack = new Stack<>();
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class ActivityTaskManager {
 	 */
 	public void addActivity(@Nullable Activity activity) {
 		if (activityStack == null) {
-			activityStack = new Stack<Activity>();
+			activityStack = new Stack<>();
 		}
 		activityStack.add(activity);
 	}

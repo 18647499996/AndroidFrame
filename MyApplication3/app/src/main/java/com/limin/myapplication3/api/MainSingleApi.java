@@ -2,6 +2,7 @@ package com.limin.myapplication3.api;
 
 import com.limin.myapplication3.base.BaseRetrofitManager;
 import com.limin.myapplication3.base.BaseTransformer;
+import com.limin.myapplication3.model.UserInfoModel;
 import com.limin.myapplication3.model.UserModel;
 
 import rx.Observable;
@@ -31,9 +32,9 @@ public class MainSingleApi {
     }
 
     /**
-     *
-     * @param encrypt
-     * @return
+     * 登录
+     * @param encrypt base64编码串
+     * @return Observable<UserModel>
      */
     public Observable<UserModel> login(String encrypt) {
         return BaseRetrofitManager.getInstance()
@@ -42,4 +43,14 @@ public class MainSingleApi {
                 .compose(BaseTransformer.defaultSchedulers());
     }
 
+    /**
+     * 获取用户信息
+     * @return Observable<UserInfoModel>
+     */
+    public Observable<UserInfoModel> user() {
+        return BaseRetrofitManager.getInstance()
+                .getCommunityService()
+                .user()
+                .compose(BaseTransformer.defaultSchedulers());
+    }
 }

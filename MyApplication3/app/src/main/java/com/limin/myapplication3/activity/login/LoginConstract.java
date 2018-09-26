@@ -4,7 +4,7 @@ import android.widget.ImageView;
 
 import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.base.BaseView;
-import com.limin.myapplication3.model.UserModel;
+import com.limin.myapplication3.model.UserInfoModel;
 
 /**
  * Description
@@ -20,7 +20,7 @@ interface LoginConstract {
          * 登录成功返回数据
          * @param userModel 用户信息
          */
-        void showUserModel(UserModel userModel);
+        void showUserModel(UserInfoModel userModel);
     }
 
     interface Presenter extends BasePresenter {

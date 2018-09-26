@@ -13,13 +13,23 @@ import java.lang.annotation.RetentionPolicy;
  */
 public class BaseHttpUrl {
 
-    public static final int MAIN_SERVICE = 1;
+    public static final int MAIN_TYPE = 1;
 
-    public static final String BASICS_SERVICE = "http://dev.gds-crius-user.27aichi.cn/passport/";
+    public static final int COMMUNITY_TYPE = 2;
+
+    /**
+     * 用户服务器地址
+     */
+    public static final String USER_SERVICE = "http://dev.gds-crius-user.27aichi.cn/passport/";
+
+    /**
+     * 社区服务器地址
+     */
+    public static final String COMMUNITY_SERVICE = "https://dev1-newsns.27aichi.com/";
 
 
 
-    @IntDef({MAIN_SERVICE})
+    @IntDef({MAIN_TYPE,COMMUNITY_TYPE})
     @Retention(RetentionPolicy.SOURCE)
     @interface isChekout{
 

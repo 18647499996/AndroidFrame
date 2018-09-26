@@ -49,7 +49,7 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
             // Activity管理器
             ActivityTaskManager.getActivityManager().addActivity(this);
         }catch (Exception e){
-            ToastUtils.showShort("Abort,Retry, Ignore,fail?");
+            ToastUtils.showShort("Abort,Retry, Ignore,fail！");
             e.printStackTrace();
         }
 

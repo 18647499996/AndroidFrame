@@ -58,7 +58,6 @@ public class HomeFragment extends BaseFragment implements OnRefreshLoadMoreListe
         fragmentHomeRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         fragmentHomeRv.setAdapter(homeFragmentAdapter);
         homeFragmentAdapter.replaceData(integerList);
-//        AipNlp aipNlp = new AipNlp("14255414","kC78tcMDUjjILsuvD0umuT9V","InfubNEe5RiS3pMGF01lvXYt4zCbbTpc");
     }
 
     @Override

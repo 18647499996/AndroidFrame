@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.gyf.barlibrary.ImmersionBar;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.utils.Constant;
@@ -57,6 +58,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
             setListener();
             return pView;
         } catch (Exception e) {
+            ToastUtils.showShort("Abort,Retry^_^, Ignore,fail！");
             e.printStackTrace();
         }
 

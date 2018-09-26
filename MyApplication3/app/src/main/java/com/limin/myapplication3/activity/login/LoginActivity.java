@@ -10,13 +10,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ScreenUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.activity.main.MainActivity;
 import com.limin.myapplication3.base.BaseActivity;
-import com.limin.myapplication3.model.UserModel;
+import com.limin.myapplication3.model.UserInfoModel;
 import com.limin.myapplication3.utils.TitleBuilder;
 
 import butterknife.BindView;
@@ -99,7 +97,7 @@ public class LoginActivity extends BaseActivity implements LoginConstract.View, 
     }
 
     @Override
-    public void showUserModel(UserModel userModel) {
+    public void showUserModel(UserInfoModel userModel) {
         MainActivity.startActivity(this);
         finish();
     }

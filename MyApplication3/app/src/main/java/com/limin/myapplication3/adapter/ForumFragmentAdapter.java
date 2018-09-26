@@ -45,7 +45,9 @@ public class ForumFragmentAdapter extends BaseMultiItemQuickAdapter<DataModel, B
         switch (helper.getItemViewType()) {
             case ONE:
                 LogUtils.d("第一套布局");
-                helper.setImageResource(R.id.item_fragment_home_img_bg,R.drawable.bg_machine_night).setText(R.id.item_fragment_home_tv_title,item.getName()).addOnClickListener(R.id.item_fragment_home_tv_title);
+                helper.setImageResource(R.id.item_fragment_home_img_bg,R.drawable.bg_machine_night)
+                        .setText(R.id.item_fragment_home_tv_title,item.getName())
+                        .addOnClickListener(R.id.item_fragment_home_tv_title);
                 break;
             case TWO:
                 LogUtils.d("第二套布局");
