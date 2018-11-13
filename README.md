@@ -1,2 +1,2 @@
 # AndroidFrame
-Android的框架之MVP +改造+ RxJava + OkHttp
+Android的框架之MVP +Retrofit+ RxJava + OkHttp
