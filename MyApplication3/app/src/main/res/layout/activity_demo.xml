@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_demo_rel"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/activity_title_builder"/>
+    <include layout="@layout/activity_title_builder" />
 
     <Button
         android:id="@+id/activity_demo_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Demo"/>
+        android:layout_below="@id/act_title_bor"
+        android:text="Demo" />
 
-</LinearLayout>
+
+    <ImageView
+        android:id="@+id/activity_demo_tv_drag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="12dp" />
+
+    <ImageView
+        android:id="@+id/activity_demo_img_drag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/img_drag"/>
+
+</RelativeLayout>

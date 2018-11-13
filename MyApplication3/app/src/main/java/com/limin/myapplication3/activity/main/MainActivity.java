@@ -74,6 +74,11 @@ public class MainActivity extends BaseActivity implements MainConstract.View, Vi
     protected void onClickDoubleListener(View v) {
     }
 
+    @Override
+    protected void onDestroys() throws RuntimeException {
+
+    }
+
 
     @Override
     public void showUserModel(UserModel userModel) {

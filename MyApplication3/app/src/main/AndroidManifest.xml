@@ -28,7 +28,9 @@
         <activity android:name=".activity.login.LoginActivity"/>
         <activity android:name=".activity.welcome.WelComeActivity"/>
 
+        <service android:name=".service.BackgroundService"/>
     </application>
+
 
 
 </manifest>

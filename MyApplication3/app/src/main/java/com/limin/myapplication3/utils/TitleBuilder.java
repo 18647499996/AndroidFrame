@@ -83,33 +83,38 @@ public class TitleBuilder {
         this.context = context;
         titleView = context.findViewById(R.id.act_title_bor);
 
-        mTvContent = (TextView) titleView.findViewById(R.id.act_title_center_tv_title);
+        mTvContent = titleView.findViewById(R.id.act_title_center_tv_title);
 
-        mRelLeft = (RelativeLayout) titleView.findViewById(R.id.act_title_left_rel);
-        mImgLeft = (ImageView) titleView.findViewById(R.id.act_title_left_img);
-        mTvLeft = (TextView) titleView.findViewById(R.id.act_title_left_tv);
+        mRelLeft = titleView.findViewById(R.id.act_title_left_rel);
+        mImgLeft = titleView.findViewById(R.id.act_title_left_img);
+        mTvLeft = titleView.findViewById(R.id.act_title_left_tv);
 
 
-        mRelRight = (RelativeLayout) titleView.findViewById(R.id.act_title_right_rel);
-        mTvRight = (TextView) titleView.findViewById(R.id.act_title_right_tv);
-        mImgRight = (ImageView) titleView.findViewById(R.id.act_title_right_img);
+        mRelRight = titleView.findViewById(R.id.act_title_right_rel);
+        mTvRight = titleView.findViewById(R.id.act_title_right_tv);
+        mImgRight = titleView.findViewById(R.id.act_title_right_img);
 
     }
 
+    /**
+     * 初始化Fragment标题引用
+     * @param activity 上下文
+     * @param view fragment布局引用
+     */
     public TitleBuilder(Activity activity,View view) {
         this.context = activity;
         titleView = view.findViewById(R.id.act_title_bor);
 
-        mTvContent = (TextView) titleView.findViewById(R.id.act_title_center_tv_title);
+        mTvContent = titleView.findViewById(R.id.act_title_center_tv_title);
 
-        mRelLeft = (RelativeLayout) titleView.findViewById(R.id.act_title_left_rel);
-        mImgLeft = (ImageView) titleView.findViewById(R.id.act_title_left_img);
-        mTvLeft = (TextView) titleView.findViewById(R.id.act_title_left_tv);
+        mRelLeft = titleView.findViewById(R.id.act_title_left_rel);
+        mImgLeft = titleView.findViewById(R.id.act_title_left_img);
+        mTvLeft = titleView.findViewById(R.id.act_title_left_tv);
 
 
-        mRelRight = (RelativeLayout) titleView.findViewById(R.id.act_title_right_rel);
-        mTvRight = (TextView) titleView.findViewById(R.id.act_title_right_tv);
-        mImgRight = (ImageView) titleView.findViewById(R.id.act_title_right_img);
+        mRelRight = titleView.findViewById(R.id.act_title_right_rel);
+        mTvRight = titleView.findViewById(R.id.act_title_right_tv);
+        mImgRight = titleView.findViewById(R.id.act_title_right_img);
     }
 
     /**

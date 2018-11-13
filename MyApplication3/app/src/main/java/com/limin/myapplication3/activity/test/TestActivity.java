@@ -43,6 +43,11 @@ public class TestActivity extends BaseActivity implements TestConstract.View {
     }
 
     @Override
+    protected void onDestroys() throws RuntimeException {
+
+    }
+
+    @Override
     protected TitleBuilder initBuilerTitle() {
         return new TitleBuilder(this)
                 .setMiddleTitleBgRes("Test",R.color.black,R.color.with);

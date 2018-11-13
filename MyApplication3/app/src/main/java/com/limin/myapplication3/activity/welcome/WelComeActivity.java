@@ -57,4 +57,9 @@ public class WelComeActivity extends BaseActivity {
     protected void onClickDoubleListener(View v) {
 
     }
+
+    @Override
+    protected void onDestroys() throws RuntimeException {
+
+    }
 }

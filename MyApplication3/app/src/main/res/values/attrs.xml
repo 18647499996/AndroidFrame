@@ -192,4 +192,58 @@
         <attr name="dhDrawable3" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="FlowRadioGroup">
+        <attr name="weight_sum" format="float" />
+    </declare-styleable>
+
+    <style name="FlowLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">5dp</item>
+
+        //选项item文字默认值
+        <item name="item_textColor">#666666</item>
+
+        //选项item背景色
+        <item name="item_backgroundColor">#ffffff</item>
+
+        //选中后选项item的文字颜色
+        <item name="item_selectedTextColor">#ffffff</item>
+
+        //选中后选项item的背景颜色
+        <item name="item_selectedBackgroundColor">#7289ff</item>
+
+        //选项item的圆角大小
+        <item name="item_radius">1dp</item>
+
+        //选项item的边缘颜色
+        <item name="item_strokeColor">#939393</item>
+
+        //选项item选中后边缘颜色
+        <item name="item_selectedStrokeColor">#939393</item>
+
+        //选项item边缘的大小
+        <item name="item_strokeWidth">1px</item>
+
+        //水平方向，选项item的间距
+        <item name="item_horizontalSpacing">10dp</item>
+
+        //选项item内部padding
+        <item name="item_horizontalPadding">10dp</item>
+
+        ////竖直方向，选项item的间距
+        <item name="item_verticalPadding">5dp</item>
+
+        //选项item的大小，如果设置wrap_content则包裹它的内容，可设置固定值如80，单位dp
+        <item name="item_width">wrap_content</item>
+        <item name="item_height">wrap_content</item>
+
+
+        //限制item文字显示长度
+        <item name="item_maxEms">5</item>
+
+        //是否可以多选
+        <item name="item_multiChooseable">false</item>
+    </style>
+
 </resources>

@@ -6,6 +6,7 @@ import com.limin.myapplication3.base.BaseException;
 import com.limin.myapplication3.base.BaseRequestResult;
 import com.limin.myapplication3.base.BaseSubscription;
 import com.limin.myapplication3.model.UserModel;
+import com.limin.myapplication3.service.BackgroundService;
 import com.limin.myapplication3.utils.Constant;
 import com.limin.myapplication3.utils.EncryptMap;
 import com.limin.myapplication3.receive.Event;
@@ -32,6 +33,7 @@ public class MainPresenter extends BaseSubscription implements MainConstract.Pre
 
     @Override
     public void start() {
+        BackgroundService.startService(getContext());
         register = RxBus.get().register(Constant.TOKEN, new EventSubscriber<Event>() {
             @Override
             public void onEvent(Event event) {

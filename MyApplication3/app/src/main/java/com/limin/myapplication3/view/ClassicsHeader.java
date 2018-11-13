@@ -28,11 +28,21 @@ import com.limin.myapplication3.refresh.util.DensityUtil;
  */
 public class ClassicsHeader extends LinearLayout implements RefreshHeader {
 
-    //下拉箭头
+    /**
+     * 下拉箭头
+     */
     private ImageView mArrowView;
-    //刷新动画视图
+    /**
+     * 刷新动画视图
+     */
     private ImageView mProgressView;
-    // 刷新动画
+    /**
+     * 停止加载显示
+     */
+    private ImageView mStopView;
+    /**
+     * 刷新动画
+     */
     private AnimationDrawable animationDrawable;
 
     public ClassicsHeader(Context context) {
@@ -44,11 +54,15 @@ public class ClassicsHeader extends LinearLayout implements RefreshHeader {
 //        mProgressDrawable = new ProgressDrawable();
         mArrowView = new ImageView(context);
         mProgressView = new ImageView(context);
+        mStopView = new ImageView(context);
         mProgressView.setBackgroundResource(R.drawable.progress_pull);
         mArrowView.setImageResource(R.drawable.icon_refresh);
+        mStopView.setImageResource(R.drawable.icon_refresh_1);
         animationDrawable = (AnimationDrawable) mProgressView.getBackground();
         addView(mProgressView, DensityUtil.dp2px(40), DensityUtil.dp2px(40));
         addView(mArrowView, DensityUtil.dp2px(40), DensityUtil.dp2px(40));
+        addView(mStopView, DensityUtil.dp2px(40), DensityUtil.dp2px(40));
+
         setMinimumHeight(DensityUtil.dp2px(60));
 
     }
@@ -77,6 +91,8 @@ public class ClassicsHeader extends LinearLayout implements RefreshHeader {
         animationDrawable.stop();
         //隐藏动画
         mProgressView.setVisibility(GONE);
+        // 隐藏停止图标
+        mStopView.setVisibility(VISIBLE);
         //延迟500毫秒之后再弹回
         return 500;
     }
@@ -90,6 +106,8 @@ public class ClassicsHeader extends LinearLayout implements RefreshHeader {
                 mArrowView.setVisibility(VISIBLE);
                 //隐藏动画
                 mProgressView.setVisibility(GONE);
+                // 隐藏停止图标
+                mStopView.setVisibility(GONE);
                 //还原箭头方向
                 mArrowView.animate().rotation(0);
                 break;
@@ -98,6 +116,8 @@ public class ClassicsHeader extends LinearLayout implements RefreshHeader {
                 mProgressView.setVisibility(VISIBLE);
                 //隐藏箭头
                 mArrowView.setVisibility(GONE);
+                // 隐藏停止图标
+                mStopView.setVisibility(GONE);
                 break;
             case ReleaseToRefresh:
                 //显示箭头改为朝上

@@ -361,7 +361,10 @@ public class SmartRefreshLayout extends ViewGroup implements RefreshLayout, Nest
     protected boolean mHeaderNeedTouchEventWhenRefreshing;
     protected boolean mFooterNeedTouchEventWhenLoading;
 
-    protected boolean mFooterLocked = false;//Footer 正在loading 的时候是否锁住 列表不能向上滚动
+    /**
+     * Footer 正在loading 的时候是否锁住 列表不能向上滚动
+     */
+    protected boolean mFooterLocked = false;
 
 
     protected static DefaultRefreshFooterCreator sFooterCreator = null;
@@ -1031,7 +1034,8 @@ public class SmartRefreshLayout extends ViewGroup implements RefreshLayout, Nest
                 /*----------------------------------------------------*/
                 mSuperDispatchTouchEvent = super.dispatchTouchEvent(e);
                 if (mState == RefreshState.TwoLevel && mTouchY < 5 * thisView.getMeasuredHeight() / 6) {
-                    mDragDirection = 'h';//二级刷新标记水平滚动来禁止拖动
+                    //二级刷新标记水平滚动来禁止拖动
+                    mDragDirection = 'h';
                     return mSuperDispatchTouchEvent;
                 }
                 if (mRefreshContent != null) {
@@ -1042,20 +1046,27 @@ public class SmartRefreshLayout extends ViewGroup implements RefreshLayout, Nest
             case MotionEvent.ACTION_MOVE:
                 float dx = touchX - mTouchX;
                 float dy = touchY - mTouchY;
-                mVelocityTracker.addMovement(e);//速度追踪
-                if (!mIsBeingDragged && mDragDirection != 'h' && mRefreshContent != null) {//没有拖动之前，检测  canRefresh canLoadMore 来开启拖动
-                    if (mDragDirection == 'v' || (Math.abs(dy) >= mTouchSlop && Math.abs(dx) < Math.abs(dy))) {//滑动允许最大角度为45度
+                //速度追踪
+                mVelocityTracker.addMovement(e);
+                //没有拖动之前，检测  canRefresh canLoadMore 来开启拖动
+                if (!mIsBeingDragged && mDragDirection != 'h' && mRefreshContent != null) {
+                    //滑动允许最大角度为45度
+                    if (mDragDirection == 'v' || (Math.abs(dy) >= mTouchSlop && Math.abs(dx) < Math.abs(dy))) {
                         mDragDirection = 'v';
                         if (dy > 0 && (mSpinner < 0 || ((mEnableOverScrollDrag || isEnableRefreshOrLoadMore(mEnableRefresh)) && mRefreshContent.canRefresh()))) {
                             mIsBeingDragged = true;
-                            mTouchY = touchY - mTouchSlop;//调整 mTouchSlop 偏差
+                            //调整 mTouchSlop 偏差
+                            mTouchY = touchY - mTouchSlop;
                         } else if (dy < 0 && (mSpinner > 0 || ((mEnableOverScrollDrag || isEnableRefreshOrLoadMore(mEnableLoadMore)) && ((mState == RefreshState.Loading && mFooterLocked) || mRefreshContent.canLoadMore())))) {
                             mIsBeingDragged = true;
-                            mTouchY = touchY + mTouchSlop;//调整 mTouchSlop 偏差
+                            //调整 mTouchSlop 偏差
+                            mTouchY = touchY + mTouchSlop;
                         }
                         if (mIsBeingDragged) {
-                            dy = touchY - mTouchY;//调整 mTouchSlop 偏差 重新计算 dy
-                            if (mSuperDispatchTouchEvent) {//如果父类拦截了事件，发送一个取消事件通知
+                            //调整 mTouchSlop 偏差 重新计算 dy
+                            dy = touchY - mTouchY;
+                            //如果父类拦截了事件，发送一个取消事件通知
+                            if (mSuperDispatchTouchEvent) {
                                 e.setAction(MotionEvent.ACTION_CANCEL);
                                 super.dispatchTouchEvent(e);
                             }
@@ -1067,11 +1078,13 @@ public class SmartRefreshLayout extends ViewGroup implements RefreshLayout, Nest
                             ViewParent parent = thisView.getParent();
                             if (parent != null) {
                                 //修复问题 https://github.com/scwang90/SmartRefreshLayout/issues/580
-                                parent.requestDisallowInterceptTouchEvent(true);//通知父控件不要拦截事件
+                                //通知父控件不要拦截事件
+                                parent.requestDisallowInterceptTouchEvent(true);
                             }
                         }
                     } else if (Math.abs(dx) >= mTouchSlop && Math.abs(dx) > Math.abs(dy) && mDragDirection != 'v') {
-                        mDragDirection = 'h';//标记为水平拖动，将无法再次触发 下拉刷新 上拉加载
+                        //标记为水平拖动，将无法再次触发 下拉刷新 上拉加载
+                        mDragDirection = 'h';
                     }
                 }
                 if (mIsBeingDragged) {
@@ -1086,7 +1099,8 @@ public class SmartRefreshLayout extends ViewGroup implements RefreshLayout, Nest
                         MotionEvent em = obtain(time, time, MotionEvent.ACTION_MOVE, mTouchX + dx, mTouchY + spinner, 0);
                         super.dispatchTouchEvent(em);
                         if (mFooterLocked && dy > mTouchSlop && mSpinner < 0) {
-                            mFooterLocked = false;//内容向下滚动时 解锁Footer 的锁定
+                            //内容向下滚动时 解锁Footer 的锁定
+                            mFooterLocked = false;
                         }
                         if (spinner > 0 && ((mEnableOverScrollDrag || isEnableRefreshOrLoadMore(mEnableRefresh)) && mRefreshContent.canRefresh())) {
                             mTouchY = mLastTouchY = touchY;
@@ -1112,17 +1126,21 @@ public class SmartRefreshLayout extends ViewGroup implements RefreshLayout, Nest
                     moveSpinnerInfinitely(spinner);
                     return true;
                 } else if (mFooterLocked && dy > mTouchSlop && mSpinner < 0) {
-                    mFooterLocked = false;//内容向下滚动时 解锁Footer 的锁定
+                    //内容向下滚动时 解锁Footer 的锁定
+                    mFooterLocked = false;
                 }
                 break;
-            case MotionEvent.ACTION_UP://向上抬起时处理速度追踪
+            //向上抬起时处理速度追踪
+            case MotionEvent.ACTION_UP:
                 mVelocityTracker.addMovement(e);
                 mVelocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
                 mCurrentVelocity = (int) mVelocityTracker.getYVelocity();
                 startFlingIfNeed(null);
             case MotionEvent.ACTION_CANCEL:
-                mVelocityTracker.clear();//清空速度追踪器
-                mDragDirection = 'n';//关闭拖动方向
+                //清空速度追踪器
+                mVelocityTracker.clear();
+                //关闭拖动方向
+                mDragDirection = 'n';
                 if (mFalsifyEvent != null) {
                     mFalsifyEvent.recycle();
                     mFalsifyEvent = null;
@@ -1133,10 +1151,13 @@ public class SmartRefreshLayout extends ViewGroup implements RefreshLayout, Nest
                 }
                 overSpinner();
                 if (mIsBeingDragged) {
-                    mIsBeingDragged = false;//关闭拖动状态
+                    //关闭拖动状态
+                    mIsBeingDragged = false;
                     return true;
                 }
                 break;
+                default:
+                    break;
         }
         return super.dispatchTouchEvent(e);
     }

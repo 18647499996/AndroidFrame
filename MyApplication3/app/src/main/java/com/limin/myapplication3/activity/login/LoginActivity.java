@@ -75,6 +75,11 @@ public class LoginActivity extends BaseActivity implements LoginConstract.View, 
     }
 
     @Override
+    protected void onDestroys() {
+        presenter.onDestroy();
+    }
+
+    @Override
     public void setPresenter(LoginConstract.Presenter presenter) {
         this.presenter = checkNotNull(presenter);
     }

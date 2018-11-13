@@ -25,6 +25,7 @@ import butterknife.BindView
  */
  class DemoActivitys  : BaseActivity(), DemoContract.View {
 
+
     @BindView(R.id.activity_demo_btn)
     internal var activityDemoBtn: Button? = null
     private var mPresenter: DemoContract.Presenter? = null
@@ -58,6 +59,10 @@ import butterknife.BindView
             else -> {
             }
         }
+    }
+
+    override fun onDestroys() {
+
     }
 
 

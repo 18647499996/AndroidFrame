@@ -15,6 +15,10 @@ import com.limin.myapplication3.utils.TitleBuilder
  * Time:2018/9/18
  */
 class Activity:BaseActivity(){
+    override fun onDestroys() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun getLayout(): Int {
         return R.layout.activity_login
     }
@@ -36,7 +40,6 @@ class Activity:BaseActivity(){
     }
 
     fun getActivity(user:String,nickname:String){
-
     }
 
 }
