@@ -13,6 +13,7 @@ import com.limin.myapplication3.base.BaseSubscription;
 import com.limin.myapplication3.model.UserInfoModel;
 import com.limin.myapplication3.model.UserModel;
 import com.limin.myapplication3.utils.EncryptMap;
+import com.limin.myapplication3.utils.UserManagerUtils;
 
 import java.util.Random;
 
@@ -106,7 +107,10 @@ class LoginPresenter extends BaseSubscription implements LoginConstract.Presente
         map.put("client", 2);
         map.put("loginType", 1);
         Subscription subscribe = mainSingleApi.login(map.encrypt())
-                .flatMap((Func1<UserModel, Observable<UserInfoModel>>) userModel -> mainSingleApi.user())
+                .flatMap((Func1<UserModel, Observable<UserInfoModel>>) userModel -> {
+                    UserManagerUtils.getInstance().saveUserModel(userModel);
+                    return mainSingleApi.user();
+                })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseRequestResult<UserInfoModel>(getContext()) {

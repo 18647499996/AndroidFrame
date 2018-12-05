@@ -1,9 +1,13 @@
 package com.limin.myapplication3.utils;
 
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 
 import com.blankj.utilcode.util.SPUtils;
+import com.example.rxjavademo.util.Optional;
 import com.limin.myapplication3.model.UserModel;
+
 
 /**
  * Description：
@@ -36,11 +40,11 @@ public class UserManagerUtils {
      * @param userData 用户信息
      */
     public void saveUserModel(@NonNull UserModel userData) {
-        SPUtils.getInstance(Constant.USER).put(Constant.USER,GsonUtils.toJson(userData));
+        SPUtils.getInstance(Constant.SPUtils.USER).put(Constant.SPUtils.USER,GsonUtils.toJson(userData));
     }
 
     public UserModel getUserModel() {
-        String string = SPUtils.getInstance(Constant.USER).getString(Constant.USER);
+        String string = SPUtils.getInstance(Constant.SPUtils.USER).getString(Constant.SPUtils.USER);
         return GsonUtils.fromJson(string, UserModel.class);
     }
 
@@ -48,7 +52,8 @@ public class UserManagerUtils {
      * 获取用户token
      * @return getToken
      */
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public String getToken() {
-        return getUserModel().getToken();
+        return Optional.of(Optional.ofNullable(getUserModel()).map(UserModel::getToken).orElse("token get fali")).get();
     }
 }

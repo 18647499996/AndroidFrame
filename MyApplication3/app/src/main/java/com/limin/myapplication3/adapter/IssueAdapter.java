@@ -26,9 +26,12 @@ public class IssueAdapter extends BaseQuickAdapter<StaggeredModel, BaseViewHolde
 
     @Override
     protected void convert(BaseViewHolder helper, StaggeredModel item) {
-        helper.setText(R.id.item_fragment_issue_tv_name, item.getName())
+        helper
+                .setText(R.id.item_fragment_issue_tv_name, item.getName())
                 .setImageResource(R.id.item_fragment_issue_img_icon, item.getIcon())
                 .addOnClickListener(R.id.item_fragment_issue_tv_name);
+
+
         if (item.isSeletor()){
             helper.getView(R.id.item_fragment_issue_tv_more).setVisibility(View.VISIBLE);
         }else{

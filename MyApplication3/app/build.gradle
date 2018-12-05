@@ -82,5 +82,7 @@ dependencies {
     api 'me.imid.swipebacklayout.lib:library:1.1.0'
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
     implementation 'liji.library.dev:multilinechooselib:1.6.0'
+    implementation 'com.yanzhenjie:recyclerview-swipe:1.1.4'
     implementation files('libs/aip-java-sdk-4.4.1.jar')
+    implementation files('libs/util.jar')
 }

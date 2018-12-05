@@ -20,12 +20,12 @@ public class BaseHttpUrl {
     /**
      * 用户服务器地址
      */
-    public static final String USER_SERVICE = "http://dev.gds-crius-user.27aichi.cn/passport/";
+    public static final String USER_SERVICE = "http://pre-gds.27aichi.cn/passport/";
 
     /**
      * 社区服务器地址
      */
-    public static final String COMMUNITY_SERVICE = "https://dev1-newsns.27aichi.com/";
+    public static final String COMMUNITY_SERVICE = "http://pre-newsns.27aichi.cn/";
 
 
 

@@ -23,7 +23,9 @@ package com.limin.myapplication3.base;
  */
 public interface BasePresenter {
 
-    /**初始化数据*/
+    /**
+     * 初始化数据
+     */
      void start();
 
     /**

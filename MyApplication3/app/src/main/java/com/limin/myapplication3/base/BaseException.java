@@ -52,7 +52,7 @@ public class BaseException {
         } else if (throwable instanceof BaseTransformer.ServerException) {
             BaseTransformer.ServerException resultException = (BaseTransformer.ServerException) throwable;
             apiException = new ApiException(resultException, resultException.getCode());
-            apiException.setErrorMessage(resultException.getMsg());
+            apiException.setErrorMessage(null == resultException.getMsg()? Error.STR_PARSE_ERROR : resultException.getMsg());
             LogUtils.e(this.getClass().getName(), "服务器异常：" + apiException.getErrorMessage() + "\n异常编码：" + apiException.getCode() + "\n异常信息：" + apiException.getMessage());
             return apiException;
         } else if (throwable instanceof BaseTransformer.TokenException){

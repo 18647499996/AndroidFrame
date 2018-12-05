@@ -33,7 +33,6 @@ public class MainPresenter extends BaseSubscription implements MainConstract.Pre
 
     @Override
     public void start() {
-        BackgroundService.startService(getContext());
         register = RxBus.get().register(Constant.TOKEN, new EventSubscriber<Event>() {
             @Override
             public void onEvent(Event event) {

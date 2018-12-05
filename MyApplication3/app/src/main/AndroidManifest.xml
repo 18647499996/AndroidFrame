@@ -27,6 +27,8 @@
         <activity android:name=".activity.test.TestActivity"/>
         <activity android:name=".activity.login.LoginActivity"/>
         <activity android:name=".activity.welcome.WelComeActivity"/>
+        <activity android:name=".activity.swipemenu.SwipeMenuRecyclerViewActivity"/>
+        <activity android:name=".activity.videoplay.VideoPlayActivity"/>
 
         <service android:name=".service.BackgroundService"/>
     </application>

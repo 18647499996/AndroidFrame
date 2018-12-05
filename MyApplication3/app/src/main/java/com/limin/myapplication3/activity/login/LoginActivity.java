@@ -2,7 +2,9 @@ package com.limin.myapplication3.activity.login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -10,12 +12,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.activity.main.MainActivity;
 import com.limin.myapplication3.base.BaseActivity;
 import com.limin.myapplication3.model.UserInfoModel;
 import com.limin.myapplication3.utils.TitleBuilder;
+import com.limin.myapplication3.utils.UserManagerUtils;
 
 import butterknife.BindView;
 
@@ -54,14 +58,16 @@ public class LoginActivity extends BaseActivity implements LoginConstract.View, 
         return null;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void initData(Bundle savedInstanceState) {
         immersionBar.transparentStatusBar().statusBarDarkFont(false).init();
         presenter = (LoginConstract.Presenter) new LoginPresenter(this).Bulider(this);
         presenter.start();
         presenter.startAnimation(activityLoginImgBg);
-        activityLoginEdtUser.setText("18647499996");
-        activityLoginEdtPws.setText("123456");
+        activityLoginEdtUser.setText("13800138001");
+        activityLoginEdtPws.setText("qqqqqq");
+        LogUtils.d("获取token：" + UserManagerUtils.getInstance().getToken());
     }
 
     @Override

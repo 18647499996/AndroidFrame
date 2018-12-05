@@ -2,20 +2,25 @@ package com.limin.myapplication3.activity.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.activity.demo.DemoActivity;
 import com.limin.myapplication3.adapter.TabAdapter;
 import com.limin.myapplication3.base.BaseActivity;
 import com.limin.myapplication3.model.UserModel;
+import com.limin.myapplication3.utils.AppShortCutUtil;
 import com.limin.myapplication3.utils.ListDataUtils;
 import com.limin.myapplication3.utils.TitleBuilder;
+import com.limin.myapplication3.utils.UserManagerUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -50,6 +55,7 @@ public class MainActivity extends BaseActivity implements MainConstract.View, Vi
         return null;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void initData(Bundle savedInstanceState) {
         setSwipeBackEnable(false);
@@ -63,6 +69,8 @@ public class MainActivity extends BaseActivity implements MainConstract.View, Vi
         for (int i = 0; i < titleArray.length; i++) {
             Objects.requireNonNull(activityMainTab.getTabAt(i)).setText(titleArray[i]);
         }
+        LogUtils.d("首页获取token：" + UserManagerUtils.getInstance().getToken());
+        AppShortCutUtil.addNumShortCut(this,MainActivity.class,true,"30",false);
     }
 
     @Override
@@ -123,7 +131,7 @@ public class MainActivity extends BaseActivity implements MainConstract.View, Vi
                 immersionBar.transparentStatusBar().statusBarDarkFont(true).init();
                 break;
             case 3:
-                immersionBar.transparentStatusBar().statusBarDarkFont(false).init();
+                immersionBar.transparentStatusBar().statusBarDarkFont(true).init();
                 break;
             default:
                 break;
