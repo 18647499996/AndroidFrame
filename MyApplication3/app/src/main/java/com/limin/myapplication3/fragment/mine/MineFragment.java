@@ -21,7 +21,7 @@ import butterknife.BindView;
  * Description
  *
  * @author Created by: Li_Min
- * Time:2018/8/29
+ * Time:2018/8/29 ssssss
  */
 public class MineFragment extends BaseFragment implements MineContract.View, MultiLineChooseLayout.onItemClickListener {
     @BindView(R.id.fragment_layout_folw)
