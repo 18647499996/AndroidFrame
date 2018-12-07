@@ -6,8 +6,10 @@ import android.view.View;
 import com.blankj.utilcode.util.ToastUtils;
 import com.ihidea.multilinechooselib.MultiLineChooseLayout;
 import com.limin.myapplication3.R;
+import com.limin.myapplication3.activity.dragtop.DragTopLayoutActivity;
 import com.limin.myapplication3.activity.swipemenu.SwipeMenuRecyclerViewActivity;
 import com.limin.myapplication3.activity.videoplay.VideoPlayActivity;
+import com.limin.myapplication3.activity.zoomscrollview.ZoomScrollViewActivity;
 import com.limin.myapplication3.base.BaseFragment;
 import com.limin.myapplication3.service.BackgroundService;
 import com.limin.myapplication3.utils.TitleBuilder;
@@ -21,7 +23,7 @@ import butterknife.BindView;
  * @author Created by: Li_Min
  * Time:2018/8/29
  */
-public class MineFragment extends BaseFragment implements MineContract.View {
+public class MineFragment extends BaseFragment implements MineContract.View, MultiLineChooseLayout.onItemClickListener {
     @BindView(R.id.fragment_layout_folw)
     MultiLineChooseLayout fragmentLayoutFolw;
 
@@ -50,7 +52,7 @@ public class MineFragment extends BaseFragment implements MineContract.View {
 
     @Override
     protected void setListener() {
-
+        fragmentLayoutFolw.setOnItemClickListener(this);
     }
 
     @Override
@@ -66,30 +68,32 @@ public class MineFragment extends BaseFragment implements MineContract.View {
     @Override
     public void showAddView(String[] stringArray) {
         fragmentLayoutFolw.setList(stringArray);
-        fragmentLayoutFolw.setOnItemClickListener((position, text) -> {
-            switch (position) {
-                case 0:
-                    ToastUtils.showShort(text);
-                    BackgroundService.startService(getContext());
-                    break;
-                case 1:
-                    ToastUtils.showShort(text);
-                    SwipeMenuRecyclerViewActivity.startActivity(getActivity());
-                    break;
-                case 2:
-                    ToastUtils.showShort(text);
-                    VideoPlayActivity.startActivity(getActivity());
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                default:
-                    break;
-            }
-        });
+    }
 
+    @Override
+    public void onItemClick(int position, String text) {
+        ToastUtils.showShort(text);
+        switch (position) {
+            case 0:
+                BackgroundService.startService(getContext());
+                break;
+            case 1:
+                SwipeMenuRecyclerViewActivity.startActivity(getActivity());
+                break;
+            case 2:
+                VideoPlayActivity.startActivity(getActivity());
+                break;
+            case 3:
+                BackgroundService.stopService(getContext());
+                break;
+            case 4:
+                ZoomScrollViewActivity.startActivity(getActivity());
+                break;
+            case 5:
+                DragTopLayoutActivity.startActivity(getActivity());
+                break;
+            default:
+                break;
+        }
     }
 }

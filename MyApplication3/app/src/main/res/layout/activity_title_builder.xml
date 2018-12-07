@@ -33,7 +33,7 @@
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:textSize="@dimen/app_dp_eighteen"
-        tools:text="标题"
+        tools:text="Title Builder"
         android:gravity="center"
         android:textColor="@color/with"/>
 

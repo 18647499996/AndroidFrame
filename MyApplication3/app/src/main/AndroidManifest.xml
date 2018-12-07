@@ -29,6 +29,8 @@
         <activity android:name=".activity.welcome.WelComeActivity"/>
         <activity android:name=".activity.swipemenu.SwipeMenuRecyclerViewActivity"/>
         <activity android:name=".activity.videoplay.VideoPlayActivity"/>
+        <activity android:name=".activity.zoomscrollview.ZoomScrollViewActivity"/>
+        <activity android:name=".activity.dragtop.DragTopLayoutActivity"/>
 
         <service android:name=".service.BackgroundService"/>
     </application>

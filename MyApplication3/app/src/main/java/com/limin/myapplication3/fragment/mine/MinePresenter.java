@@ -1,8 +1,5 @@
 package com.limin.myapplication3.fragment.mine;
 
-import android.widget.Button;
-import android.widget.TextView;
-
 import com.limin.myapplication3.base.BaseSubscription;
 
 /**
@@ -14,7 +11,7 @@ import com.limin.myapplication3.base.BaseSubscription;
 class MinePresenter extends BaseSubscription implements MineContract.Presenter {
 
     private MineContract.View view;
-    private String[] stringArray = new String[]{"开启服务","侧滑删除","视频播放器","卡槽2","卡槽3","卡槽4","卡槽5","卡槽5","卡槽6",};
+    private String[] stringArray = new String[]{"开启服务","侧滑删除","视频播放器","停止服务","CollapsingToolbarLayout","Top下拉布局","卡槽5","卡槽5","卡槽6",};
 
     MinePresenter(MineContract.View view) {
         this.view = view;

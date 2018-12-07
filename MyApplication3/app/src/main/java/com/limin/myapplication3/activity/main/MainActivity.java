@@ -70,7 +70,6 @@ public class MainActivity extends BaseActivity implements MainConstract.View, Vi
             Objects.requireNonNull(activityMainTab.getTabAt(i)).setText(titleArray[i]);
         }
         LogUtils.d("首页获取token：" + UserManagerUtils.getInstance().getToken());
-        AppShortCutUtil.addNumShortCut(this,MainActivity.class,true,"30",false);
     }
 
     @Override

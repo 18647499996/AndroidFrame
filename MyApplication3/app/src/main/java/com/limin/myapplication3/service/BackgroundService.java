@@ -8,6 +8,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.limin.myapplication3.utils.HanlderUtils;
 
 /**
  * Description：推送服务
@@ -35,12 +36,21 @@ public class BackgroundService extends Service {
     }
 
     private void init() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                init();
-                LogUtils.d("我是后台服务");
-            }
-        },1000);
+        HanlderUtils.getInstance().delayExecute(() -> {
+            init();
+            LogUtils.d("开启服务");
+        },HanlderUtils.MILLIS);
+    }
+
+    public static void stopService(Context context){
+        Intent intent = new Intent(context,BackgroundService.class);
+        context.stopService(intent);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        HanlderUtils.getInstance().clearHanlder();
+        LogUtils.d("停止服务--------------------");
     }
 }
