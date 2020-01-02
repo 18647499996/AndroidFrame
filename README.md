@@ -385,12 +385,7 @@ public class BaseTransformerManager {
 }
 
 
-/**
- * Description：自定义异常捕获及信息处理类
- *
- * @author Created by: Li_Min
- * Time:2018/8/2
- */
+
 public class BaseExceptionManager {
 
     private static volatile BaseExceptionManager instance = null;
