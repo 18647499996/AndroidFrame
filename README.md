@@ -269,12 +269,7 @@ public class BaseRetrofitManager {
 }
 
 
-/**
- * Description：RxJava线程调度器
- *
- * @author Created by: Li_Min
- * Time:2018/8/2
- */
+
 public class BaseTransformerManager {
 
     /**
