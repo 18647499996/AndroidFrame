@@ -1,12 +1,7 @@
 # AndroidFrame
 Android的框架之MVP +Retrofit+ RxJava + OkHttp
 
-/**
- * Description：Retrofit管理器（Retrofit + RxJava + Okhttp）
- *
- * @author Created by: Li_Min
- * Time:2018/8/2
- */
+
 public class BaseRetrofitManager {
 
     private UserService userService;
