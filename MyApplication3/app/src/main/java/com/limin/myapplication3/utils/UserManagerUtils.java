@@ -48,6 +48,10 @@ public class UserManagerUtils {
         return GsonUtils.fromJson(string, UserModel.class);
     }
 
+    public void exitLogin(){
+        SPUtils.getInstance(Constant.SPUtils.USER).clear();
+    }
+
     /**
      * 获取用户token
      * @return getToken
@@ -55,5 +59,9 @@ public class UserManagerUtils {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public String getToken() {
         return Optional.of(Optional.ofNullable(getUserModel()).map(UserModel::getToken).orElse("token get fali")).get();
+    }
+
+    public String getUd(){
+        return Optional.of(Optional.ofNullable(getUserModel()).map(UserModel::getUid).orElse("uid get fali")).get();
     }
 }

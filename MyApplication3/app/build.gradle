@@ -4,13 +4,19 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.limin.myapplication3"
-        minSdkVersion 15
-        targetSdkVersion 22
+        minSdkVersion 17
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
     }
 
     compileOptions {
@@ -47,8 +53,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+            //debug时使用release签名
+            signingConfig signingConfigs.release
+            //Zip代码压缩优化
+            zipAlignEnabled true
+        }
     }
 }
+
+
 
 
 
@@ -59,31 +74,36 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    api 'com.android.support:design:27.1.1'
-    api 'com.android.support:cardview-v7:27.1.1'
-    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     //导入retrofit
-    api 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.google.code.gson:gson:2.8.2'
     //Gson 库
     //下面两个是RxJava 和 RxAndroid
-    api 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    api 'com.squareup.retrofit2:retrofit:2.3.0'
-    api 'com.squareup.retrofit2:converter-scalars:2.3.0'
-    api 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     //转换器，请求结果转换成Model
-    api 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
     //配合Rxjava 使用
-    api 'io.reactivex:rxandroid:1.1.0'
-    api 'com.jakewharton:butterknife:8.8.1'
+    implementation 'io.reactivex:rxandroid:1.1.0'
+    implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    api 'com.alibaba.p3c.idea:p3c-common:1.0.0'
-    api 'com.blankj:utilcode:1.10.0'
-    api 'com.gyf.barlibrary:barlibrary:2.3.0'
-    api 'me.imid.swipebacklayout.lib:library:1.1.0'
-    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
-    api 'com.github.chenupt.android:dragtoplayout:1.2.1@aar'
+    implementation 'com.alibaba.p3c.idea:p3c-common:1.0.0'
+    implementation 'com.blankj:utilcode:1.10.0'
+    implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
+    implementation 'me.imid.swipebacklayout.lib:library:1.1.0'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+    implementation 'com.github.chenupt.android:dragtoplayout:1.2.1@aar'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'liji.library.dev:multilinechooselib:1.6.0'
     implementation 'com.yanzhenjie:recyclerview-swipe:1.1.4'
     implementation files('libs/aip-java-sdk-4.4.1.jar')
     implementation files('libs/util.jar')
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:9.0.1'
+    // 底部抽屉滑动
+    implementation 'com.yinglan.scrolllayout:scrolllayout:1.0.2'
+    implementation files('libs/AMap3DMap_7.5.0_AMapSearch_7.3.0_AMapLocation_5.0.0_20200610.jar')
 }

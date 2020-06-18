@@ -8,6 +8,7 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.blankj.utilcode.util.LogUtils;
@@ -18,6 +19,7 @@ import com.limin.myapplication3.adapter.TabAdapter;
 import com.limin.myapplication3.base.BaseActivity;
 import com.limin.myapplication3.model.UserModel;
 import com.limin.myapplication3.utils.AppShortCutUtil;
+import com.limin.myapplication3.utils.Constant;
 import com.limin.myapplication3.utils.ListDataUtils;
 import com.limin.myapplication3.utils.TitleBuilder;
 import com.limin.myapplication3.utils.UserManagerUtils;
@@ -44,6 +46,7 @@ public class MainActivity extends BaseActivity implements MainConstract.View, Vi
     private MainConstract.Presenter mPresenter;
     private List<Fragment> mFragments = ListDataUtils.mainFragment();
     private String[] titleArray = ListDataUtils.titleArray();
+    private long exitTime;
 
     @Override
     protected int getLayout() {
@@ -140,5 +143,19 @@ public class MainActivity extends BaseActivity implements MainConstract.View, Vi
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > Constant.EXIT_TIME) {
+                ToastUtils.showShort("再按一次退出程序");
+                exitTime = System.currentTimeMillis();
+            } else {
+                MainActivity.this.finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="45dp">
+
+
+        <com.amap.api.maps.MapView
+            android:id="@+id/activity_baidu_map_rel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        </com.amap.api.maps.MapView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_location_overlay"
+            android:layout_centerInParent="true"/>
+
+        <Button
+            android:id="@+id/activity_baidu_map_btn_save"
+            android:layout_width="42dp"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/corners_login_btn_bg"
+            android:layout_marginRight="16dp"
+            android:text="保存"
+            android:gravity="center"
+            android:textSize="12dp"
+            android:textColor="@color/with"/>
+
+
+    </RelativeLayout>
+
+
+    <com.yinglan.scrolllayout.ScrollLayout
+        android:id="@+id/activity_baidu_map_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/with">
+
+            <EditText
+                android:id="@+id/activity_baidu_map_edt"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/corners_communicate_edt_bg_black"
+                android:gravity="center"
+                android:hint="搜索地点"
+                android:imeOptions="actionDone"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:singleLine="true"
+                android:textColor="#8B8B8B"
+                android:textColorHint="#8B8B8B"
+                android:textSize="12dp" />
+
+
+            <com.yinglan.scrolllayout.content.ContentRecyclerView
+                android:id="@+id/activity_baidu_map_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/activity_baidu_map_edt"/>
+
+
+        </RelativeLayout>
+
+
+    </com.yinglan.scrolllayout.ScrollLayout>
+
+</RelativeLayout>

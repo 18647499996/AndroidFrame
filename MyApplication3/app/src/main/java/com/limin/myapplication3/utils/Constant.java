@@ -20,6 +20,8 @@ public class Constant {
      * 防止快递响应
      */
     public static final long NO_CLICK = 1000;
+    public static final long EXIT_TIME = 2000;
+    public static final int REGEOCODE_SEARCHED_SUCCESS = 1000;
 
     /**
      * SP缓存文件目录

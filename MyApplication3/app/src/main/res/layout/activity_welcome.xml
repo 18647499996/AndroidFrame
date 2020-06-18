@@ -7,7 +7,7 @@
         android:id="@+id/activity_welcome_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/bg_machine_noon"
+        android:src="@drawable/img3"
         android:scaleType="centerCrop"/>
 
 </LinearLayout>

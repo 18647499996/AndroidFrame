@@ -6,9 +6,9 @@
     <ImageView
         android:id="@+id/activity_login_img_bg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg_machine_noon" />
+        android:src="@drawable/img3" />
 
     <TextView
         android:id="@+id/activity_login_tv_title"
@@ -18,7 +18,7 @@
         android:layout_marginTop="120dp"
         android:gravity="center"
         android:padding="5dp"
-        android:text="Welcome to"
+        android:text="Welcome To"
         android:textColor="@color/with"
         android:textSize="30dp" />
 
@@ -61,6 +61,6 @@
         android:textSize="16dp"
         android:textCursorDrawable="@null"
         android:imeOptions="actionSend"
-        android:singleLine="true"/>
+        android:singleLine="true" />
 
 </RelativeLayout>

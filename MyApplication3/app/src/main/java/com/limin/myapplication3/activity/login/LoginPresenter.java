@@ -32,7 +32,7 @@ import rx.schedulers.Schedulers;
 class LoginPresenter extends BaseSubscription implements LoginConstract.Presenter {
 
     private LoginConstract.View view;
-    private int[] b = {R.drawable.bg_machine, R.drawable.bg_machine_night, R.drawable.bg_machine_noon, R.drawable.bg_machine_type1};
+    private int[] b = {R.drawable.img6, R.drawable.img2, R.drawable.img3,R.drawable.img4,R.drawable.img1,R.drawable.img5,R.drawable.img7};
     private MainSingleApi mainSingleApi;
 
 
@@ -66,7 +66,7 @@ class LoginPresenter extends BaseSubscription implements LoginConstract.Presente
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                activityLoginImgBg.setImageResource(R.drawable.bg_machine);
+                activityLoginImgBg.setImageResource(R.drawable.img1);
                 ScaleAnimation scaleAnimation2 = new ScaleAnimation(1.5f, 1.0f, 1.5f, 1.0f,
                         AlphaAnimation.RELATIVE_TO_SELF, 0.5f, AlphaAnimation.RELATIVE_TO_SELF, 0.5f);
                 scaleAnimation2.setDuration(3000);
@@ -80,7 +80,7 @@ class LoginPresenter extends BaseSubscription implements LoginConstract.Presente
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         Random rand = new Random();
-                        int num = rand.nextInt(3);
+                        int num = rand.nextInt(b.length);
                         activityLoginImgBg.setImageResource(b[num]);
                         activityLoginImgBg.startAnimation(scaleAnimation);
                     }

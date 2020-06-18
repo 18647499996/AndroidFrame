@@ -25,7 +25,7 @@ public class UserModel {
      * token : eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOnsidXNlcmlkIjo1NDYyNX0sInN1YiI6IjEzMTU1ODAwOTM1IiwiZXhwIjoxNTIxMTgzMjU3fQ.MLDdGCXsrZDWpzqIf3FrA3gsjGqMhCBmkroXi7YqGzg
      */
 
-    private long uid;
+    private String uid;
     private String mobile;
     private String password;
     private String openid;
@@ -57,11 +57,11 @@ public class UserModel {
         this.userType = userType;
     }
 
-    public long getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 
@@ -175,10 +175,6 @@ public class UserModel {
 
     public void setHxCustom(String hxCustom) {
         this.hxCustom = hxCustom;
-    }
-
-    public void setUid(long uid) {
-        this.uid = uid;
     }
 
     public boolean isStaff() {

@@ -21,5 +21,9 @@ interface MineContract {
 
     interface Presenter extends BasePresenter {
 
+        /**
+         * 原生请求
+         */
+        void retrofitOrigin();
     }
 }
