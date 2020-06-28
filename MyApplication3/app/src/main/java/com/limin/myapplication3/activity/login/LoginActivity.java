@@ -29,7 +29,7 @@ import butterknife.BindView;
  * @author Created by: Li_Min
  * Time:2018/8/24
  */
-public class LoginActivity extends BaseActivity implements LoginConstract.View, TextView.OnEditorActionListener {
+public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginConstract.View, TextView.OnEditorActionListener {
 
     @BindView(R.id.activity_login_img_bg)
     ImageView activityLoginImgBg;
@@ -62,7 +62,6 @@ public class LoginActivity extends BaseActivity implements LoginConstract.View, 
     @Override
     protected void initData(Bundle savedInstanceState) {
         immersionBar.transparentStatusBar().statusBarDarkFont(false).init();
-        presenter = (LoginConstract.Presenter) new LoginPresenter(this).Bulider(this);
         presenter.start();
         presenter.startAnimation(activityLoginImgBg);
         activityLoginEdtUser.setText("13800138001");
@@ -86,8 +85,13 @@ public class LoginActivity extends BaseActivity implements LoginConstract.View, 
     }
 
     @Override
+    protected LoginPresenter createPresenter() throws RuntimeException {
+        return (LoginPresenter) new LoginPresenter(this).Bulider(this);
+    }
+
+    @Override
     public void setPresenter(LoginConstract.Presenter presenter) {
-        this.presenter = checkNotNull(presenter);
+        this.presenter = (LoginConstract.Presenter) checkNotNull(presenter);
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.activity.login.LoginActivity;
 import com.limin.myapplication3.base.BaseActivity;
+import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.utils.TitleBuilder;
 
 import butterknife.BindView;
@@ -61,5 +62,10 @@ public class WelComeActivity extends BaseActivity {
     @Override
     protected void onDestroys() throws RuntimeException {
 
+    }
+
+    @Override
+    protected BasePresenter createPresenter() throws RuntimeException {
+        return null;
     }
 }

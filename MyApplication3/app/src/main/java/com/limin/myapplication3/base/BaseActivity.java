@@ -27,10 +27,12 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
  * @author Created by: Li_Min
  * Time:2018/8/4
  */
-public abstract class BaseActivity extends SwipeBackActivity implements View.OnClickListener {
+public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackActivity implements View.OnClickListener {
 
     public ImmersionBar immersionBar;
     private long lastClickTime = 0;
+
+    public P mPresenter;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -102,6 +104,14 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
     protected abstract void onDestroys() throws RuntimeException;
 
 
+    /**
+     * 初始化presenter
+     * @return P
+     * @throws RuntimeException
+     */
+    protected abstract P createPresenter() throws RuntimeException;
+
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -119,10 +129,9 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
      * presenter 空指针异常捕获
      *
      * @param reference presenter
-     * @param <T>       泛型类
      * @return presenter
      */
-    public static <T> T checkNotNull(T reference) {
+    public static BasePresenter checkNotNull(BasePresenter reference) {
         if (reference == null) {
             throw new NullPointerException();
         } else {
@@ -143,6 +152,7 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
         if (null != view){
             view.setPadding(0,getStatusBarHeight(),0,0);
         }
+        mPresenter = createPresenter();
         initData(savedInstanceState);
     }
 

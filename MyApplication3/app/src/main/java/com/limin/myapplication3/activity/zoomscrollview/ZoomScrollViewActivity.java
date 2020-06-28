@@ -30,7 +30,7 @@ import butterknife.BindView;
  * @author Created by: Li_Min
  * Time:2018/12/5
  */
-public class ZoomScrollViewActivity extends BaseActivity implements ZoomScrollViewConstract.View {
+public class ZoomScrollViewActivity extends BaseActivity<ZoomScrollViewPresenter> implements ZoomScrollViewConstract.View {
 
     @BindView(R.id.activity_vitae_img_portrait)
     ImageView activityVitaeImgPortrait;
@@ -103,8 +103,13 @@ public class ZoomScrollViewActivity extends BaseActivity implements ZoomScrollVi
     }
 
     @Override
+    protected ZoomScrollViewPresenter createPresenter() throws RuntimeException {
+        return (ZoomScrollViewPresenter) new ZoomScrollViewPresenter(this).Bulider(this);
+    }
+
+    @Override
     public void setPresenter(ZoomScrollViewConstract.Presenter presenter) {
-        this.presenter = checkNotNull(presenter);
+        this.presenter = (ZoomScrollViewConstract.Presenter) checkNotNull(presenter);
     }
 
     @Override

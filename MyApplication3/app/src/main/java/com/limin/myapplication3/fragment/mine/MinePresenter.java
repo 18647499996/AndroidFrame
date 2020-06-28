@@ -32,14 +32,12 @@ import rx.observables.SyncOnSubscribe;
  * @author Created by: Li_Min
  * Time:2018/11/13
  */
-class MinePresenter extends BaseSubscription implements MineContract.Presenter {
+class MinePresenter extends BaseSubscription<MineContract.View> implements MineContract.Presenter {
 
-    private MineContract.View view;
     private String[] stringArray = new String[]{"开启服务","侧滑删除","视频播放器","停止服务","CollapsingToolbarLayout","Top下拉布局","NewIntent","加密指纹","解密指纹","高德定位","停止定位","搞得地图"};
 
     MinePresenter(MineContract.View view) {
-        this.view = view;
-        this.view.setPresenter(this);
+        super(view);
     }
 
     @Override

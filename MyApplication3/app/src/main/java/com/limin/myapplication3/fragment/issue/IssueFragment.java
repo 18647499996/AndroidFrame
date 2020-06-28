@@ -15,6 +15,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.adapter.IssueAdapter;
 import com.limin.myapplication3.base.BaseFragment;
+import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.model.StaggeredModel;
 import com.limin.myapplication3.utils.ListDataUtils;
 import com.limin.myapplication3.utils.TitleBuilder;
@@ -66,6 +67,11 @@ public class IssueFragment extends BaseFragment implements BaseQuickAdapter.OnIt
     @Override
     protected void setListener() {
         issueAdapter.setOnItemChildClickListener(this);
+    }
+
+    @Override
+    protected BasePresenter createPresenter() throws RuntimeException {
+        return null;
     }
 
     @Override

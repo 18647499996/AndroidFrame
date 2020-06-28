@@ -11,6 +11,7 @@ import android.widget.VideoView;
 
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.base.BaseActivity;
+import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.utils.TitleBuilder;
 
 import butterknife.BindView;
@@ -71,5 +72,10 @@ public class VideoPlayActivity extends BaseActivity {
     @Override
     protected void onDestroys() throws RuntimeException {
 
+    }
+
+    @Override
+    protected BasePresenter createPresenter() throws RuntimeException {
+        return null;
     }
 }

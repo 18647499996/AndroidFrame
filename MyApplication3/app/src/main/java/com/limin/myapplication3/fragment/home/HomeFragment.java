@@ -12,6 +12,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.adapter.HomeFragmentAdapter;
 import com.limin.myapplication3.base.BaseFragment;
+import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.model.DataModel;
 import com.limin.myapplication3.refresh.SmartRefreshLayout;
 import com.limin.myapplication3.refresh.api.RefreshLayout;
@@ -71,6 +72,11 @@ public class HomeFragment extends BaseFragment implements OnRefreshLoadMoreListe
     protected void setListener() {
         activityHomeSmartrefresh.setOnRefreshLoadMoreListener(this);
         homeFragmentAdapter.setOnItemChildClickListener(this);
+    }
+
+    @Override
+    protected BasePresenter createPresenter() throws RuntimeException {
+        return null;
     }
 
     @Override

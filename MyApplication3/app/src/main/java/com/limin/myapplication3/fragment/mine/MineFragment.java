@@ -31,11 +31,10 @@ import butterknife.BindView;
  * @author Created by: Li_Min
  * Time:2018/8/29 ssssss
  */
-public class MineFragment extends BaseFragment implements MineContract.View, MultiLineChooseLayout.onItemClickListener {
+public class MineFragment extends BaseFragment<MinePresenter> implements MineContract.View, MultiLineChooseLayout.onItemClickListener {
     @BindView(R.id.fragment_layout_folw)
     MultiLineChooseLayout fragmentLayoutFolw;
 
-    private MineContract.Presenter presenter;
     FingerprintManagerUtils instance;
 
     @Override
@@ -50,8 +49,7 @@ public class MineFragment extends BaseFragment implements MineContract.View, Mul
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-        presenter = new MinePresenter(this);
-        presenter.start();
+        mPresenter.start();
     }
 
     @Override
@@ -65,8 +63,13 @@ public class MineFragment extends BaseFragment implements MineContract.View, Mul
     }
 
     @Override
+    protected MinePresenter createPresenter() throws RuntimeException {
+        return (MinePresenter) new MinePresenter(this).Bulider(getActivity());
+    }
+
+    @Override
     public void setPresenter(MineContract.Presenter presenter) {
-        this.presenter = presenter;
+        mPresenter = (MinePresenter) checkNotNull(presenter);
     }
 
     @Override

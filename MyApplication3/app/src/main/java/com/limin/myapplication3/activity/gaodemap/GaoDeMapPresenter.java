@@ -1,6 +1,7 @@
 package com.limin.myapplication3.activity.gaodemap;
 
 import android.graphics.BitmapFactory;
+import android.view.animation.LinearInterpolator;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
@@ -12,15 +13,23 @@ import com.amap.api.maps.model.BitmapDescriptor;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.maps.model.animation.Animation;
+import com.amap.api.maps.model.animation.RotateAnimation;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.poisearch.PoiSearch;
 import com.blankj.utilcode.util.LogUtils;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.base.BaseSubscription;
+import com.limin.myapplication3.model.LocationMarkerModel;
 import com.limin.myapplication3.utils.HanlderUtils;
+import com.limin.myapplication3.utils.ListDataUtils;
 import com.limin.myapplication3.utils.LocationUtils;
 import com.yinglan.scrolllayout.ScrollLayout;
+
+import java.util.List;
 
 /**
  * Description：
@@ -28,9 +37,13 @@ import com.yinglan.scrolllayout.ScrollLayout;
  * @author Created by: Li_Min
  * Time:2020/6/15
  */
-class GaoDeMapPresenter extends BaseSubscription implements GaoDeMapConstract.Presenter {
+class GaoDeMapPresenter extends BaseSubscription<GaoDeMapConstract.View> implements GaoDeMapConstract.Presenter {
 
     private boolean isFirstLoc = true;
+
+    GaoDeMapPresenter(GaoDeMapConstract.View view) {
+        super(view);
+    }
 
 
     @Override
@@ -74,6 +87,22 @@ class GaoDeMapPresenter extends BaseSubscription implements GaoDeMapConstract.Pr
         aMap.getUiSettings().setTiltGesturesEnabled(false);
         // 设置是否以地图中心点缩放
         aMap.getUiSettings().setGestureScaleByMapCenter(true);
+        // 添加覆盖物
+
+        List<LocationMarkerModel> locationMarker = ListDataUtils.getLocationMarker();
+        for (int i = 0; i < locationMarker.size(); i++) {
+            MarkerOptions markerOptions =  new MarkerOptions();
+            markerOptions.position(new LatLng(locationMarker.get(i).getLat(),locationMarker.get(i).getLng()));
+            markerOptions.title(locationMarker.get(i).getAddress());
+            Marker marker = aMap.addMarker(markerOptions);
+//            Animation animation = new RotateAnimation(marker.getRotateAngle(),marker.getRotateAngle()+180,0,0,0);
+//            long duration = 1000L;
+//            animation.setDuration(duration);
+//            animation.setInterpolator(new LinearInterpolator());
+//            marker.setAnimation(animation);
+//            marker.startAnimation();
+        }
+
 
         return aMap;
     }

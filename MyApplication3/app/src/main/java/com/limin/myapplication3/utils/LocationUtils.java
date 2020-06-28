@@ -64,6 +64,7 @@ public class LocationUtils {
     public void stop() {
         if (aMapLocationClient != null) {
             aMapLocationClient.stopLocation();
+            aMapLocationClient.onDestroy();
             aMapLocationClient = null;
         }
     }

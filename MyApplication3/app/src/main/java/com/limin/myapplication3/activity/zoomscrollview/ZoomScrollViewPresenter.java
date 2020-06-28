@@ -1,5 +1,6 @@
 package com.limin.myapplication3.activity.zoomscrollview;
 
+import com.limin.myapplication3.base.BaseSubscription;
 import com.limin.myapplication3.model.VitaeModel;
 
 import java.util.ArrayList;
@@ -11,14 +12,13 @@ import java.util.List;
  * @author Created by: Li_Min
  * Time:2018/12/5
  */
-class ZoomScrollViewPresenter implements ZoomScrollViewConstract.Presenter {
+class ZoomScrollViewPresenter extends BaseSubscription<ZoomScrollViewConstract.View> implements ZoomScrollViewConstract.Presenter {
 
     private ZoomScrollViewConstract.View view;
     private String[] stringArray = new String[]{"发展路径：","当前职级：","资格认证：","直接师傅：","间接师傅：","手机号码：","健康证截止时间：","发展路径：","当前职级：","资格认证：","直接师傅：","间接师傅：","手机号码：","健康证截止时间："};
 
     ZoomScrollViewPresenter(ZoomScrollViewConstract.View view) {
-        this.view = view;
-        this.view.setPresenter(this);
+        super(view);
     }
 
     @Override

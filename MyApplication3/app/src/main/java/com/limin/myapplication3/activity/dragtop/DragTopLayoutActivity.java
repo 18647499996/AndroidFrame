@@ -8,6 +8,7 @@ import android.view.View;
 import com.blankj.utilcode.util.LogUtils;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.base.BaseActivity;
+import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.utils.TitleBuilder;
 
 import butterknife.BindView;
@@ -63,6 +64,11 @@ public class DragTopLayoutActivity extends BaseActivity implements DragTopLayout
     @Override
     protected void onDestroys() throws RuntimeException {
 
+    }
+
+    @Override
+    protected BasePresenter createPresenter() throws RuntimeException {
+        return null;
     }
 
     @Override

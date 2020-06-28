@@ -16,7 +16,7 @@ import com.limin.myapplication3.utils.TitleBuilder;
  * @author Created by: Li_Min
  * Time:2018/8/24
  */
-public class TestActivity extends BaseActivity implements TestConstract.View {
+public class TestActivity extends BaseActivity<TestPresenter> implements TestConstract.View {
 
     private TestConstract.Presenter mPresenter;
 
@@ -28,7 +28,6 @@ public class TestActivity extends BaseActivity implements TestConstract.View {
     @Override
     protected void initData(Bundle savedInstanceState) {
         immersionBar.transparentStatusBar().statusBarDarkFont(true).init();
-        mPresenter = (TestConstract.Presenter) new TestPresenter().Bulider(this);
         mPresenter.start();
     }
 
@@ -48,6 +47,11 @@ public class TestActivity extends BaseActivity implements TestConstract.View {
     }
 
     @Override
+    protected TestPresenter createPresenter() throws RuntimeException {
+        return (TestPresenter) new TestPresenter(this).Bulider(this);
+    }
+
+    @Override
     protected TitleBuilder initBuilerTitle() {
         return new TitleBuilder(this)
                 .setMiddleTitleBgRes("Test",R.color.black,R.color.with);
@@ -60,7 +64,7 @@ public class TestActivity extends BaseActivity implements TestConstract.View {
 
     @Override
     public void setPresenter(TestConstract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
+        mPresenter = (TestConstract.Presenter) checkNotNull(presenter);
     }
 
     @Override

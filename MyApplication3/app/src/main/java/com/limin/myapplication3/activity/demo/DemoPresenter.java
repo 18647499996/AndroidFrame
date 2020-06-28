@@ -15,11 +15,12 @@ import rx.Subscription;
  * @author Created by: Li_Min
  * Time:2018/8/4
  */
-class DemoPresenter extends BaseSubscription implements DemoContract.Presenter {
+class DemoPresenter extends BaseSubscription<DemoContract.View> implements DemoContract.Presenter {
 
     private DemoContract.View view;
 
     public DemoPresenter(DemoContract.View view) {
+        super(view);
         this.view = view;
     }
 

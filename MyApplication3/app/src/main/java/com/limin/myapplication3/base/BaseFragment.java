@@ -26,11 +26,13 @@ import butterknife.Unbinder;
  *
  * @author liudonghan 2015-11-29
  */
-public abstract class BaseFragment extends Fragment implements OnClickListener {
+public abstract class BaseFragment<P extends BasePresenter> extends Fragment implements OnClickListener {
     private Unbinder unbinder;
     private View view;
     private long lastClickTime;
     protected ImmersionBar immersionBar;
+
+    protected P mPresenter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -99,6 +101,14 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
      */
     protected abstract void setListener() throws RuntimeException;
 
+    /**
+     * 初始化Presenter
+     * @return P
+     * @throws RuntimeException
+     */
+    protected abstract P createPresenter() throws RuntimeException;
+
+
 
     @Override
     public void onClick(View v) {
@@ -125,7 +135,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
         }
     }
 
-    public static <T> T checkNotNull(T reference) {
+    public static BasePresenter checkNotNull(BasePresenter reference) {
         if (reference == null) {
             throw new NullPointerException();
         } else {
@@ -146,8 +156,10 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
         if (null != view) {
             view.setPadding(0, getStatusBarHeight(), 0, 0);
         }
+        mPresenter = createPresenter();
         initData(savedInstanceState);
     }
+
 
 
     @Override

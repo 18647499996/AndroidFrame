@@ -30,7 +30,7 @@ import butterknife.ButterKnife;
  * Time:2018/9/19
  */
 @SuppressLint("Registered")
-public class DemoActivity extends BaseActivity implements DemoContract.View, View.OnTouchListener {
+public class DemoActivity extends BaseActivity<DemoPresenter> implements DemoContract.View, View.OnTouchListener {
 
     @BindView(R.id.activity_demo_btn)
     Button activityDemoBtn;
@@ -95,13 +95,18 @@ public class DemoActivity extends BaseActivity implements DemoContract.View, Vie
     }
 
     @Override
+    protected DemoPresenter createPresenter() throws RuntimeException {
+        return (DemoPresenter) new DemoPresenter(this).Bulider(this);
+    }
+
+    @Override
     public void showUserModel(UserModel userModel) {
         TestActivity.startActivity(this);
     }
 
     @Override
     public void setPresenter(DemoContract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
+        mPresenter = (DemoContract.Presenter) checkNotNull(presenter);
     }
 
     @Override

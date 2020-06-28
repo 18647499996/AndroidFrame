@@ -35,7 +35,7 @@ import butterknife.BindView;
  * @author Created by: Li_Min
  * Time:2018/8/4
  */
-public class MainActivity extends BaseActivity implements MainConstract.View, ViewPager.OnPageChangeListener {
+public class MainActivity extends BaseActivity<MainPresenter> implements MainConstract.View, ViewPager.OnPageChangeListener {
 
 
     @BindView(R.id.activity_main_vp)
@@ -63,7 +63,6 @@ public class MainActivity extends BaseActivity implements MainConstract.View, Vi
     protected void initData(Bundle savedInstanceState) {
         setSwipeBackEnable(false);
         immersionBar.transparentStatusBar().statusBarDarkFont(true).init();
-        mPresenter = (MainConstract.Presenter) new MainPresenter(this).Bulider(this);
         mPresenter.start();
         TabAdapter tabAdapter = new TabAdapter(getSupportFragmentManager(), mFragments, titleArray);
         activityMainVp.setAdapter(tabAdapter);
@@ -89,6 +88,11 @@ public class MainActivity extends BaseActivity implements MainConstract.View, Vi
 
     }
 
+    @Override
+    protected MainPresenter createPresenter() throws RuntimeException {
+        return (MainPresenter) new MainPresenter(this).Bulider(this);
+    }
+
 
     @Override
     public void showUserModel(UserModel userModel) {
@@ -102,7 +106,7 @@ public class MainActivity extends BaseActivity implements MainConstract.View, Vi
 
     @Override
     public void setPresenter(MainConstract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
+        mPresenter = (MainConstract.Presenter) checkNotNull(presenter);
     }
 
     @Override

@@ -33,7 +33,7 @@ import butterknife.ButterKnife;
  * @author Created by: Li_Min
  * Time:2018/11/15
  */
-public class SwipeMenuRecyclerViewActivity extends BaseActivity implements SwipeMenuRecyclerViewConstract.View, SwipeMenuCreator, SwipeMenuItemClickListener {
+public class SwipeMenuRecyclerViewActivity extends BaseActivity<SwipeMenuRecyclerViewPrestener> implements SwipeMenuRecyclerViewConstract.View, SwipeMenuCreator, SwipeMenuItemClickListener {
     @BindView(R.id.activity_swipemenu_rv)
     SwipeMenuRecyclerView activitySwipemenuRv;
 
@@ -62,7 +62,6 @@ public class SwipeMenuRecyclerViewActivity extends BaseActivity implements Swipe
 
     @Override
     protected void initData(Bundle savedInstanceState) throws RuntimeException {
-        presenter = (SwipeMenuRecyclerViewConstract.Presenter) new SwipeMenuRecyclerViewPrestener(this).Bulider(this);
         presenter.start();
         IssueAdapter issueAdapter = new IssueAdapter(R.layout.item_issue, this);
         activitySwipemenuRv.setSwipeMenuCreator(this);
@@ -84,6 +83,11 @@ public class SwipeMenuRecyclerViewActivity extends BaseActivity implements Swipe
     @Override
     protected void onDestroys() throws RuntimeException {
 
+    }
+
+    @Override
+    protected SwipeMenuRecyclerViewPrestener createPresenter() throws RuntimeException {
+        return (SwipeMenuRecyclerViewPrestener) new SwipeMenuRecyclerViewPrestener(this).Bulider(this);
     }
 
     @Override

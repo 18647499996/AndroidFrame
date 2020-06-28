@@ -10,11 +10,18 @@ import rx.subscriptions.CompositeSubscription;
  * @author Created by: Li_Min
  * Time:2018/8/4
  */
-public abstract class BaseSubscription implements BasePresenter {
+public abstract class BaseSubscription<V extends BaseView> implements BasePresenter {
 
     protected CompositeSubscription subscriptions = new CompositeSubscription();
 
     private Context context;
+
+    protected V view;
+
+    protected BaseSubscription(V view){
+        this.view = view;
+        this.view.setPresenter(this);
+    }
 
     @Override
     public void onDestroy() {

@@ -12,6 +12,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.adapter.ForumFragmentAdapter;
 import com.limin.myapplication3.base.BaseFragment;
+import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.model.DataModel;
 import com.limin.myapplication3.refresh.SmartRefreshLayout;
 import com.limin.myapplication3.refresh.api.RefreshLayout;
@@ -82,6 +83,11 @@ public class ForumFragment extends BaseFragment implements OnRefreshLoadMoreList
         activityForumSmartrefresh.setOnRefreshLoadMoreListener(this);
         forumFragmentAdapter.setOnItemChildClickListener(this);
         forumFragmentAdapter.setOnItemClickListener(this);
+    }
+
+    @Override
+    protected BasePresenter createPresenter() throws RuntimeException {
+        return null;
     }
 
     @Override

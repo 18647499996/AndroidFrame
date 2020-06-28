@@ -41,7 +41,7 @@ import butterknife.BindView;
  * @author Created by: Li_Min
  * Time:2020/6/15
  */
-public class GaoDeMapActivity extends BaseActivity implements GaoDeMapConstract.View, AMap.OnCameraChangeListener, PoiSearch.OnPoiSearchListener, BaseQuickAdapter.OnItemClickListener, TextWatcher, GeocodeSearch.OnGeocodeSearchListener {
+public class GaoDeMapActivity extends BaseActivity<GaoDeMapPresenter> implements GaoDeMapConstract.View, AMap.OnCameraChangeListener, PoiSearch.OnPoiSearchListener, BaseQuickAdapter.OnItemClickListener, TextWatcher, GeocodeSearch.OnGeocodeSearchListener {
 
 
     @BindView(R.id.activity_baidu_map_rel)
@@ -55,7 +55,6 @@ public class GaoDeMapActivity extends BaseActivity implements GaoDeMapConstract.
     @BindView(R.id.activity_baidu_map_scroll)
     ScrollLayout activityBaiduMapScroll;
 
-    private GaoDeMapConstract.Presenter mPresenter;
     private AMap aMap;
     private BaiduMapAdapter baiduMapAdapter;
     private PoiSearch poiSearch;
@@ -79,8 +78,7 @@ public class GaoDeMapActivity extends BaseActivity implements GaoDeMapConstract.
 
     @Override
     protected void initData(Bundle savedInstanceState) throws RuntimeException {
-        mPresenter = (GaoDeMapConstract.Presenter) new GaoDeMapPresenter().Bulider(this);
-
+        mPresenter.start();
         activityBaiduMapRel.onCreate(savedInstanceState);
         // 配置百度Map定位
         aMap = mPresenter.settingBaiduMapOption(activityBaiduMapRel);
@@ -121,8 +119,13 @@ public class GaoDeMapActivity extends BaseActivity implements GaoDeMapConstract.
     }
 
     @Override
+    protected GaoDeMapPresenter createPresenter() throws RuntimeException {
+        return (GaoDeMapPresenter) new GaoDeMapPresenter(this).Bulider(this);
+    }
+
+    @Override
     public void setPresenter(GaoDeMapConstract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
+        mPresenter = (GaoDeMapPresenter) checkNotNull(presenter);
     }
 
     @Override

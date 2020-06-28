@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.blankj.utilcode.util.LogUtils;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.base.BaseActivity;
+import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.utils.TitleBuilder;
 
 import butterknife.BindView;
@@ -67,6 +68,11 @@ public class ActivityA extends BaseActivity {
     @Override
     protected void onDestroys() throws RuntimeException {
         LogUtils.d("------------onDestroys--------------AAAAAAAAAAAA");
+    }
+
+    @Override
+    protected BasePresenter createPresenter() throws RuntimeException {
+        return null;
     }
 
     @SuppressLint("SetTextI18n")

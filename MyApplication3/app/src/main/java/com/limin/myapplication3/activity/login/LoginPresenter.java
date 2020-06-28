@@ -29,15 +29,14 @@ import rx.schedulers.Schedulers;
  * @author Created by: Li_Min
  * Time:2018/8/24
  */
-class LoginPresenter extends BaseSubscription implements LoginConstract.Presenter {
+class LoginPresenter extends BaseSubscription<LoginConstract.View> implements LoginConstract.Presenter {
 
-    private LoginConstract.View view;
     private int[] b = {R.drawable.img6, R.drawable.img2, R.drawable.img3,R.drawable.img4,R.drawable.img1,R.drawable.img5,R.drawable.img7};
     private MainSingleApi mainSingleApi;
 
 
     LoginPresenter(LoginConstract.View view) {
-        this.view = view;
+        super(view);
         this.mainSingleApi = MainSingleApi.getInstance();
     }
 
