@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.limin.myapplication3"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -106,4 +106,18 @@ dependencies {
     // 底部抽屉滑动
     implementation 'com.yinglan.scrolllayout:scrolllayout:1.0.2'
     implementation files('libs/AMap3DMap_7.5.0_AMapSearch_7.3.0_AMapLocation_5.0.0_20200610.jar')
+    // 指纹验证
+//    implementation 'com.github.jianyuyouhun:FingerprintScanHelper:1.0.2'
+    implementation project(':push')
+    // tab指示器
+    implementation 'com.github.hackware1993:MagicIndicator:1.5.0'
+    // 弹幕
+    implementation 'com.jieWang:Muti-Barrage:1.0.7'
+    // 蓝牙服务
+    implementation 'com.inuker.bluetooth:library:1.4.0'
+    // 粒子爆炸特效
+    implementation 'com.github.zhaolei9527:Particle-master:v1.0.1'
+
+
+
 }

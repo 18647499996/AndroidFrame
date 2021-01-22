@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.activity.login.LoginActivity;
+import com.limin.myapplication3.activity.main.MainActivity;
 import com.limin.myapplication3.base.BaseActivity;
 import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.utils.TitleBuilder;
@@ -43,10 +44,11 @@ public class WelComeActivity extends BaseActivity {
     @Override
     protected void initData(Bundle savedInstanceState) {
         immersionBar.transparentStatusBar().statusBarDarkFont(false).init();
-        activityWelcomeImg.postDelayed(() ->{
-            LoginActivity.startActivity(WelComeActivity.this);
-            finish();
-        },2000);
+        MainActivity.startActivity(this);
+//        activityWelcomeImg.postDelayed(() ->{
+//            LoginActivity.startActivity(WelComeActivity.this);
+//            finish();
+//        },2000);
     }
 
     @Override

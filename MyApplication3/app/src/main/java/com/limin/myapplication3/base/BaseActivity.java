@@ -1,5 +1,7 @@
 package com.limin.myapplication3.base;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.os.Build;
@@ -137,6 +139,16 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
         } else {
             return reference;
         }
+    }
+
+    /**
+     * 启动activity页面
+     * @param context 上下文
+     * @param kClassclass 启动页面
+     */
+    public static void startActivity(Context context, Class<?> kClassclass){
+        Intent intent = new Intent(context, kClassclass);
+        context.startActivity(intent);
     }
 
     /**

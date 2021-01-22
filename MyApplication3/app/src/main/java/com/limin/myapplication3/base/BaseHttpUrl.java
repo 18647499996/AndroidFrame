@@ -5,6 +5,8 @@ import android.support.annotation.IntDef;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+import retrofit2.http.PUT;
+
 /**
  * Description：服务器接口定义地址
  *
@@ -17,6 +19,8 @@ public class BaseHttpUrl {
 
     public static final int COMMUNITY_TYPE = 2;
 
+    public static final int JOURNALISM_TYPE = 3;
+
     /**
      * 用户服务器地址
      */
@@ -27,9 +31,11 @@ public class BaseHttpUrl {
      */
     public static final String COMMUNITY_SERVICE = "http://pre-newsns.27aichi.cn/";
 
+    public static final String JOURNALISM_SERVICE = "http://highlights.youth.cn/";
 
 
-    @IntDef({MAIN_TYPE,COMMUNITY_TYPE})
+
+    @IntDef({MAIN_TYPE,COMMUNITY_TYPE,JOURNALISM_TYPE})
     @Retention(RetentionPolicy.SOURCE)
     @interface isChekout{
 

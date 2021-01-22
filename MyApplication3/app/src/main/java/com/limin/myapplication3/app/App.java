@@ -8,6 +8,8 @@ import com.blankj.utilcode.util.Utils;
 import com.limin.myapplication3.BuildConfig;
 import com.limin.myapplication3.refresh.SmartRefreshLayout;
 
+import cn.wildfirechat.push.PushService;
+
 /**
  * Description
  *
@@ -43,5 +45,6 @@ public class App extends Application {
             layout.setEnableScrollContentWhenRefreshed(true);
             layout.setEnableFooterFollowWhenLoadFinished(true);
         });
+        PushService.init(this,BuildConfig.APPLICATION_ID);
     }
 }

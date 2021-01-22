@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:id="@+id/item_file_manager_rel">
+
+    <ImageView
+        android:id="@+id/item_file_manager_img_cover"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:src="@drawable/img_txt"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/item_file_manager_tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="3G面试题.docx"
+        android:textColor="@color/color_342e2e"
+        android:textSize="14dp"
+        android:layout_toRightOf="@id/item_file_manager_img_cover"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="12dp"/>
+
+    <TextView
+        android:id="@+id/item_file_manager_tv_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="10.2M"
+        android:textColor="@color/color_342e2e"
+        android:textSize="10dp"
+        android:layout_toRightOf="@id/item_file_manager_img_cover"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/item_file_manager_tv_name"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#999999"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="8dp"/>
+
+</RelativeLayout>

@@ -4,9 +4,12 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
+import android.util.TimeUtils;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.limin.myapplication3.interceptor.ReceivedCookiesInterceptor;
 import com.limin.myapplication3.interfaces.CommunityService;
+import com.limin.myapplication3.interfaces.JournalismService;
 import com.limin.myapplication3.interfaces.UserService;
 import com.limin.myapplication3.model.UserModel;
 import com.limin.myapplication3.receive.RxBus;
@@ -43,6 +46,7 @@ public class BaseRetrofitManager {
 
     private UserService userService;
     private CommunityService communityService;
+    private JournalismService journalismService;
     private static SparseArray<Retrofit> sRetrofitManager = new SparseArray<>();
 
 
@@ -64,15 +68,34 @@ public class BaseRetrofitManager {
         return instance;
     }
 
-
+    /**
+     * 用户服务器地址接口
+     *
+     * @return UserService
+     */
     public UserService baseService() {
         initRetrofit(BaseHttpUrl.MAIN_TYPE);
         return userService;
     }
 
+    /**
+     * 业务服务器地址接口
+     *
+     * @return CommunityService
+     */
     public CommunityService getCommunityService() {
         initRetrofit(BaseHttpUrl.COMMUNITY_TYPE);
         return communityService;
+    }
+
+    /**
+     * 业务服务器地址接口
+     *
+     * @return CommunityService
+     */
+    public JournalismService getJournalismService() {
+        initRetrofit(BaseHttpUrl.JOURNALISM_TYPE);
+        return journalismService;
     }
 
     /**
@@ -100,8 +123,10 @@ public class BaseRetrofitManager {
                 case BaseHttpUrl.COMMUNITY_TYPE:
                     communityService = mRetrofit.create(CommunityService.class);
                     break;
+                case BaseHttpUrl.JOURNALISM_TYPE:
+                    journalismService = mRetrofit.create(JournalismService.class);
+                    break;
                 default:
-                    userService = mRetrofit.create(UserService.class);
                     break;
             }
         }
@@ -137,6 +162,15 @@ public class BaseRetrofitManager {
                         .addInterceptor(new CodeInterceptor())
                         .build();
                 break;
+            case BaseHttpUrl.JOURNALISM_TYPE:
+                okHttpClient = new OkHttpClient.Builder()
+                        .connectTimeout(20, TimeUnit.SECONDS)
+                        .readTimeout(20, TimeUnit.SECONDS)
+                        .writeTimeout(20, TimeUnit.SECONDS)
+                        .addInterceptor(new LogInterceptor())
+                        .addInterceptor(new ReceivedCookiesInterceptor())
+                        .build();
+                break;
             default:
                 break;
         }
@@ -152,13 +186,16 @@ public class BaseRetrofitManager {
     private String getHostType(@BaseHttpUrl.isChekout int hostType) {
         String hostUrl;
         switch (hostType) {
+            // 用户服务器地址
             case BaseHttpUrl.MAIN_TYPE:
-                // 用户服务器地址
                 hostUrl = BaseHttpUrl.USER_SERVICE;
                 break;
             case BaseHttpUrl.COMMUNITY_TYPE:
-                // 社区服务器地址
+                // 业务服务器地址
                 hostUrl = BaseHttpUrl.COMMUNITY_SERVICE;
+                break;
+            case BaseHttpUrl.JOURNALISM_TYPE:
+                hostUrl = BaseHttpUrl.JOURNALISM_SERVICE;
                 break;
             default:
                 hostUrl = BaseHttpUrl.USER_SERVICE;
@@ -177,13 +214,13 @@ public class BaseRetrofitManager {
             Request request = chain.request();
             long t1 = System.nanoTime();
             String bodyStr = bodyToString(request);
-            LogUtils.json(this.getClass().getName(), String.format("请求参数 %s: body=   %s", URLDecoder.decode(URLDecoder.decode(String.valueOf(request.url()),"utf-8"),"utf-8"), URLDecoder.decode(URLDecoder.decode(bodyStr,"utf-8"),"utf-8")));
+            LogUtils.json(this.getClass().getName(), String.format("请求参数 %s: body=   %s", URLDecoder.decode(URLDecoder.decode(String.valueOf(request.url()), "utf-8"), "utf-8"), URLDecoder.decode(URLDecoder.decode(bodyStr, "utf-8"), "utf-8")));
 
             Response response = chain.proceed(request);
             long t2 = System.nanoTime();
             if (response.body() != null) {
                 ResponseBody body = response.peekBody(1024 * 1024);
-                LogUtils.json(this.getClass().getName(), String.format(Locale.getDefault(), "返回数据 %s in %.1fms%n   %s", URLDecoder.decode(URLDecoder.decode(String.valueOf(response.request().url()),"utf-8"),"utf-8"), (t2 - t1) / 1e6d, body.string()));
+                LogUtils.json(this.getClass().getName(), String.format(Locale.getDefault(), "返回数据 %s in %.1fms%n   %s", URLDecoder.decode(URLDecoder.decode(String.valueOf(response.request().url()), "utf-8"), "utf-8"), (t2 - t1) / 1e6d, body.string()));
             } else {
                 Log.i(this.getClass().getName(), "body null");
                 LogUtils.e("服务器数据异常" + request.url());
@@ -290,17 +327,17 @@ public class BaseRetrofitManager {
             RequestBody builder = request.body();
             UserModel userModel = UserManagerUtils.getInstance().getUserModel();
             FormBody.Builder newBuilder = new FormBody.Builder();
-            newBuilder.add("user",GsonUtils.toJson(userModel));
-            newBuilder.add("token",token);
+            newBuilder.add("user", GsonUtils.toJson(userModel));
+            newBuilder.add("token", token);
 
             if (builder instanceof FormBody) {
                 FormBody formBody = (FormBody) builder;
-                for (int i = 0; i <formBody.size(); i++) {
-                    newBuilder.add(formBody.name(i),formBody.value(i));
+                for (int i = 0; i < formBody.size(); i++) {
+                    newBuilder.add(formBody.name(i), formBody.value(i));
                 }
             }
             return request.newBuilder()
-                    .method(request.method(),request.body())
+                    .method(request.method(), request.body())
                     .post(newBuilder.build())
                     .build();
         }

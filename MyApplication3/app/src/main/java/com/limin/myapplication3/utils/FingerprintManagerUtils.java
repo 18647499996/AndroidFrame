@@ -84,12 +84,12 @@ public class FingerprintManagerUtils {
                     Cipher cipher = result.getCryptoObject().getCipher();
                     byte[] bytes = cipher.doFinal("helloworld".getBytes());
                     //保存加密过后的字符串
-                    LogUtils.d("指纹信息：" + new String(bytes));
+//                    LogUtils.d("指纹信息：" + new String(bytes));
                     SPUtils.getInstance().put("hello", android.util.Base64.encodeToString(bytes, android.util.Base64.URL_SAFE));
                     LogUtils.d("加密指纹信息：" + android.util.Base64.encodeToString(bytes, android.util.Base64.URL_SAFE));
                     //保存用于做AES-CBC加密变换的初始向量数组
                     byte[] iv = cipher.getIV();
-                    LogUtils.d("IV信息：" + new String(iv));
+//                    LogUtils.d("IV信息：" + new String(iv));
                     SPUtils.getInstance().put("iv", android.util.Base64.encodeToString(iv, Base64.URL_SAFE));
                     LogUtils.d("加密IV：" + android.util.Base64.encodeToString(iv, Base64.URL_SAFE));
 
@@ -141,7 +141,7 @@ public class FingerprintManagerUtils {
                             LogUtils.d("TestFingerprintActivity", "解密iv:" + Base64.encodeToString(iv, Base64.URL_SAFE));
 
                             //保存用于做AES-CBC
-                            LogUtils.d("解密成功");
+//                            LogUtils.d("解密成功");
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

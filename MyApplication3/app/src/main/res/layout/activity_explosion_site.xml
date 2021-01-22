@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/activity_title_builder" />
+
+    <ImageView
+        android:id="@+id/activity_explosion_site_img_1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/act_title_bor"
+        android:src="@drawable/img_xls"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp" />
+
+    <ImageView
+        android:id="@+id/activity_explosion_site_img_2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/act_title_bor"
+        android:src="@drawable/img_pdf"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@id/activity_explosion_site_img_1"/>
+
+    <ImageView
+        android:id="@+id/activity_explosion_site_img_3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/act_title_bor"
+        android:src="@drawable/img_txt"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@id/activity_explosion_site_img_2"/>
+
+    <ImageView
+        android:id="@+id/activity_explosion_site_img_4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/activity_explosion_site_img_1"
+        android:src="@drawable/img_doc"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp" />
+
+    <ImageView
+        android:id="@+id/activity_explosion_site_img_5"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/activity_explosion_site_img_1"
+        android:src="@drawable/img_ppt"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@id/activity_explosion_site_img_4"/>
+
+    <ImageView
+        android:id="@+id/activity_explosion_site_img_6"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/activity_explosion_site_img_1"
+        android:src="@drawable/img_wps"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@id/activity_explosion_site_img_5"/>
+
+</RelativeLayout>

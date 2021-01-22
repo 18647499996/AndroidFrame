@@ -23,6 +23,8 @@ public class Constant {
     public static final long EXIT_TIME = 2000;
     public static final int REGEOCODE_SEARCHED_SUCCESS = 1000;
 
+    public static final String COOKIE_VALUE = "c_value";
+
     /**
      * SP缓存文件目录
      */

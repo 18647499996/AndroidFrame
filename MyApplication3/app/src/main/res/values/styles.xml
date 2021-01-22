@@ -16,4 +16,10 @@
         <item name="colorAccent">@android:color/transparent</item>
     </style>
 
+    <style name="FingerTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:animation">@null</item>
+    </style>
+
 </resources>
