@@ -28,7 +28,7 @@ class FilePresenter extends BaseSubscription<FileConstract.View> implements File
     }
 
     @Override
-    public void start() {
+    public void onSubscribe() {
 
     }
 

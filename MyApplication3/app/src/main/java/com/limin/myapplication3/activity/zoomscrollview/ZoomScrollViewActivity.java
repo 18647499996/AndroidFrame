@@ -72,7 +72,7 @@ public class ZoomScrollViewActivity extends BaseActivity<ZoomScrollViewPresenter
     }
 
     @Override
-    protected TitleBuilder initBuilerTitle() throws RuntimeException {
+    protected TitleBuilder initBuilderTitle() throws RuntimeException {
         return null;
     }
 
@@ -83,7 +83,7 @@ public class ZoomScrollViewActivity extends BaseActivity<ZoomScrollViewPresenter
         zoomScrollViewAdapter = new ZoomScrollViewAdapter(R.layout.item_vitae,this);
         activityVitaeRx.setLayoutManager(new LinearLayoutManager(this));
         activityVitaeRx.setAdapter(zoomScrollViewAdapter);
-        presenter.start();
+        presenter.onSubscribe();
         presenter.queryData();
     }
 
@@ -104,7 +104,7 @@ public class ZoomScrollViewActivity extends BaseActivity<ZoomScrollViewPresenter
 
     @Override
     protected ZoomScrollViewPresenter createPresenter() throws RuntimeException {
-        return (ZoomScrollViewPresenter) new ZoomScrollViewPresenter(this).Bulider(this);
+        return (ZoomScrollViewPresenter) new ZoomScrollViewPresenter(this).builder(this);
     }
 
     @Override

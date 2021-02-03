@@ -3,12 +3,10 @@ package com.limin.myapplication3.activity.bluetooth;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.limin.myapplication3.R;
-import com.limin.myapplication3.activity.file.FileManagerActivity;
 import com.limin.myapplication3.base.BaseActivity;
 import com.limin.myapplication3.utils.TitleBuilder;
 
@@ -36,13 +34,13 @@ public class BluetoothActivity extends BaseActivity<BluetoothPresenter> implemen
     }
 
     @Override
-    protected TitleBuilder initBuilerTitle() throws RuntimeException {
+    protected TitleBuilder initBuilderTitle() throws RuntimeException {
         return new TitleBuilder(this).setMiddleTitleBgRes("蓝牙通讯");
     }
 
     @Override
     protected void initData(Bundle savedInstanceState) throws RuntimeException {
-        mPresenter.start();
+        mPresenter.onSubscribe();
         mPresenter.getBluetoothDeviceList(this);
     }
 
@@ -63,7 +61,7 @@ public class BluetoothActivity extends BaseActivity<BluetoothPresenter> implemen
 
     @Override
     protected BluetoothPresenter createPresenter() throws RuntimeException {
-        return (BluetoothPresenter) new BluetoothPresenter(this).Bulider(this);
+        return (BluetoothPresenter) new BluetoothPresenter(this).builder(this);
     }
 
     @Override

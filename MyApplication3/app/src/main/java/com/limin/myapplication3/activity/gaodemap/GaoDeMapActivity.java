@@ -72,13 +72,13 @@ public class GaoDeMapActivity extends BaseActivity<GaoDeMapPresenter> implements
     }
 
     @Override
-    protected TitleBuilder initBuilerTitle() throws RuntimeException {
+    protected TitleBuilder initBuilderTitle() throws RuntimeException {
         return null;
     }
 
     @Override
     protected void initData(Bundle savedInstanceState) throws RuntimeException {
-        mPresenter.start();
+        mPresenter.onSubscribe();
         activityBaiduMapRel.onCreate(savedInstanceState);
         // 配置百度Map定位
         aMap = mPresenter.settingBaiduMapOption(activityBaiduMapRel);
@@ -120,7 +120,7 @@ public class GaoDeMapActivity extends BaseActivity<GaoDeMapPresenter> implements
 
     @Override
     protected GaoDeMapPresenter createPresenter() throws RuntimeException {
-        return (GaoDeMapPresenter) new GaoDeMapPresenter(this).Bulider(this);
+        return (GaoDeMapPresenter) new GaoDeMapPresenter(this).builder(this);
     }
 
     @Override

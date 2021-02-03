@@ -46,13 +46,13 @@ public class ExplosionSiteActivity extends BaseActivity<ExplosionSitePresenter> 
     }
 
     @Override
-    protected TitleBuilder initBuilerTitle() throws RuntimeException {
+    protected TitleBuilder initBuilderTitle() throws RuntimeException {
         return new TitleBuilder(this).setMiddleTitleBgRes("粒子爆炸特效");
     }
 
     @Override
     protected void initData(Bundle savedInstanceState) throws RuntimeException {
-        mPresenter.start();
+        mPresenter.onSubscribe();
     }
 
     @Override
@@ -97,7 +97,7 @@ public class ExplosionSiteActivity extends BaseActivity<ExplosionSitePresenter> 
 
     @Override
     protected ExplosionSitePresenter createPresenter() throws RuntimeException {
-        return (ExplosionSitePresenter) new ExplosionSitePresenter(this).Bulider(this);
+        return (ExplosionSitePresenter) new ExplosionSitePresenter(this).builder(this);
     }
 
     @Override

@@ -54,7 +54,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     }
 
     @Override
-    protected TitleBuilder initBuilerTitle() {
+    protected TitleBuilder initBuilderTitle() {
         return null;
     }
 
@@ -62,7 +62,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     protected void initData(Bundle savedInstanceState) {
         immersionBar.transparentStatusBar().statusBarDarkFont(false).init();
-        presenter.start();
+        presenter.onSubscribe();
         presenter.startAnimation(activityLoginImgBg);
         activityLoginEdtUser.setText("13800138001");
         activityLoginEdtPws.setText("qqqqqq");
@@ -86,7 +86,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     protected LoginPresenter createPresenter() throws RuntimeException {
-        return (LoginPresenter) new LoginPresenter(this).Bulider(this);
+        return (LoginPresenter) new LoginPresenter(this).builder(this);
     }
 
     @Override

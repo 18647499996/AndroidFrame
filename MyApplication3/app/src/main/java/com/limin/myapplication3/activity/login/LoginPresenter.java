@@ -41,7 +41,7 @@ class LoginPresenter extends BaseSubscription<LoginConstract.View> implements Lo
     }
 
     @Override
-    public void start() {
+    public void onSubscribe() {
 
     }
 

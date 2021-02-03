@@ -25,7 +25,7 @@ class DemoPresenter extends BaseSubscription<DemoContract.View> implements DemoC
     }
 
     @Override
-    public void start() {
+    public void onSubscribe() {
 
     }
 

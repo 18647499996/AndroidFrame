@@ -36,7 +36,7 @@ public abstract class BaseSubscription<V extends BaseView> implements BasePresen
      * @param context 上下文
      * @return
      */
-    public BaseSubscription Bulider(Context context) {
+    public BaseSubscription builder(Context context) {
         this.context = context;
         return this;
     }

@@ -25,7 +25,6 @@ import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Description：侧滑菜单
@@ -56,13 +55,13 @@ public class SwipeMenuRecyclerViewActivity extends BaseActivity<SwipeMenuRecycle
     }
 
     @Override
-    protected TitleBuilder initBuilerTitle() throws RuntimeException {
+    protected TitleBuilder initBuilderTitle() throws RuntimeException {
         return new TitleBuilder(this).setMiddleTitleBgRes("侧滑菜单", R.color.black, R.color.with);
     }
 
     @Override
     protected void initData(Bundle savedInstanceState) throws RuntimeException {
-        presenter.start();
+        presenter.onSubscribe();
         IssueAdapter issueAdapter = new IssueAdapter(R.layout.item_issue, this);
         activitySwipemenuRv.setSwipeMenuCreator(this);
         activitySwipemenuRv.setSwipeMenuItemClickListener(this);
@@ -87,7 +86,7 @@ public class SwipeMenuRecyclerViewActivity extends BaseActivity<SwipeMenuRecycle
 
     @Override
     protected SwipeMenuRecyclerViewPrestener createPresenter() throws RuntimeException {
-        return (SwipeMenuRecyclerViewPrestener) new SwipeMenuRecyclerViewPrestener(this).Bulider(this);
+        return (SwipeMenuRecyclerViewPrestener) new SwipeMenuRecyclerViewPrestener(this).builder(this);
     }
 
     @Override

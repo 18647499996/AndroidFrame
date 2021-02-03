@@ -41,7 +41,7 @@ public class DragTopLayoutActivity extends BaseActivity implements DragTopLayout
     }
 
     @Override
-    protected TitleBuilder initBuilerTitle() throws RuntimeException {
+    protected TitleBuilder initBuilderTitle() throws RuntimeException {
         return new TitleBuilder(this).setMiddleTitleBgRes("DragTopLayout", R.color.black, R.color.with);
     }
 

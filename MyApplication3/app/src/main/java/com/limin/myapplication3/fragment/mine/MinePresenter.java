@@ -34,17 +34,19 @@ import rx.observables.SyncOnSubscribe;
  */
 class MinePresenter extends BaseSubscription<MineContract.View> implements MineContract.Presenter {
 
-    private String[] stringArray = new String[]{"开启服务","侧滑删除","视频播放器","停止服务",
+    private String[] stringArray = new String[]{
+            "开启服务","侧滑删除","视频播放器","停止服务",
             "CollapsingToolbarLayout","Top下拉布局","NewIntent",
-            "加密指纹","解密指纹","高德定位",
-            "停止定位","搞得地图","文件管理器","弹幕","蓝牙","粒子爆炸特效"};
+            "加密指纹","解密指纹","高德定位", "停止定位",
+            "高德地图","文件管理器","弹幕","蓝牙",
+            "粒子爆炸特效","光线传感器"};
 
     MinePresenter(MineContract.View view) {
         super(view);
     }
 
     @Override
-    public void start() {
+    public void onSubscribe() {
         view.showAddView(stringArray);
 
     }

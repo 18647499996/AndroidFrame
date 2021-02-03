@@ -21,7 +21,6 @@ import com.limin.myapplication3.view.DragView;
 import org.jetbrains.annotations.NotNull;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Description：
@@ -50,7 +49,7 @@ public class DemoActivity extends BaseActivity<DemoPresenter> implements DemoCon
     }
 
     @Override
-    protected TitleBuilder initBuilerTitle() throws RuntimeException {
+    protected TitleBuilder initBuilderTitle() throws RuntimeException {
         return new TitleBuilder(this)
                 .setMiddleTitleBgRes("Demo", R.color.with, R.color.colorAccent)
                 .setLeftTextRes("返回", 16, R.color.with)
@@ -60,8 +59,8 @@ public class DemoActivity extends BaseActivity<DemoPresenter> implements DemoCon
     @Override
     protected void initData(Bundle savedInstanceState) throws RuntimeException {
         immersionBar.transparentStatusBar().statusBarDarkFont(false).init();
-        mPresenter = (DemoContract.Presenter) new DemoPresenter(this).Bulider(this);
-        mPresenter.start();
+        mPresenter = (DemoContract.Presenter) new DemoPresenter(this).builder(this);
+        mPresenter.onSubscribe();
         new DragView.Builder()
                 .setActivity(this)
                 .setDefaultLeft(30)
@@ -96,7 +95,7 @@ public class DemoActivity extends BaseActivity<DemoPresenter> implements DemoCon
 
     @Override
     protected DemoPresenter createPresenter() throws RuntimeException {
-        return (DemoPresenter) new DemoPresenter(this).Bulider(this);
+        return (DemoPresenter) new DemoPresenter(this).builder(this);
     }
 
     @Override

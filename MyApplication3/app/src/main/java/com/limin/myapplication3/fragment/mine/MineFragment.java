@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.view.View;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationListener;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.ihidea.multilinechooselib.MultiLineChooseLayout;
@@ -17,24 +15,19 @@ import com.limin.myapplication3.activity.dragtop.DragTopLayoutActivity;
 import com.limin.myapplication3.activity.explosionsite.ExplosionSiteActivity;
 import com.limin.myapplication3.activity.file.FileManagerActivity;
 import com.limin.myapplication3.activity.gaodemap.GaoDeMapActivity;
+import com.limin.myapplication3.activity.sensor.SensorActivity;
 import com.limin.myapplication3.activity.swipemenu.SwipeMenuRecyclerViewActivity;
 import com.limin.myapplication3.activity.videoplay.VideoPlayActivity;
 import com.limin.myapplication3.activity.zoomscrollview.ZoomScrollViewActivity;
 import com.limin.myapplication3.adapter.BarrageViewAdapter;
 import com.limin.myapplication3.base.BaseFragment;
 import com.limin.myapplication3.model.BarrageModel;
-import com.limin.myapplication3.model.UserModel;
 import com.limin.myapplication3.service.BackgroundService;
 import com.limin.myapplication3.utils.FingerprintManagerUtils;
 import com.limin.myapplication3.utils.LocationUtils;
 import com.limin.myapplication3.utils.TitleBuilder;
-import com.limin.myapplication3.utils.fngerprint.FingerprintScanHelper;
-import com.limin.myapplication3.utils.fngerprint.OnAuthResultListener;
 import com.orient.tea.barragephoto.adapter.BarrageAdapter;
-import com.orient.tea.barragephoto.model.DataSource;
 import com.orient.tea.barragephoto.ui.BarrageView;
-
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -66,7 +59,7 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-        mPresenter.start();
+        mPresenter.onSubscribe();
         BarrageView.Options options = new BarrageView.Options()
                 // 设置弹幕的位置
                 .setGravity(BarrageView.GRAVITY_TOP)
@@ -108,7 +101,7 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
 
     @Override
     protected MinePresenter createPresenter() throws RuntimeException {
-        return (MinePresenter) new MinePresenter(this).Bulider(getActivity());
+        return (MinePresenter) new MinePresenter(this).builder(getActivity());
     }
 
     @Override
@@ -220,6 +213,9 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
                 break;
             case 15:
                 ExplosionSiteActivity.startActivity(getActivity(),ExplosionSiteActivity.class);
+                break;
+            case 16:
+                SensorActivity.startActivity(getActivity(),SensorActivity.class);
                 break;
             default:
                 break;

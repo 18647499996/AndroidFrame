@@ -26,7 +26,7 @@ public interface BasePresenter {
     /**
      * 初始化数据
      */
-     void start();
+     void onSubscribe();
 
     /**
      * 释放presenter资源

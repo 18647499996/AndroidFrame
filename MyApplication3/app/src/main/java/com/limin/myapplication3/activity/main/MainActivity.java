@@ -18,7 +18,6 @@ import com.limin.myapplication3.activity.demo.DemoActivity;
 import com.limin.myapplication3.adapter.TabAdapter;
 import com.limin.myapplication3.base.BaseActivity;
 import com.limin.myapplication3.model.UserModel;
-import com.limin.myapplication3.utils.AppShortCutUtil;
 import com.limin.myapplication3.utils.Constant;
 import com.limin.myapplication3.utils.ListDataUtils;
 import com.limin.myapplication3.utils.TitleBuilder;
@@ -54,7 +53,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
     @Override
-    protected TitleBuilder initBuilerTitle() {
+    protected TitleBuilder initBuilderTitle() {
         return null;
     }
 
@@ -63,7 +62,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     protected void initData(Bundle savedInstanceState) {
         setSwipeBackEnable(false);
         immersionBar.transparentStatusBar().statusBarDarkFont(true).init();
-        mPresenter.start();
+        mPresenter.onSubscribe();
         TabAdapter tabAdapter = new TabAdapter(getSupportFragmentManager(), mFragments, titleArray);
         activityMainVp.setAdapter(tabAdapter);
         activityMainTab.setupWithViewPager(activityMainVp);
@@ -90,7 +89,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     protected MainPresenter createPresenter() throws RuntimeException {
-        return (MainPresenter) new MainPresenter(this).Bulider(this);
+        return (MainPresenter) new MainPresenter(this).builder(this);
     }
 
 

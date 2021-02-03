@@ -16,7 +16,7 @@ public class SwipeMenuRecyclerViewPrestener extends BaseSubscription<SwipeMenuRe
     }
 
     @Override
-    public void start() {
+    public void onSubscribe() {
 
     }
 

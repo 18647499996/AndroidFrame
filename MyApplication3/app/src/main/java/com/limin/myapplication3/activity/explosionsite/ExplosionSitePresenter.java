@@ -15,7 +15,7 @@ class ExplosionSitePresenter extends BaseSubscription<ExplosionSiteConstract.Vie
     }
 
     @Override
-    public void start() {
+    public void onSubscribe() {
 
     }
 }

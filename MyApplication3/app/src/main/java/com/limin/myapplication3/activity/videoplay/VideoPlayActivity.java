@@ -39,7 +39,7 @@ public class VideoPlayActivity extends BaseActivity {
     }
 
     @Override
-    protected TitleBuilder initBuilerTitle() throws RuntimeException {
+    protected TitleBuilder initBuilderTitle() throws RuntimeException {
         return new TitleBuilder(this).setMiddleTitleBgRes("视频播放",R.color.black,R.color.with);
     }
 

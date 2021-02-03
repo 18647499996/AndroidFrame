@@ -28,7 +28,7 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestCon
     @Override
     protected void initData(Bundle savedInstanceState) {
         immersionBar.transparentStatusBar().statusBarDarkFont(true).init();
-        mPresenter.start();
+        mPresenter.onSubscribe();
     }
 
     @Override
@@ -48,11 +48,11 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestCon
 
     @Override
     protected TestPresenter createPresenter() throws RuntimeException {
-        return (TestPresenter) new TestPresenter(this).Bulider(this);
+        return (TestPresenter) new TestPresenter(this).builder(this);
     }
 
     @Override
-    protected TitleBuilder initBuilerTitle() {
+    protected TitleBuilder initBuilderTitle() {
         return new TitleBuilder(this)
                 .setMiddleTitleBgRes("Test",R.color.black,R.color.with);
     }

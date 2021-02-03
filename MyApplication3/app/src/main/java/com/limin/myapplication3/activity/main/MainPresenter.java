@@ -31,7 +31,7 @@ public class MainPresenter extends BaseSubscription<MainConstract.View> implemen
     }
 
     @Override
-    public void start() {
+    public void onSubscribe() {
         register = RxBus.get().register(Constant.TOKEN, new EventSubscriber<Event>() {
             @Override
             public void onEvent(Event event) {

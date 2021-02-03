@@ -34,7 +34,7 @@ class FileManagerPresenter extends BaseSubscription<FileManagerConstract.View> i
     }
 
     @Override
-    public void start() {
+    public void onSubscribe() {
 
     }
 

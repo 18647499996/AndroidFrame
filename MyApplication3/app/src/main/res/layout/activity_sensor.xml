@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.sensor.SensorActivity">
+
+
+    <TextView
+        android:id="@+id/activity_sensor_tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="光线强度"
+        android:textSize="18dp"
+        android:textColor="@color/color_342e2e"/>
+
+</LinearLayout>

@@ -21,7 +21,7 @@ class BluetoothPresenter extends BaseSubscription<BluetoothConstract.View> imple
     }
 
     @Override
-    public void start() {
+    public void onSubscribe() {
 
     }
 

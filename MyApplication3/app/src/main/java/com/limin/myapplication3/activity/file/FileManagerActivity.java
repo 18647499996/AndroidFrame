@@ -43,13 +43,13 @@ public class FileManagerActivity extends BaseActivity<FileManagerPresenter> impl
     }
 
     @Override
-    protected TitleBuilder initBuilerTitle() throws RuntimeException {
+    protected TitleBuilder initBuilderTitle() throws RuntimeException {
         return new TitleBuilder(this).setMiddleTitleBgRes("文件管理器");
     }
 
     @Override
     protected void initData(Bundle savedInstanceState) throws RuntimeException {
-        mPresenter.start();
+        mPresenter.onSubscribe();
         mPresenter.setViewPager(this,activityFileManagerVp);
         mPresenter.setMagicIndicator(activityFileManagerMagicIndicator,activityFileManagerVp,this);
     }
@@ -71,7 +71,7 @@ public class FileManagerActivity extends BaseActivity<FileManagerPresenter> impl
 
     @Override
     protected FileManagerPresenter createPresenter() throws RuntimeException {
-        return (FileManagerPresenter) new FileManagerPresenter(this).Bulider(this);
+        return (FileManagerPresenter) new FileManagerPresenter(this).builder(this);
     }
 
     @Override

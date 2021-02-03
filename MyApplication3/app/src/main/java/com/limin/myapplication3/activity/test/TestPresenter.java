@@ -16,7 +16,7 @@ class TestPresenter extends BaseSubscription implements TestConstract.Presenter 
     }
 
     @Override
-    public void start() {
+    public void onSubscribe() {
 
     }
 }

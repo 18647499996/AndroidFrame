@@ -41,7 +41,7 @@ public class TxtFragment extends BaseFragment<FilePresenter> implements FileCons
 
     @Override
     protected void initData(Bundle savedInstanceState) throws RuntimeException {
-        mPresenter.start();
+        mPresenter.onSubscribe();
         fileManagerAdapter = new FileManagerAdapter(R.layout.item_file_manager,getActivity());
         fragmentFileRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         fragmentFileRv.setAdapter(fileManagerAdapter);
@@ -60,7 +60,7 @@ public class TxtFragment extends BaseFragment<FilePresenter> implements FileCons
 
     @Override
     protected FilePresenter createPresenter() throws RuntimeException {
-        return (FilePresenter) new FilePresenter(this).Bulider(getActivity());
+        return (FilePresenter) new FilePresenter(this).builder(getActivity());
     }
 
     @Override

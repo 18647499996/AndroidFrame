@@ -22,7 +22,7 @@ class ZoomScrollViewPresenter extends BaseSubscription<ZoomScrollViewConstract.V
     }
 
     @Override
-    public void start() {
+    public void onSubscribe() {
 
     }
 

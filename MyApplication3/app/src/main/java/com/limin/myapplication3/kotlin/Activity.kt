@@ -23,7 +23,7 @@ class Activity:BaseActivity(){
         return R.layout.activity_login
     }
 
-    override fun initBuilerTitle(): TitleBuilder {
+    fun initBuilderTitle(): TitleBuilder {
         return TitleBuilder(this)
     }
 

@@ -47,7 +47,7 @@ class GaoDeMapPresenter extends BaseSubscription<GaoDeMapConstract.View> impleme
 
 
     @Override
-    public void start() {
+    public void onSubscribe() {
 
     }
 

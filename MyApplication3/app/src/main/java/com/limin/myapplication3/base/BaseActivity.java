@@ -48,7 +48,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
             // 初始化ButterKnife
             ButterKnife.bind(this);
             // 初始化标题
-            initBuilerTitle();
+            initBuilderTitle();
             // 初始化数据
             initDatas(savedInstanceState);
             // 设置监听事件
@@ -75,7 +75,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
      * @return TitleBuilder 实例
      */
     @RequiresApi(api = Build.VERSION_CODES.N)
-    protected abstract TitleBuilder initBuilerTitle() throws RuntimeException;
+    protected abstract TitleBuilder initBuilderTitle() throws RuntimeException;
 
     /**
      * 初始化数据

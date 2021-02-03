@@ -37,7 +37,7 @@ public class WelComeActivity extends BaseActivity {
     }
 
     @Override
-    protected TitleBuilder initBuilerTitle() {
+    protected TitleBuilder initBuilderTitle() {
         return null;
     }
 

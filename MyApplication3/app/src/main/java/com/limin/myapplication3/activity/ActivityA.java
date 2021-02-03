@@ -38,7 +38,7 @@ public class ActivityA extends BaseActivity {
     }
 
     @Override
-    protected TitleBuilder initBuilerTitle() throws RuntimeException {
+    protected TitleBuilder initBuilderTitle() throws RuntimeException {
         return null;
     }
 
