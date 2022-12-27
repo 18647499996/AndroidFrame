@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.18647499996:AndroidFrame'
+group = 'com.github.18647499996:AndroidFrame:remote_maven'
 
 android {
     compileSdkVersion 31
