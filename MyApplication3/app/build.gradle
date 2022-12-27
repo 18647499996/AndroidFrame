@@ -121,6 +121,8 @@ dependencies {
 //    implementation 'com.github.zhaolei9527:Particle-master:v1.0.1'
     // google推送
     implementation 'com.google.firebase:firebase-messaging:23.0.5'
+    // 添加依赖
+    implementation project(':remote_maven')
 
 
 
