@@ -3,7 +3,7 @@ package com.limin.myapplication3.utils;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.limin.myapplication3.activity.main.MainActivity;
 import com.limin.myapplication3.app.App;

@@ -1,10 +1,11 @@
 package com.limin.myapplication3.fragment.home;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 
 import com.baidu.aip.nlp.AipNlp;
@@ -24,7 +25,8 @@ import java.util.List;
 
 import butterknife.BindView;
 
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
+import static android.widget.LinearLayout.VERTICAL;
+
 
 /**
  * Description

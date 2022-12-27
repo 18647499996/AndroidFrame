@@ -2,7 +2,7 @@ package com.limin.myapplication3.fragment.mine;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.RequiresApi;
 import android.view.View;
 
 import com.blankj.utilcode.util.LogUtils;
@@ -10,6 +10,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.ihidea.multilinechooselib.MultiLineChooseLayout;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.activity.ActivityA;
+import com.limin.myapplication3.activity.audio.AudioRecorderActivity;
 import com.limin.myapplication3.activity.bluetooth.BluetoothActivity;
 import com.limin.myapplication3.activity.dragtop.DragTopLayoutActivity;
 import com.limin.myapplication3.activity.explosionsite.ExplosionSiteActivity;
@@ -216,6 +217,9 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
                 break;
             case 16:
                 SensorActivity.startActivity(getActivity(),SensorActivity.class);
+                break;
+            case 17:
+                AudioRecorderActivity.startActivity(getActivity(),AudioRecorderActivity.class);
                 break;
             default:
                 break;

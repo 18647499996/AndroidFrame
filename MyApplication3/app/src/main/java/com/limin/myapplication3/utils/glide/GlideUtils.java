@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import android.widget.ImageView;
 
 import com.bumptech.glide.BitmapRequestBuilder;
@@ -112,8 +114,8 @@ public class GlideUtils {
     private static <T, K> DrawableTypeRequest<K> getDrawableTypeRequest(T context, K url) {
         DrawableTypeRequest<K> type = null;
         try {
-            if (context instanceof android.support.v4.app.Fragment) {
-                type = Glide.with((android.support.v4.app.Fragment) context).load(url);
+            if (context instanceof Fragment) {
+                type = Glide.with((android.app.Fragment) context).load(url);
             } else if (context instanceof android.app.Fragment) {
                 type = Glide.with((android.app.Fragment) context).load(url);
             } else if (context instanceof Activity) {

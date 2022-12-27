@@ -11,7 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/push" />
+            <option value="$PROJECT_DIR$/remote_maven" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

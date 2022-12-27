@@ -1,6 +1,7 @@
 package com.limin.myapplication3.refresh.listener;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.limin.myapplication3.refresh.api.RefreshLayout;
 

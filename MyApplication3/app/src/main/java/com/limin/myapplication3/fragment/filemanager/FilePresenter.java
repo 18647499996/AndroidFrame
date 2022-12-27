@@ -3,7 +3,8 @@ package com.limin.myapplication3.fragment.filemanager;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.provider.MediaStore;
-import android.support.v4.app.FragmentActivity;
+
+import androidx.fragment.app.FragmentActivity;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.limin.myapplication3.base.BaseSubscription;

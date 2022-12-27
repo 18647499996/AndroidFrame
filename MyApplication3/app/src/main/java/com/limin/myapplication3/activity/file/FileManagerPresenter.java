@@ -1,7 +1,8 @@
 package com.limin.myapplication3.activity.file;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.limin.myapplication3.base.BasePageAdapter;
 import com.limin.myapplication3.base.BaseSubscription;

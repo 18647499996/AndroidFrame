@@ -1,10 +1,11 @@
 package com.limin.myapplication3.refresh.util;
 
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+import com.google.android.material.appbar.AppBarLayout;
 import com.limin.myapplication3.refresh.api.RefreshKernel;
 import com.limin.myapplication3.refresh.listener.CoordinatorLayoutListener;
 

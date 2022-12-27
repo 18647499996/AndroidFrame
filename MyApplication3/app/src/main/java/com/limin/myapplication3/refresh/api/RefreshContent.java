@@ -1,9 +1,10 @@
 package com.limin.myapplication3.refresh.api;
 
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.support.annotation.NonNull;
 import android.view.MotionEvent;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 
 /**
  * 刷新内容组件

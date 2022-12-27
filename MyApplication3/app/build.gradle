@@ -1,14 +1,17 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 29
+    buildToolsVersion "28.0.3"
+
     defaultConfig {
         applicationId "com.limin.myapplication3"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
     }
@@ -43,6 +46,7 @@ android {
             storePassword "123456"
             keyAlias "key"
             keyPassword "123456"
+            v2SigningEnabled false
         }
     }
 
@@ -69,13 +73,9 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.0.0'
+
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     //导入retrofit
     implementation 'com.google.code.gson:gson:2.8.2'
@@ -89,13 +89,15 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
     //配合Rxjava 使用
     implementation 'io.reactivex:rxandroid:1.1.0'
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'junit:junit:4.12'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
     implementation 'com.alibaba.p3c.idea:p3c-common:1.0.0'
     implementation 'com.blankj:utilcode:1.10.0'
     implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
     implementation 'me.imid.swipebacklayout.lib:library:1.1.0'
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
     implementation 'com.github.chenupt.android:dragtoplayout:1.2.1@aar'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'liji.library.dev:multilinechooselib:1.6.0'
@@ -108,7 +110,7 @@ dependencies {
     implementation files('libs/AMap3DMap_7.5.0_AMapSearch_7.3.0_AMapLocation_5.0.0_20200610.jar')
     // 指纹验证
 //    implementation 'com.github.jianyuyouhun:FingerprintScanHelper:1.0.2'
-    implementation project(':push')
+//    implementation project(':push')
     // tab指示器
     implementation 'com.github.hackware1993:MagicIndicator:1.5.0'
     // 弹幕
@@ -116,7 +118,9 @@ dependencies {
     // 蓝牙服务
     implementation 'com.inuker.bluetooth:library:1.4.0'
     // 粒子爆炸特效
-    implementation 'com.github.zhaolei9527:Particle-master:v1.0.1'
+//    implementation 'com.github.zhaolei9527:Particle-master:v1.0.1'
+    // google推送
+    implementation 'com.google.firebase:firebase-messaging:23.0.5'
 
 
 

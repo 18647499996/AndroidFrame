@@ -2,12 +2,13 @@ package com.limin.myapplication3.refresh.footer;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.refresh.api.RefreshFooter;

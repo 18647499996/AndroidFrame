@@ -1,1 +1,2 @@
-include ':app','push'
+include ':remote_maven'
+include ':app'

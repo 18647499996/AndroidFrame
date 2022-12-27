@@ -3,17 +3,18 @@ package com.limin.myapplication3.refresh.impl;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.graphics.PointF;
-import android.support.annotation.NonNull;
-import android.support.v4.view.NestedScrollingChild;
-import android.support.v4.view.NestedScrollingParent;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.Space;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.FrameLayout;
+import android.widget.Space;
+
+import androidx.annotation.NonNull;
+import androidx.core.view.NestedScrollingChild;
+import androidx.core.view.NestedScrollingParent;
+import androidx.viewpager.widget.ViewPager;
 
 import com.limin.myapplication3.refresh.api.RefreshContent;
 import com.limin.myapplication3.refresh.api.RefreshKernel;

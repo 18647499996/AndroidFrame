@@ -39,7 +39,7 @@ class MinePresenter extends BaseSubscription<MineContract.View> implements MineC
             "CollapsingToolbarLayout","Top下拉布局","NewIntent",
             "加密指纹","解密指纹","高德定位", "停止定位",
             "高德地图","文件管理器","弹幕","蓝牙",
-            "粒子爆炸特效","光线传感器"};
+            "粒子爆炸特效","光线传感器","语音发送"};
 
     MinePresenter(MineContract.View view) {
         super(view);

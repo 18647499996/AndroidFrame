@@ -3,7 +3,7 @@ package com.limin.myapplication3.utils.fngerprint;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.os.CancellationSignal;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.RequiresApi;
 import android.widget.ImageView;
 import android.widget.TextView;
 

@@ -1,10 +1,11 @@
 package com.limin.myapplication3.refresh.util;
 
 import android.graphics.PointF;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+
+import androidx.annotation.NonNull;
 
 /**
  * 滚动边界

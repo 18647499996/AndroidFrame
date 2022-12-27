@@ -1,6 +1,7 @@
 package com.limin.myapplication3.activity.file;
 
-import android.support.v4.view.ViewPager;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.limin.myapplication3.base.BasePresenter;
 import com.limin.myapplication3.base.BaseView;

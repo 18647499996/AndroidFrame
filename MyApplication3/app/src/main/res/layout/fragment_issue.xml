@@ -7,7 +7,7 @@
 
     <include layout="@layout/activity_title_builder"/>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_issue_rx"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

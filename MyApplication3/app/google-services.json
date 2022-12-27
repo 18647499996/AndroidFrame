@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1058894223927",
+    "project_id": "central-academy-226503",
+    "storage_bucket": "central-academy-226503.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058894223927:android:73fbb14278432287627db2",
+        "android_client_info": {
+          "package_name": "com.limin.myapplication3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058894223927-art8p1qkpb8n7fj932637mm03dkrj40p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi8N73eidBhCn7-qHnMvIwK0u4T_3VKg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1058894223927-art8p1qkpb8n7fj932637mm03dkrj40p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

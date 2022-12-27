@@ -1,7 +1,7 @@
 package com.limin.myapplication3.refresh.api;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * 默认全局初始化器

@@ -11,13 +11,6 @@ import com.limin.myapplication3.utils.TitleBuilder;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import sakura.particle.Factory.BooleanFactory;
-import sakura.particle.Factory.ExplodeParticleFactory;
-import sakura.particle.Factory.FallingParticleFactory;
-import sakura.particle.Factory.FlyawayFactory;
-import sakura.particle.Factory.InnerFallingParticleFactory;
-import sakura.particle.Factory.VerticalAscentFactory;
-import sakura.particle.Main.ExplosionSite;
 
 /**
  * Description：
@@ -66,24 +59,24 @@ public class ExplosionSiteActivity extends BaseActivity<ExplosionSitePresenter> 
     protected void onClickDoubleListener(View view) throws RuntimeException {
         switch (view.getId()) {
             case R.id.activity_explosion_site_img_1:
-                new ExplosionSite(this,new BooleanFactory()).explode(activityExplosionSiteImg1);
+//                new ExplosionSite(this,new BooleanFactory()).explode(activityExplosionSiteImg1);
                 break;
             case R.id.activity_explosion_site_img_2:
-                new ExplosionSite(this, new ExplodeParticleFactory()).explode(activityExplosionSiteImg2);
+//                new ExplosionSite(this, new ExplodeParticleFactory()).explode(activityExplosionSiteImg2);
 
                 break;
             case R.id.activity_explosion_site_img_3:
-                new ExplosionSite(this, new FallingParticleFactory()).explode(activityExplosionSiteImg3);
+//                new ExplosionSite(this, new FallingParticleFactory()).explode(activityExplosionSiteImg3);
 
                 break;
             case R.id.activity_explosion_site_img_4:
-                new ExplosionSite(this, new FlyawayFactory()).explode(activityExplosionSiteImg4);
+//                new ExplosionSite(this, new FlyawayFactory()).explode(activityExplosionSiteImg4);
                 break;
             case R.id.activity_explosion_site_img_5:
-                new ExplosionSite(this, new InnerFallingParticleFactory()).explode(activityExplosionSiteImg5);
+//                new ExplosionSite(this, new InnerFallingParticleFactory()).explode(activityExplosionSiteImg5);
                 break;
             case R.id.activity_explosion_site_img_6:
-                new ExplosionSite(this, new VerticalAscentFactory()).explode(activityExplosionSiteImg6);
+//                new ExplosionSite(this, new VerticalAscentFactory()).explode(activityExplosionSiteImg6);
                 break;
             default:
                 break;

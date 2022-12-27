@@ -1,16 +1,11 @@
 package com.limin.myapplication3.fragment.issue;
 
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.blankj.utilcode.util.ToastUtils;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.adapter.IssueAdapter;

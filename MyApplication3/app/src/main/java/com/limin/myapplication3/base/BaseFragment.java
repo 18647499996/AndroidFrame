@@ -2,12 +2,13 @@ package com.limin.myapplication3.base;
 
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -17,6 +18,7 @@ import com.limin.myapplication3.utils.Constant;
 import com.limin.myapplication3.utils.TitleBuilder;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -151,7 +153,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
      */
     public void initDatas(Bundle savedInstanceState, View pView) {
         // 初始化沉浸式
-        immersionBar = ImmersionBar.with(this);
+        immersionBar = ImmersionBar.with(requireActivity());
         View view = pView.findViewById(R.id.act_title_bor);
         if (null != view) {
             view.setPadding(0, getStatusBarHeight(), 0, 0);

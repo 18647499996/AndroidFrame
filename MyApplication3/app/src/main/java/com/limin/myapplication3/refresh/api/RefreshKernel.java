@@ -1,7 +1,7 @@
 package com.limin.myapplication3.refresh.api;
 
 import android.animation.ValueAnimator;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.limin.myapplication3.refresh.constant.RefreshState;
 

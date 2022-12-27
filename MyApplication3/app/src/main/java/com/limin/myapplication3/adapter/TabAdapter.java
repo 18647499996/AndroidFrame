@@ -1,8 +1,12 @@
 package com.limin.myapplication3.adapter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.List;
 
@@ -13,7 +17,7 @@ import java.util.List;
  *         Time：2017/12/25
  */
 
-public class TabAdapter extends FragmentStatePagerAdapter {
+public class TabAdapter extends FragmentPagerAdapter {
     private List<Fragment> mList;
     private String[] mTitles;
 
@@ -26,6 +30,11 @@ public class TabAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return mList.size();
+    }
+
+    @Override
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+        return false;
     }
 
     @Override
