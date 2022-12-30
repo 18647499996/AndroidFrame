@@ -2,6 +2,8 @@ package com.example.remote_maven;
 
 import android.util.Log;
 
+import com.example.jitpack.JitPackUtils;
+
 /**
  * Description：
  *
@@ -27,6 +29,6 @@ public class RemoteMavenUtils {
     }
 
     public void getMaven(String maven){
-        Log.d("REMOTE_MAVEN：",maven);
+        JitPackUtils.getInstance().initJitPack(maven);
     }
 }

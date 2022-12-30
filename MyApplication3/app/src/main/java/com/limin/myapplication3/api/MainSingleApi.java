@@ -1,5 +1,7 @@
 package com.limin.myapplication3.api;
 
+import com.example.jitpack.JitPackUtils;
+import com.example.remote_maven.RemoteMavenUtils;
 import com.limin.myapplication3.base.BaseRetrofitManager;
 import com.limin.myapplication3.base.BaseTransformer;
 import com.limin.myapplication3.model.UserInfoModel;

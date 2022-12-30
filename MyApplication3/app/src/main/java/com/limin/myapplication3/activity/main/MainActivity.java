@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.example.jitpack.JitPackUtils;
 import com.google.android.material.tabs.TabLayout;
 import com.limin.myapplication3.R;
 import com.limin.myapplication3.activity.demo.DemoActivity;
@@ -72,6 +73,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             Objects.requireNonNull(activityMainTab.getTabAt(i)).setText(titleArray[i]);
         }
         LogUtils.d("首页获取token：" + UserManagerUtils.getInstance().getToken());
+        JitPackUtils.getInstance().initJitPack("居然可以引用Jit");
     }
 
     @Override
