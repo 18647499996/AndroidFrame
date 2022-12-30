@@ -1,13 +1,26 @@
-apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.18647499996:AndroidFrame'
-
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'//用来推送aar到jitpack
+}
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.18647499996'//插件id，格式：com.gitee/github.用户名
+                artifactId = 'RemoteMaven'//插件名称
+                version = 'v1.0.7'//版本号
+                //引用使用格式：implementation 'com.gitee.xiaweifeng:JitPackTest11:1.0'
+            }
+        }
+    }
+}
 android {
     compileSdkVersion 29
     buildToolsVersion "28.0.3"
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
